@@ -1,0 +1,20 @@
+{
+  "name": "Webronic Portfolio",
+  "short_name": "Webronic",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2776ea",
+  "icons": [
+    {
+      "src": "/assets/favlogo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favlogo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
