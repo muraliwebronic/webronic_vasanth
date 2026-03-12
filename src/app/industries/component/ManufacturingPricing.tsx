@@ -9,12 +9,12 @@ export default function ManufacturingPricing() {
 
   return (
     <section className="font-sora">
-      
+
       {/* --- PART 1: PRICING GRID --- */}
-      <div className="bg-slate-50 py-24 lg:py-32">
-        <div className="container mx-auto px-6 max-w-7xl">
-          
-          <SectionHeader 
+      <div className="bg-slate-50 py-24 lg:py-32 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+
+          <SectionHeader
             badge="Investment"
             title={pricing.title}
             centered={true}
@@ -23,7 +23,7 @@ export default function ManufacturingPricing() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pricing.categories.map((cat, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-white rounded-[2.5rem] border border-slate-200 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
               >
@@ -34,7 +34,7 @@ export default function ManufacturingPricing() {
                       <cat.icon size={28} />
                     </div>
                   </div>
-                  <h3 className="text-xl font-black text-slate-900 leading-tight">
+                  <h3 className="text-h3 font-black text-slate-900 leading-tight">
                     {cat.title}
                   </h3>
                 </div>
@@ -70,7 +70,7 @@ export default function ManufacturingPricing() {
 
       {/* --- PART 2: GETTING STARTED (Primary Blue) --- */}
       {/* <div className="bg-[#2776ea] py-24 lg:py-32 text-white relative overflow-hidden">
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <div className="container-pd mx-auto px-6 max-w-7xl relative z-10">
           <SectionHeader isWhite title={gettingStarted.title} centered={true} className="mb-20" />
 
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">

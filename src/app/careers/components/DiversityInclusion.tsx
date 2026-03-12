@@ -1,12 +1,12 @@
 "use client";
 
-import { 
-  Users, 
-  Heart, 
-  TrendingUp, 
-  ShieldCheck, 
-  Baby, 
-  EyeOff, 
+import {
+  Users,
+  Heart,
+  TrendingUp,
+  ShieldCheck,
+  Baby,
+  EyeOff,
   CheckCircle2,
   Globe
 } from "lucide-react";
@@ -14,13 +14,13 @@ import SectionHeader from "@/components/common/SectionHeader";
 
 export default function DiversityInclusion() {
   return (
-    <section className="bg-white py-24 font-sora relative overflow-hidden">
-      
+    <section className="bg-white container-pd py-24 font-sora relative overflow-hidden">
+
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-      
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        
+
+      <div className="container-pd mx-auto px-6 max-w-7xl relative z-10">
+
         {/* --- HEADER --- */}
         <SectionHeader
           badge="Diversity & Inclusion"
@@ -32,11 +32,11 @@ export default function DiversityInclusion() {
 
         {/* --- MAIN BENTO GRID --- */}
         <div className="grid lg:grid-cols-12 gap-6 mb-12">
-          
+
           {/* Card 1: The Gender Stat (Prominent) */}
           <div className="lg:col-span-5 bg-[#2776ea] rounded-3xl p-8 text-white relative overflow-hidden flex flex-col justify-between group shadow-lg shadow-blue-900/10">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
-            
+
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-2 opacity-90">
                 <TrendingUp size={20} />
@@ -114,7 +114,7 @@ export default function DiversityInclusion() {
 
         {/* --- BOTTOM SECTION: ERGs & ACTIONS --- */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16 pt-8">
-          
+
           {/* Left: Employee Resource Groups */}
           <div>
             <h3 className="text-2xl font-black text-slate-900 mb-6">
@@ -123,7 +123,7 @@ export default function DiversityInclusion() {
             <p className="text-slate-500 mb-8 text-sm max-w-md leading-relaxed">
               Our ERGs are voluntary, employee-led groups that foster a diverse, inclusive workplace aligned with our organizational mission.
             </p>
-            
+
             <div className="space-y-4">
               {/* ERG 1 */}
               <div className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
@@ -171,21 +171,21 @@ export default function DiversityInclusion() {
 
             <div className="space-y-6">
               {[
-                { 
-                  title: "Blind Resume Screening", 
-                  desc: "We remove names and gender indicators from initial applications to reduce unconscious bias." 
+                {
+                  title: "Blind Resume Screening",
+                  desc: "We remove names and gender indicators from initial applications to reduce unconscious bias."
                 },
-                { 
-                  title: "Diverse Interview Panels", 
-                  desc: "Every candidate interacts with a diverse group of interviewers to ensure a balanced perspective." 
+                {
+                  title: "Diverse Interview Panels",
+                  desc: "Every candidate interacts with a diverse group of interviewers to ensure a balanced perspective."
                 },
-                { 
-                  title: "Inclusive Benefits", 
-                  desc: "Parental leave for all genders and full same-sex partner medical coverage." 
+                {
+                  title: "Inclusive Benefits",
+                  desc: "Parental leave for all genders and full same-sex partner medical coverage."
                 },
-                { 
-                  title: "Bias Training", 
-                  desc: "Mandatory unconscious bias training for all managers and hiring leads." 
+                {
+                  title: "Bias Training",
+                  desc: "Mandatory unconscious bias training for all managers and hiring leads."
                 }
               ].map((item, i) => (
                 <div key={i} className="flex gap-4 group">

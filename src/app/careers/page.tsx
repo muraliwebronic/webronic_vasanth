@@ -9,6 +9,7 @@ import LifeAtWebronic from './components/LifeAtWebronic'
 import DiversityInclusion from './components/DiversityInclusion'
 import CareersFAQ from './components/CareersFAQ'
 import ApplySection from './components/ApplySection'
+import Contact from '@/section/home/Contact'
 
 
 export default function page() {
@@ -17,13 +18,14 @@ export default function page() {
       <CareersHero />
       <WhyWebronic />
       <CultureValues />
-      <BenefitsPerks />
-      <OpenPositions />
+      {/* <BenefitsPerks /> */}
+      {/* <OpenPositions /> */}
       <HiringProcess />
       <LifeAtWebronic />
-      <DiversityInclusion />
+      {/* <DiversityInclusion /> */}
       <CareersFAQ />
       <ApplySection />
+      <Contact />
     </main>
   )
 }

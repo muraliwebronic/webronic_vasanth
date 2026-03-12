@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState } from 'react';
-import { 
-  Factory, 
-  Clapperboard, 
-  Truck, 
-  Building2, 
-  Utensils 
+import {
+  Factory,
+  Clapperboard,
+  Truck,
+  Building2,
+  Utensils
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -66,10 +66,10 @@ export default function Page() {
   return (
     // Added pt-24 to push everything below your fixed Navbar
     <main className="min-h-screen bg-[#2776ea] font-sora selection:bg-[#2776ea] selection:text-white pt-24 ">
-      
+
       {/* --- INDUSTRY SWITCHER (In-Flow) --- */}
-      {/* This container matches the width/padding of your Hero sections so it aligns perfectly */}
-      <div className="container mx-auto px-6 max-w-7xl relative z-40 mb-8">
+      {/* This container  matches the width/padding of your Hero sections so it aligns perfectly */}
+      <div className="container-pd mx-auto px-6 max-w-7xl relative z-40 mb-8 xl:mt-20">
         <div className="flex justify-center">
           <div className="flex items-center gap-1 p-1.5 bg-white border border-slate-200 rounded-full shadow-xl shadow-blue-900/5">
             {INDUSTRIES.map((industry) => {
@@ -82,11 +82,10 @@ export default function Page() {
                     // window.scrollTo({ top: 0, behavior: 'smooth' }); 
                     setActiveIndustry(industry.id);
                   }}
-                  className={`relative flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wide transition-all duration-300 ${
-                    isActive 
-                      ? "text-white" 
-                      : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
-                  }`}
+                  className={`relative flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wide transition-all duration-300 ${isActive
+                    ? "text-white"
+                    : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
+                    }`}
                 >
                   {isActive && (
                     <motion.div
@@ -108,14 +107,15 @@ export default function Page() {
       </div>
 
       {/* --- DYNAMIC CONTENT AREA --- */}
-      <div className="relative"> 
-        
+      <div className="relative">
+
         {/* Render Manufacturing Stack */}
         {activeIndustry === 'manufacturing' && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <ManufacturingHero />
             <ManufacturingOverview />
             <ManufacturingSolutions />
+            
             <ManufacturingDataCollection />
             <DigitalTwinImplementation />
             <ManufacturingMesMaintenance />

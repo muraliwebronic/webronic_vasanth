@@ -100,7 +100,7 @@ export const MOBILE_DATA: ServicePageData = {
     cards: [
       { id: "quote", title: "App Estimate", description: "Discuss features and cost", icon: "Calculator", theme: "light", list: ["Feature breakdown", "Cost range"], cta: { text: "Get Quote", link: "#" } }
     ],
-    contact: { title: "Contact App Team", subtitle: "Mobile Developers", methods: [{ label: "Email", value: "mobile@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
+    contact: { title: "Contact App Team", subtitle: "Mobile Developers", methods: [{ label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
   },
   relatedResources: { services: [], columns: [] }
 };

@@ -80,8 +80,8 @@ export default function ServiceCarousel() {
   ];
 
   return (
-    <section className="bg-white py-16 md:py-24 mx-auto container overflow-hidden font-sora ">
-      <div className="container mx-auto px-6 mb-12 md:mb-20 text-center">
+    <section className="bg-white py-16 md:py-24 mx-auto container-pd overflow-hidden font-sora ">
+      <div className="container-pd mx-auto px-6 mb-12 md:mb-20 text-center">
         <div className="flex items-center  justify-center gap-4 mb-6">
           <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#2776ea]">
             Our Services

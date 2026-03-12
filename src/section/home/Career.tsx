@@ -75,15 +75,15 @@ export default function CareerSection() {
   return (
     <section
       id="career"
-      className="relative py-24 bg-white font-sora overflow-hidden"
+      className="relative py-24 bg-white container-pd font-sora overflow-hidden"
     >
-      <div className="relative container mx-auto px-6 z-10">
+      <div className="relative  mx-auto px-6 z-10">
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-12 items-center">
-          
+
           {/* --- CONTENT & CTA (ORDER 2 on Desktop/Right Side) --- */}
           <div className="lg:col-span-5 flex flex-col items-start text-left lg:order-2">
             <SectionHeader
-              badge="Career"
+              badge="Careers"
               title="Join the Team"
               highlight="Build the Future"
               description="We solve complex problems at scale. We are looking for visionaries, engineers, and creators to help us architect high-performance digital solutions"
@@ -99,7 +99,7 @@ export default function CareerSection() {
                 View Open Roles
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              
+
               <Link
                 href="/about"
                 className="group inline-flex items-center justify-center gap-3 bg-white border border-slate-200 text-slate-700 px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider hover:border-[#2776ea] hover:text-[#2776ea] transition-all"
@@ -113,11 +113,11 @@ export default function CareerSection() {
           <div className="lg:col-span-7 lg:order-1">
             <div className="grid sm:grid-cols-2 gap-x-6 gap-y-12">
               {PERKS.map((perk, i) => (
-                <PerkCard 
-                    key={i}
-                    icon={perk.icon}
-                    title={perk.title}
-                    desc={perk.desc}
+                <PerkCard
+                  key={i}
+                  icon={perk.icon}
+                  title={perk.title}
+                  desc={perk.desc}
                 />
               ))}
             </div>

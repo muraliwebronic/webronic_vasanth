@@ -21,8 +21,8 @@ export default function HospitalityHeroPms() {
   return (
     <section className="font-sora bg-white overflow-hidden">
       {/* --- HERO SECTION --- */}
-      <div className="relative w-full bg-white pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28 border-b border-slate-100">
-        <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+      <div className="relative w-full bg-white pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28 border-b border-slate-100 container-pd">
+        <div className="mx-auto px-6 md:px-12 lg:px-24 relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* --- LEFT: TEXT --- */}
             <div className="max-w-2xl">
@@ -121,8 +121,8 @@ export default function HospitalityHeroPms() {
       </div>
 
       {/* --- OVERVIEW --- */}
-      <div className="py-24 bg-white border-t border-slate-100">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="py-24 bg-white border-t border-slate-100 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <div className="flex flex-col lg:flex-row gap-16 mb-20">
             <div className="lg:w-1/3">
               <SectionHeader title={overview.title} centered={false} />
@@ -191,8 +191,8 @@ export default function HospitalityHeroPms() {
       </div>
 
       {/* --- PMS CORE SOLUTIONS --- */}
-      <div className="py-24 bg-slate-50">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="py-24 bg-slate-50 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader
             badge="Core Hospitality Solutions"
             title={pms.title}

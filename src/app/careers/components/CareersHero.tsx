@@ -17,8 +17,8 @@ export default function CareersHero() {
   const { hero } = CAREERS_DATA;
 
   return (
-    <section className="relative w-full bg-white pt-24 pb-12 lg:pt-32 lg:pb-16 font-sora overflow-hidden border-b border-slate-100">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+    <section className="relative w-full container-pd bg-white pt-24 pb-12 lg:pt-32 lg:pb-16 font-sora overflow-hidden border-b border-slate-100">
+      <div className=" mx-auto px-6 md:px-12 lg:px-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* --- LEFT COLUMN --- */}
           <div className="max-w-2xl">
@@ -34,7 +34,7 @@ export default function CareersHero() {
 
             {/* --- CAREER CONTACT CARDS (DIRECT & CLEAN) --- */}
             <div className="grid sm:grid-cols-2 gap-5 mb-12">
-              
+
               {/* Card 1: Internship */}
               <Link
                 href="https://docs.google.com/forms/d/e/1FAIpQLSfLFogNrkSs6KuLXiQJ1LP0gqZo8yURLHavcqeYZsXMruheig/viewform"
@@ -47,7 +47,7 @@ export default function CareersHero() {
                   <div className="h-12 w-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center transition-colors duration-300 group-hover:bg-blue-600 group-hover:text-white">
                     <GraduationCap size={24} strokeWidth={2} />
                   </div>
-              
+
                 </div>
 
                 {/* Text Content */}

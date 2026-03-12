@@ -183,21 +183,36 @@ export const PageServiceCard = ({
                     </button>
                   </div>
 
-                  <div className="flex-1 overflow-y-auto custom-scrollbar p-6 pt-0">
+                  <div className="flex-1 overflow-y-auto custom-scrollbar py-3 p-6 pt-0">
                     <div className="grid grid-cols-2 gap-3">
                       {service.technologies.map((t) => (
                         <div
                           key={t.name}
-                          className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-slate-100/80 shadow-sm hover:border-[#2776ea]/30 hover:shadow-md transition-all duration-300 group/tech cursor-default"
+
+                          className="
+          group relative flex flex-col items-center justify-center 
+          p-5 
+          rounded-2xl 
+          border border-transparent
+          transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
+          cursor-default 
+          hover:bg-slate-50/40
+          hover:border-slate-200/60
+          hover:-translate-y-1.5
+          hover:shadow-[0_16px_32px_-12px_rgba(39,118,234,0.12)]
+        "
                         >
-                          <div className="w-9 h-9 mb-2 relative">
+                          <div className="relative h-18 w-full flex items-center justify-center mb-3 z-10">
                             <img
                               src={t.logo}
                               alt={t.name}
-                              className="object-contain w-full h-full"
+                              // Image scales up smoothly inside the rising card
+                              className="object-contain max-h-full max-w-[85%] drop-shadow-sm transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 will-change-transform"
                             />
                           </div>
-                          <span className="text-caption font-bold text-slate-500 uppercase tracking-wide group-hover/tech:text-[#2776ea] text-center transition-colors">
+
+                          {/* Text subtly darkens to ground the design */}
+                          <span className="relative z-10 text-xs font-semibold text-slate-500 transition-colors duration-300 group-hover:text-slate-800 text-center">
                             {t.name}
                           </span>
                         </div>

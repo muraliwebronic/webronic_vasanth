@@ -32,20 +32,20 @@ const jsonLd = {
         "@type": "Organization",
         "@id": "https://webronic.com/#organization",
         "name": "Webronic Industries",
-        "foundingDate": "2010", 
+        "foundingDate": "2010",
         "description": "Global IT Services & Technology Innovation Partner",
         "numberOfEmployees": {
-            "@type": "QuantitativeValue",
-            "minValue": 50,
-            "maxValue": 500
+          "@type": "QuantitativeValue",
+          "minValue": 50,
+          "maxValue": 500
         },
         // Official Social Profiles for Knowledge Graph
         "sameAs": [
-          "https://www.linkedin.com/company/webronic",
+          "https://www.linkedin.com/company/webronic/",
           "https://twitter.com/webronic",
-          "https://www.facebook.com/webronic",
-          "https://www.youtube.com/webronic",
-          "https://www.instagram.com/webronic_tech"
+          "https://www.facebook.com/webronic/",
+          "https://www.youtube.com/@WEBRONIC/",
+          "https://www.instagram.com/webronic_/"
         ],
         "knowsAbout": ["AI Solutions", "Cloud Services", "Digital Transformation", "Software Development"]
       },
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     siteName: "Webronic Industries",
     images: [
       {
-        url: "https://webronic.com/og-about.jpg", 
+        url: "https://webronic.com/og-about.jpg",
         width: 1200,
         height: 630,
         alt: "Webronic Industries Team and Culture",

@@ -9,12 +9,12 @@ export default function ManufacturingQuality() {
 
   return (
     <section className="font-sora">
-      
+
       {/* --- PART 1: INTRO & APPLICATIONS --- */}
-      <div className="bg-white py-24 lg:py-32">
-        <div className="container mx-auto px-6 max-w-7xl">
-          
-          <SectionHeader 
+      <div className="bg-white py-24 lg:py-32 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+
+          <SectionHeader
             badge="Quality Assurance"
             title={header.title}
             highlight={header.subTitle}
@@ -24,8 +24,8 @@ export default function ManufacturingQuality() {
           />
 
           <div className="bg-slate-50 p-10 rounded-[3rem] border border-slate-100 mb-20">
-             <h3 className="text-2xl font-black text-slate-900 mb-4 text-center">{header.introTitle}</h3>
-             <p className="text-center text-slate-600 max-w-3xl mx-auto">{header.description}</p>
+            <h3 className="text-h3 font-black text-slate-900 mb-4 text-center">{header.introTitle}</h3>
+            <p className="text-center text-slate-600 max-w-3xl mx-auto">{header.description}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -35,7 +35,7 @@ export default function ManufacturingQuality() {
               const iconBg = isBlue ? "bg-[#2776ea]/10" : "bg-[#76ea27]/10";
 
               return (
-                <div 
+                <div
                   key={index}
                   className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#2776ea]/30 transition-all duration-300"
                 >
@@ -43,9 +43,9 @@ export default function ManufacturingQuality() {
                     <div className={`h-14 w-14 rounded-2xl ${iconBg} flex items-center justify-center ${iconColor} shrink-0`}>
                       <cat.icon size={28} strokeWidth={1.5} />
                     </div>
-                    <h4 className="text-xl font-black text-slate-900">
+                    <h3 className="text-h3 font-black text-slate-900">
                       {cat.title}
-                    </h4>
+                    </h3>
                   </div>
                   <ul className="space-y-3">
                     {cat.items.map((item, i) => (
@@ -63,9 +63,9 @@ export default function ManufacturingQuality() {
       </div>
 
       {/* --- PART 2: TECH STACK (Primary Blue) --- */}
-      <div className="bg-[#2776ea] py-24 lg:py-32 text-white">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <SectionHeader 
+      <div className="bg-[#2776ea] py-24 lg:py-32 text-white container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+          <SectionHeader
             isWhite
             badge="Architecture"
             title={techStack.title}
@@ -75,7 +75,7 @@ export default function ManufacturingQuality() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {techStack.columns.map((col, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-white p-8 rounded-[2.5rem] shadow-xl"
               >
@@ -83,7 +83,7 @@ export default function ManufacturingQuality() {
                   <div className="p-3 rounded-2xl bg-[#2776ea]/10 text-[#2776ea]">
                     <col.icon size={28} />
                   </div>
-                  <h3 className="text-xl font-black text-slate-900">{col.title}</h3>
+                  <h3 className="text-h3 font-black text-slate-900">{col.title}</h3>
                 </div>
                 <ul className="space-y-4">
                   {col.items.map((item, i) => (
@@ -100,8 +100,8 @@ export default function ManufacturingQuality() {
       </div>
 
       {/* --- PART 3: SOFTWARE & ALGORITHMS (Clean Grid) --- */}
-      <div className="bg-slate-50 py-24 lg:py-32">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="bg-slate-50 py-24 lg:py-32 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader title={software.title} centered={true} className="mb-20" />
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -114,7 +114,7 @@ export default function ManufacturingQuality() {
                 <div key={index} className="bg-white p-8 rounded-[2.5rem] border border-slate-200">
                   <div className={`flex items-center gap-4 mb-8 p-4 rounded-2xl ${bgHeader}`}>
                     <section.icon size={32} className={accentColor} />
-                    <h3 className={`text-2xl font-black ${accentColor}`}>
+                    <h3 className={`text-h3 font-black ${accentColor}`}>
                       {section.title}
                     </h3>
                   </div>

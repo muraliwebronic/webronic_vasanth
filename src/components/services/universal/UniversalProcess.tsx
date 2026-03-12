@@ -10,8 +10,8 @@ export default function UniversalProcess({ data }: { data: ServicePageData['proc
   if (!data) return null;
 
   return (
-    <section className="bg-white py-24 font-sora relative overflow-hidden">
-      <div className="container mx-auto px-6 max-w-5xl relative z-10">
+    <section className="bg-white container-pd py-24 font-sora relative overflow-hidden">
+      <div className=" mx-auto px-6 max-w-5xl relative z-10">
 
         <SectionHeader
           badge="Workflow"
@@ -21,7 +21,7 @@ export default function UniversalProcess({ data }: { data: ServicePageData['proc
           className="max-w-3xl mx-auto mb-20"
         />
 
-        {/* STACKING CONTAINER */}
+        {/* STACKING container  */}
         <div className="flex flex-col gap-6 max-w-4xl mx-auto pb-24">
 
           {/* Vertical Guide Line (Visual Hint) */}

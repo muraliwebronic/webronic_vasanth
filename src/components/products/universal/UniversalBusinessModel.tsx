@@ -8,8 +8,8 @@ export default function UniversalBusinessModel({ data }: { data: BusinessModelDa
     if (!data) return null;
 
     return (
-        <section className="bg-slate-50 py-24 font-sora border-y border-slate-200/50">
-            <div className="container mx-auto px-6 max-w-7xl">
+        <section className="bg-slate-50 container-pd py-24 font-sora border-y border-slate-200/50">
+            <div className=" mx-auto px-6 max-w-7xl">
                 <SectionHeader
                     badge={data.badge}
                     title={data.heading}
@@ -52,9 +52,9 @@ export default function UniversalBusinessModel({ data }: { data: BusinessModelDa
                                             ))}
                                         </ul>
 
-                                        <button className={`w-full mt-8 py-3 rounded-xl font-bold text-sm transition-colors ${i === 1 ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-white border border-slate-200 text-slate-600 hover:border-blue-300 hover:text-blue-600'}`}>
+                                        {/* <button className={`w-full mt-8 py-3 rounded-xl font-bold text-sm transition-colors ${i === 1 ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-white border border-slate-200 text-slate-600 hover:border-blue-300 hover:text-blue-600'}`}>
                                             Choose {tier.plan}
-                                        </button>
+                                        </button> */}
                                     </div>
                                 ))}
                             </div>

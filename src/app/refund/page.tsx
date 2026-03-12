@@ -65,23 +65,23 @@ export default function CancellationRefundPolicy() {
   };
 
   return (
-    <main className="bg-white font-sora w-full overflow-x-hidden pt-12 md:pt-24 pb-20">
+    <main className="bg-white font-sora w-full max-w-[100vw] pt-20 pb-12 md:pt-24 md:pb-20">
       <section className="relative overflow-hidden bg-slate-50 py-16 md:py-24 border-b border-slate-100">
         <div className="absolute inset-0 pointer-events-none opacity-40">
           <div className="absolute -top-10 -right-10 w-64 h-64 md:w-125 md:h-125 bg-[#2776ea]/10 rounded-full blur-[80px] md:blur-[120px]" />
           <div className="absolute -bottom-10 -left-10 w-64 h-64 md:w-125 md:h-125 bg-[#76ea27]/10 rounded-full blur-[80px] md:blur-[120px]" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 md:px-6">
+        <div className="relative mx-auto container-pd px-5 md:px-0">
           <div className="flex items-center  gap-4 mb-6">
             <CreditCard size={14} className="text-[#2776ea]" />
             <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#2776ea]">
               Financial Transparency
             </span>
           </div>
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-tight">
+          <h1 className="text-h1 font-black text-slate-900 tracking-tighter leading-[1.1] mb-6">
             Cancellation &{" "}
-            <span className="bg-linear-to-r from-[#2776ea] to-[#76ea27] bg-clip-text text-transparent">
+            <span className="bg-linear-to-r text-h1 from-[#2776ea] to-[#76ea27] bg-clip-text text-transparent">
               Refund
             </span>
           </h1>
@@ -109,7 +109,7 @@ export default function CancellationRefundPolicy() {
         ))}
       </div>
 
-      <section className="mx-auto max-w-7xl px-4 md:px-6 py-10 md:py-20">
+      <section className="mx-auto container-pd px-5 md:px-0 py-10 md:py-20">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
           <aside className="hidden lg:block w-75 shrink-0 sticky top-32 h-[calc(100vh-140px)] overflow-y-auto pr-4 custom-scrollbar">
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6 px-4">
@@ -323,7 +323,7 @@ export default function CancellationRefundPolicy() {
                   <p className="text-sm text-slate-600 font-medium leading-relaxed">
                     Contact{" "}
                     <span className="text-[#2776ea] font-bold break-all">
-                      support@webronic.com
+                      contact@webronic.com
                     </span>{" "}
                     within 3 days. Options include fixes or partial refunds.
                   </p>
@@ -458,7 +458,7 @@ export default function CancellationRefundPolicy() {
                 <div className="mt-8 space-y-4">
                   <div className="flex items-center justify-center md:justify-start gap-3 md:gap-4 text-sm font-bold text-[#2776ea] break-all">
                     <Mail size={18} className="text-[#76ea27] shrink-0" />{" "}
-                    support@webronic.com
+                    contact@webronic.com
                   </div>
                   <div className="flex items-center justify-center md:justify-start gap-4 text-sm font-bold text-slate-900">
                     <Phone size={18} className="text-[#2776ea] shrink-0" /> +91
@@ -467,7 +467,7 @@ export default function CancellationRefundPolicy() {
                 </div>
               </div>
 
-              <div className="bg-[#2776ea]/5 p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] border border-[#2776ea]/10 flex flex-col justify-between">
+              {/* <div className="bg-[#2776ea]/5 p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] border border-[#2776ea]/10 flex flex-col justify-between">
                 <p className="text-[10px] md:text-xs font-bold text-slate-600 italic mb-6">
                   Mention your Invoice/Contract number for expedited assessment.
                 </p>
@@ -477,7 +477,7 @@ export default function CancellationRefundPolicy() {
                 >
                   Initiate Refund Request <ArrowRight size={16} />
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

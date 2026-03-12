@@ -5,7 +5,7 @@ import teamMembers from "@/AllData/About/TeamData";
 export default function Team() {
   return (
     <section id="team" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+      <div className="container-pd mx-auto px-6">
         <div className="mb-12 text-center">
           <h3 className="mx-auto w-fit rounded-3xl bg-white px-5 py-1 text-sm text-gray-500 shadow-xl border border-slate-100">
             Our Team
@@ -27,15 +27,15 @@ export default function Team() {
               >
                 <div className="h-40 w-40 shrink-0 overflow-hidden rounded-full border border-slate-200 shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:border-blue-500">
                   <img
-                    src={member.image} 
+                    src={member.image}
                     alt={member.name}
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>
                 <div className="text-center">
-                   <p className="text-sm font-bold text-slate-900">{member.name}</p>
-                   <p className="text-[10px] uppercase tracking-widest text-blue-600 font-medium">{member.role}</p>
+                  <p className="text-sm font-bold text-slate-900">{member.name}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-blue-600 font-medium">{member.role}</p>
                 </div>
               </div>
             ))}

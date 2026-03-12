@@ -11,7 +11,7 @@ export default function UniversalRelatedResources({ data }: { data: ServicePageD
 
   return (
     <section className="bg-slate-50 py-24 font-sora relative overflow-hidden border-t border-slate-200">
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+      <div className="container-pd mx-auto px-6 max-w-6xl relative z-10">
 
         {/* --- SECTION 1: RELATED SERVICES --- */}
         <div className="mb-20">
@@ -44,30 +44,30 @@ export default function UniversalRelatedResources({ data }: { data: ServicePageD
 
         {/* --- SECTION 2: RESOURCES LINKS --- */}
         <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 border border-slate-200">
-           <div className="flex items-center justify-between mb-6">
-                <h3 className="text-h3 font-black text-slate-900">Resources & Documentation</h3>
-                {/* <Link href="/resources" className="text-menu font-bold text-[#2776ea] hover:underline">View All</Link> */}
-           </div>
-           
-           <div className="grid md:grid-cols-2 gap-8">
-                {data.columns.map((col, idx) => (
-                    <div key={idx}>
-                        <h4 className="text-caption font-black uppercase tracking-widest text-slate-400 mb-3 flex items-center gap-2">
-                             <DynamicIcon name={col.icon} size={12} /> {col.title}
-                        </h4>
-                        <ul className="space-y-2">
-                            {col.items.map((item, i) => (
-                                <li key={i}>
-                                    <Link href={item.href} className="flex items-center gap-2 text-submenu font-medium text-slate-600 hover:text-[#2776ea] group">
-                                        <ArrowRight size={12} className="text-slate-300 group-hover:text-[#2776ea] transition-colors" />
-                                        {item.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
-           </div>
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-h3 font-black text-slate-900">Resources & Documentation</h3>
+            {/* <Link href="/resources" className="text-menu font-bold text-[#2776ea] hover:underline">View All</Link> */}
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {data.columns.map((col, idx) => (
+              <div key={idx}>
+                <h4 className="text-caption font-black uppercase tracking-widest text-slate-400 mb-3 flex items-center gap-2">
+                  <DynamicIcon name={col.icon} size={12} /> {col.title}
+                </h4>
+                <ul className="space-y-2">
+                  {col.items.map((item, i) => (
+                    <li key={i}>
+                      <Link href={item.href} className="flex items-center gap-2 text-submenu font-medium text-slate-600 hover:text-[#2776ea] group">
+                        <ArrowRight size={12} className="text-slate-300 group-hover:text-[#2776ea] transition-colors" />
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>

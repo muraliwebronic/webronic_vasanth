@@ -9,10 +9,10 @@ export default function ManufacturingMonitoring() {
 
   return (
     <section className="font-sora overflow-hidden">
-      <div className="bg-white py-24 lg:py-32">
-        <div className="container mx-auto px-6 max-w-7xl">
-          
-          <SectionHeader 
+      <div className="bg-white py-24 lg:py-32 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+
+          <SectionHeader
             badge="Asset Health"
             title={sectionTitle}
             centered={true}
@@ -25,23 +25,23 @@ export default function ManufacturingMonitoring() {
               <div className="p-4 rounded-2xl bg-[#2776ea]/10 text-[#2776ea]">
                 <vibration.icon size={28} strokeWidth={1.5} />
               </div>
-              <h3 className="text-3xl font-black text-slate-900">
+              <h3 className="text-h3 font-black text-slate-900">
                 {vibration.title}
               </h3>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {vibration.columns.map((col, index) => (
-                <div 
+                <div
                   key={index}
                   className="group bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-xl hover:border-[#2776ea]/20 transition-all duration-300"
                 >
-                  <h4 className="text-lg font-bold text-[#2776ea] mb-6 border-b border-slate-200 pb-4">
+                  <h3 className="text-h3 font-bold text-[#2776ea] mb-6 border-b border-slate-200 pb-4">
                     {col.header}
-                  </h4>
+                  </h3>
                   <ul className="space-y-4">
                     {col.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-slate-600 leading-relaxed font-medium">
+                      <li key={i} className="flex items-start gap-3 text-body text-slate-600 leading-relaxed font-medium">
                         <div className="h-1.5 w-1.5 rounded-full bg-[#76ea27] mt-2 shrink-0" />
                         {item}
                       </li>
@@ -55,13 +55,13 @@ export default function ManufacturingMonitoring() {
           {/* --- 2. Temperature Monitoring (Feature Card) --- */}
           <div className="mb-24 bg-white rounded-[3rem] p-10 md:p-16 border border-slate-100 shadow-2xl shadow-blue-900/5 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#2776ea]/5 rounded-full blur-[80px] pointer-events-none" />
-            
+
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-12">
                 <div className="p-4 rounded-2xl bg-[#76ea27]/10 text-[#76ea27]">
                   <temperature.icon size={28} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-3xl font-black text-slate-900">
+                <h3 className="text-h3 font-black text-slate-900">
                   {temperature.title}
                 </h3>
               </div>
@@ -69,9 +69,9 @@ export default function ManufacturingMonitoring() {
               <div className="grid lg:grid-cols-2 gap-16 mb-16">
                 {temperature.sections.map((sec, index) => (
                   <div key={index}>
-                    <h4 className="font-bold text-lg mb-6 text-slate-900 uppercase tracking-widest text-sm border-l-4 border-[#2776ea] pl-4">
+                    <h3 className="text-h3 font-bold mb-6 text-slate-900 uppercase tracking-widest border-l-4 border-[#2776ea] pl-4">
                       {sec.title}
-                    </h4>
+                    </h3>
                     <ul className="space-y-3">
                       {sec.items.map((item, i) => (
                         <li key={i} className="flex items-start gap-3 text-sm text-slate-600 font-medium">
@@ -86,10 +86,10 @@ export default function ManufacturingMonitoring() {
 
               {/* Thresholds Bar */}
               <div className="bg-slate-50 rounded-[2rem] p-8 border border-slate-200">
-                <h4 className="font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <h3 className="text-h3 font-bold text-slate-900 mb-6 flex items-center gap-2">
                   <AlertTriangle size={20} className="text-[#2776ea]" />
                   Operating Thresholds
-                </h4>
+                </h3>
                 <div className="grid md:grid-cols-3 gap-6">
                   {temperature.thresholds.map((t, i) => {
                     let accentColor = "border-slate-300";
@@ -113,18 +113,18 @@ export default function ManufacturingMonitoring() {
       </div>
 
       {/* --- 3. Oil Analysis (Primary Blue) --- */}
-      <div className="bg-[#2776ea] py-24 lg:py-32 relative overflow-hidden">
+      <div className="bg-[#2776ea] py-24 lg:py-32 relative overflow-hidden container-pd">
         <div className="absolute -right-20 -top-20 opacity-[0.08] text-white animate-spin-slow">
-           <Settings size={400} />
+          <Settings size={400} />
         </div>
 
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <div className="mx-auto px-6 max-w-7xl relative z-10">
           <div className="flex flex-col md:flex-row md:items-center gap-6 mb-16 text-white">
             <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-md">
               <oil.icon size={32} strokeWidth={1.5} />
             </div>
             <div>
-              <h3 className="text-3xl md:text-4xl font-black">
+              <h3 className="text-h3 font-black">
                 {oil.title}
               </h3>
               <p className="text-blue-100 font-bold text-sm uppercase tracking-widest mt-1 opacity-80">
@@ -134,12 +134,12 @@ export default function ManufacturingMonitoring() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            
+
             {/* Column 1: Wear Metals */}
             <div className="bg-white p-8 rounded-[2.5rem] shadow-xl">
-              <h4 className="font-bold text-slate-900 mb-6 flex items-center gap-2">
+              <h3 className="text-h3 font-bold text-slate-900 mb-6 flex items-center gap-2">
                 <Settings size={18} className="text-[#76ea27]" /> Wear Metals
-              </h4>
+              </h3>
               <div className="space-y-4">
                 {oil.wearMetals.map((item, i) => (
                   item.metal ? (
@@ -162,9 +162,9 @@ export default function ManufacturingMonitoring() {
             <div className="space-y-6">
               {oil.analysisCategories.map((cat, i) => (
                 <div key={i} className="bg-white/10 backdrop-blur-md p-8 rounded-[2.5rem] border border-white/20 text-white hover:bg-white/20 transition-colors">
-                  <h4 className="font-bold text-lg mb-4 flex items-center gap-3">
+                  <h3 className="text-h3 font-bold mb-4 flex items-center gap-3">
                     <cat.icon size={20} className="text-[#76ea27]" /> {cat.title}
-                  </h4>
+                  </h3>
                   <ul className="space-y-3">
                     {cat.items.map((item, j) => (
                       <li key={j} className="text-sm font-medium text-blue-50 flex items-start gap-3">
@@ -179,9 +179,9 @@ export default function ManufacturingMonitoring() {
 
             {/* Column 3: Frequency */}
             <div className="bg-white p-8 rounded-[2.5rem] shadow-xl">
-              <h4 className="font-bold text-slate-900 mb-8 flex items-center gap-2">
+              <h3 className="text-h3 font-bold text-slate-900 mb-8 flex items-center gap-2">
                 <Clock size={18} className="text-[#2776ea]" /> {oil.frequency.title}
-              </h4>
+              </h3>
               <div className="space-y-8">
                 {oil.frequency.items.map((item, i) => (
                   <div key={i} className="relative pl-6 border-l-2 border-slate-100">

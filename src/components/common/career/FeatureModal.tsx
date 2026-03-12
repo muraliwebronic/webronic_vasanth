@@ -46,26 +46,26 @@ export default function FeatureModal({
   const isBlue = feature.color === "blue";
   const iconBg = isBlue ? "bg-blue-50" : "bg-emerald-50";
   const iconColor = isBlue ? "text-blue-600" : "text-emerald-600";
-  const buttonHover = isBlue 
-    ? "hover:bg-blue-50 hover:text-blue-600 focus-visible:ring-blue-500" 
+  const buttonHover = isBlue
+    ? "hover:bg-blue-50 hover:text-blue-600 focus-visible:ring-blue-500"
     : "hover:bg-emerald-50 hover:text-emerald-600 focus-visible:ring-emerald-500";
 
   return (
-    <div 
+    <div
       className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6"
       role="dialog"
       aria-modal="true"
       aria-labelledby="feature-modal-title"
     >
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-300"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Modal Container */}
-      <div 
+      {/* Modal container  */}
+      <div
         className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl flex flex-col animate-in zoom-in-95 fade-in duration-300 overflow-hidden max-h-full"
         onClick={(e) => e.stopPropagation()}
       >
@@ -74,7 +74,7 @@ export default function FeatureModal({
           <div className={`shrink-0 h-14 w-14 rounded-2xl ${iconBg} flex items-center justify-center ${iconColor}`}>
             <feature.icon size={28} strokeWidth={1.5} />
           </div>
-          
+
           <button
             onClick={onClose}
             className={`text-slate-400 p-2 rounded-full transition-colors focus:outline-none focus-visible:ring-2 ring-offset-2 ${buttonHover}`}
@@ -85,14 +85,14 @@ export default function FeatureModal({
         </div>
 
         {/* Content: Scrollable area */}
-        <div className="px-6 pb-6 sm:px-8 sm:pb-8 overflow-y-auto custom-scrollbar"> 
-          <h3 
+        <div className="px-6 pb-6 sm:px-8 sm:pb-8 overflow-y-auto custom-scrollbar">
+          <h3
             id="feature-modal-title"
             className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight mb-3"
           >
             {feature.title}
           </h3>
-          
+
           <p className="text-slate-600 leading-relaxed text-[15px] sm:text-[16px]">
             {feature.description}
           </p>

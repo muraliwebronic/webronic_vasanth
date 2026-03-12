@@ -19,10 +19,10 @@ export default function page() {
     <WhyChooseUs />
     <Partner />
     <Client />
-    <LatestInsights />
+    {/* <LatestInsights /> */}
     <Career />
-    <Contact />
     <Location />
+    <Contact />
     </>
   )
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronRight, ArrowUpRight, CheckCircle2, ChevronDown, X } from "lucide-react";
 import { DynamicIcon } from "@/components/common/DynamicIcon";
 import { ProductFeaturesData } from "@/app/product/types";
@@ -9,23 +9,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 /**
  * Splits a packed description string into individual bullet points.
- * Descriptions are packed as: "Point one. Point two. Point three."
- * This splits on ". " boundaries (where a sentence ends and a new one starts with capital)
- * and also on explicit "\n" newline characters.
  */
 function splitIntoBullets(description: string): string[] {
     if (!description) return [];
 
-    // First split on explicit newlines
     const lines = description.split(/\n/).map(line => line.trim()).filter(Boolean);
-
-    // If explicit newlines produced multiple lines, use them
     if (lines.length > 1) return lines;
 
-    // Otherwise, try splitting on sentence boundaries: ". " followed by a capital letter or number/symbol
     const sentences = description.split(/\.\s+(?=[A-Z€<\d])/).map(s => s.trim()).filter(Boolean);
-
-    // Clean up: ensure each sentence ends with a period if it doesn't already
     return sentences.map(s => s.endsWith('.') ? s : s + '.');
 }
 
@@ -55,31 +46,53 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
     const [selectedFeature, setSelectedFeature] = useState<typeof data.features[0] | null>(null);
     const [activeTab, setActiveTab] = useState<string>("");
 
+    // OPTIMIZATION 2: Ready state to defer heavy DOM rendering
+    const [isModalReady, setIsModalReady] = useState(false);
+
     // Scroll detection refs
     const mobileScrollRef = useRef<HTMLDivElement>(null);
     const [showContentScrollHint, setShowContentScrollHint] = useState(false);
 
-    // Prevent background scrolling when modal is open
+    // Prevent background scrolling, prevent layout shift, and handle render delay
     useEffect(() => {
         if (selectedFeature) {
+            // OPTIMIZATION 3: Compensate for scrollbar width to prevent background layout shift
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
             document.body.style.overflow = "hidden";
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+            // Give Framer Motion 50ms to start the slide-up before blocking the main thread
+            const timer = setTimeout(() => setIsModalReady(true), 50);
+            return () => clearTimeout(timer);
         } else {
             document.body.style.overflow = "unset";
+            document.body.style.paddingRight = "0px";
+            setIsModalReady(false);
         }
-        return () => { document.body.style.overflow = "unset"; };
+
+        // Safety cleanup on unmount
+        return () => {
+            document.body.style.overflow = "unset";
+            document.body.style.paddingRight = "0px";
+        };
     }, [selectedFeature]);
 
-    // Unified scroll checker
-    const checkScroll = () => {
-        if (mobileScrollRef.current) {
-            const { scrollTop, scrollHeight, clientHeight } = mobileScrollRef.current;
-            setShowContentScrollHint(scrollHeight > clientHeight && scrollTop + clientHeight < scrollHeight - 20);
-        }
-    };
+    // OPTIMIZATION 1: Unified scroll checker with useCallback and requestAnimationFrame
+    const checkScroll = useCallback(() => {
+        if (!mobileScrollRef.current) return;
+
+        window.requestAnimationFrame(() => {
+            const { scrollTop, scrollHeight, clientHeight } = mobileScrollRef.current!;
+            const shouldShow = scrollHeight > clientHeight && scrollTop + clientHeight < scrollHeight - 20;
+
+            // Only trigger a re-render if the boolean value actually changes
+            setShowContentScrollHint(prev => prev !== shouldShow ? shouldShow : prev);
+        });
+    }, []);
 
     // Re-check scrolling on changes
     useEffect(() => {
-        if (selectedFeature) {
+        if (selectedFeature && isModalReady) {
             const timer = setTimeout(checkScroll, 100);
             window.addEventListener("resize", checkScroll);
             return () => {
@@ -87,13 +100,13 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
                 window.removeEventListener("resize", checkScroll);
             };
         }
-    }, [selectedFeature, activeTab]);
+    }, [selectedFeature, activeTab, isModalReady, checkScroll]);
 
     if (!data) return null;
 
     return (
-        <section className="relative bg-slate-50 py-24 font-sora overflow-hidden border-b border-slate-200/60">
-            <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <section className="relative container-pd bg-slate-50 py-24 font-sora overflow-hidden border-b border-slate-200/60">
+            <div className=" mx-auto px-6 max-w-7xl relative z-10">
 
                 <SectionHeader
                     badge={data.badge}
@@ -105,9 +118,8 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
                 />
 
                 {/* FEATURES GRID */}
-                <div className="grid lg:grid-cols-3 gap-8">
+                <div className="grid lg:grid-cols-2 gap-8">
                     {data.features.map((feature, index) => {
-                        // Calculate total items across all tabs
                         const totalItems = feature.tabs?.reduce((sum, tab) => {
                             const c = tab.content;
                             return sum + (c.items?.length || 0) + (c.specs?.length || 0) + (c.steps?.length || 0);
@@ -154,14 +166,12 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
                                         {feature.desc}
                                     </p>
 
-                                    {/* Full Description Preview */}
                                     {feature.fullDescription?.[0] && (
                                         <p className="text-xs text-slate-400 leading-relaxed line-clamp-2 mb-5">
                                             {feature.fullDescription[0]}
                                         </p>
                                     )}
 
-                                    {/* Tab Preview Pills */}
                                     {feature.tabs && feature.tabs.length > 0 && (
                                         <div className="flex flex-wrap gap-1.5 mb-2">
                                             {feature.tabs.map((tab) => (
@@ -189,13 +199,10 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
 
             </div>
 
-            {/* ═══════════════════════════════════════════════════════════════ */}
-            {/*  FULL-PAGE MODAL                                              */}
-            {/* ═══════════════════════════════════════════════════════════════ */}
+            {/* FULL-PAGE MODAL */}
             <AnimatePresence>
                 {selectedFeature && (
                     <div className="fixed inset-0 z-200 flex items-end lg:items-stretch justify-center">
-                        {/* Backdrop */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -204,7 +211,6 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
                             onClick={() => setSelectedFeature(null)}
                         />
 
-                        {/* FULL-PAGE Modal */}
                         <motion.div
                             initial={{ y: "100%", opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
@@ -213,7 +219,7 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
                             className="relative w-full h-[100dvh] bg-white shadow-2xl overflow-hidden flex flex-col"
                         >
 
-                            {/* TOP BAR — Feature title + Close */}
+                            {/* TOP BAR */}
                             <div className="shrink-0 bg-white border-b border-slate-200 px-6 lg:px-10 py-4 flex items-center justify-between z-50">
                                 <div className="flex items-center gap-4 min-w-0">
                                     <div className={`h-10 w-10 rounded-xl flex items-center justify-center ${selectedFeature.bg} ${selectedFeature.color} shrink-0`}>
@@ -232,165 +238,162 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
                                 </button>
                             </div>
 
-                            {/* BODY — Sidebar Tabs (desktop) + Content */}
+                            {/* BODY */}
                             <div className="flex-1 flex overflow-hidden min-h-0">
+                                {isModalReady ? (
+                                    <>
+                                        {/* SIDEBAR TABS — Desktop only */}
+                                        {selectedFeature.tabs && selectedFeature.tabs.length > 0 && (
+                                            <div className="hidden lg:flex flex-col w-64 xl:w-72 shrink-0 border-r border-slate-100 bg-slate-50/50 overflow-y-auto">
+                                                <div className="p-5 space-y-1">
+                                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 px-3">Sections</p>
+                                                    {selectedFeature.tabs.map((tab) => {
+                                                        const itemCount = (tab.content.items?.length || 0) + (tab.content.specs?.length || 0) + (tab.content.steps?.length || 0);
+                                                        return (
+                                                            <button
+                                                                key={tab.id}
+                                                                onClick={() => setActiveTab(tab.id)}
+                                                                className={`w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 flex items-center justify-between gap-2
+                                                                    ${activeTab === tab.id
+                                                                        ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                                                                        : "text-slate-600 hover:bg-white hover:shadow-sm"
+                                                                    }`}
+                                                            >
+                                                                <span className="truncate">{tab.label}</span>
+                                                                {itemCount > 0 && (
+                                                                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 ${activeTab === tab.id ? "bg-white/20 text-white" : "bg-slate-100 text-slate-400"}`}>
+                                                                        {itemCount}
+                                                                    </span>
+                                                                )}
+                                                            </button>
+                                                        );
+                                                    })}
+                                                </div>
 
-                                {/* SIDEBAR TABS — Desktop only */}
-                                {selectedFeature.tabs && selectedFeature.tabs.length > 0 && (
-                                    <div className="hidden lg:flex flex-col w-64 xl:w-72 shrink-0 border-r border-slate-100 bg-slate-50/50 overflow-y-auto">
-                                        <div className="p-5 space-y-1">
-                                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 px-3">Sections</p>
-                                            {selectedFeature.tabs.map((tab) => {
-                                                const itemCount = (tab.content.items?.length || 0) + (tab.content.specs?.length || 0) + (tab.content.steps?.length || 0);
-                                                return (
-                                                    <button
-                                                        key={tab.id}
-                                                        onClick={() => setActiveTab(tab.id)}
-                                                        className={`w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 flex items-center justify-between gap-2
-                                                            ${activeTab === tab.id
-                                                                ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
-                                                                : "text-slate-600 hover:bg-white hover:shadow-sm"
-                                                            }`}
-                                                    >
-                                                        <span className="truncate">{tab.label}</span>
-                                                        {itemCount > 0 && (
-                                                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 ${activeTab === tab.id ? "bg-white/20 text-white" : "bg-slate-100 text-slate-400"
-                                                                }`}>
-                                                                {itemCount}
-                                                            </span>
-                                                        )}
-                                                    </button>
-                                                );
-                                            })}
-                                        </div>
+                                                <div className="mt-auto p-5 border-t border-slate-100">
+                                                    <div className="text-xs text-slate-400 leading-relaxed space-y-2">
+                                                        {selectedFeature.fullDescription.map((p, i) => (
+                                                            <p key={i}>{p}</p>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
 
-                                        {/* Feature description in sidebar */}
-                                        <div className="mt-auto p-5 border-t border-slate-100">
-                                            <div className="text-xs text-slate-400 leading-relaxed space-y-2">
-                                                {selectedFeature.fullDescription.map((p, i) => (
-                                                    <p key={i}>{p}</p>
-                                                ))}
+                                        {/* MAIN CONTENT AREA */}
+                                        <div className="flex-1 flex flex-col overflow-hidden min-w-0">
+
+                                            {/* MOBILE TABS */}
+                                            {selectedFeature.tabs && selectedFeature.tabs.length > 0 && (
+                                                <div className="lg:hidden shrink-0 bg-white border-b border-slate-100 px-4 pt-4 pb-3">
+                                                    <div className="flex items-center gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pb-1">
+                                                        {selectedFeature.tabs.map((tab) => (
+                                                            <button
+                                                                key={tab.id}
+                                                                onClick={() => setActiveTab(tab.id)}
+                                                                className={`flex items-center justify-center transition-all duration-300 ease-out
+                                                                    px-4 py-2 rounded-full min-w-max border text-sm font-bold tracking-wide
+                                                                    ${activeTab === tab.id
+                                                                        ? "bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-500/25"
+                                                                        : "bg-white text-slate-500 border-slate-200 hover:border-blue-300 hover:bg-slate-50"
+                                                                    }`}
+                                                            >
+                                                                {tab.label}
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* SCROLLABLE CONTENT */}
+                                            <div
+                                                ref={mobileScrollRef}
+                                                onScroll={checkScroll}
+                                                className="flex-1 overflow-y-auto overscroll-contain [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-slate-200 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-slate-300"
+                                            >
+                                                <div
+                                                    className={`fixed bottom-0 left-0 right-0 lg:left-64 xl:left-72 h-24 bg-gradient-to-t from-white/95 via-white/70 to-transparent pointer-events-none flex items-end justify-center pb-5 z-50 transition-opacity duration-500 ${showContentScrollHint ? 'opacity-100' : 'opacity-0'}`}
+                                                >
+                                                    <div className="animate-bounce bg-white shadow-xl border border-slate-200 rounded-full p-2 text-blue-500">
+                                                        <ChevronDown size={18} strokeWidth={2.5} />
+                                                    </div>
+                                                </div>
+
+                                                <div className="p-6 pb-32 lg:p-10 lg:pb-32">
+                                                    <div className="max-w-5xl">
+                                                        {selectedFeature.tabs?.map((tab) => {
+                                                            if (tab.id !== activeTab) return null;
+
+                                                            return (
+                                                                <div key={tab.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                                                    <div className="mb-8">
+                                                                        <h3 className="text-2xl font-black text-slate-900 mb-2">{tab.label}</h3>
+                                                                        <div className="h-1 w-12 rounded-full bg-blue-500" />
+                                                                    </div>
+
+                                                                    {tab.content.type === "list" && tab.content.items && (
+                                                                        <div className="grid md:grid-cols-2 gap-5">
+                                                                            {tab.content.items.map((item, i) => (
+                                                                                <div key={i} className="flex gap-4 p-6 rounded-2xl bg-slate-50/80 border border-slate-100 hover:border-blue-200 hover:shadow-md hover:shadow-blue-900/5 transition-all duration-300">
+                                                                                    <CheckCircle2 className="text-blue-500 mt-0.5 shrink-0" size={20} />
+                                                                                    <div className="min-w-0 flex-1">
+                                                                                        <h4 className="font-bold text-slate-900 text-base mb-2">{item.term}</h4>
+                                                                                        <DescriptionRenderer text={item.description} />
+                                                                                    </div>
+                                                                                </div>
+                                                                            ))}
+                                                                        </div>
+                                                                    )}
+
+                                                                    {tab.content.type === "specs" && tab.content.specs && (
+                                                                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                                                            {tab.content.specs.map((spec, i) => (
+                                                                                <div key={i} className="p-5 rounded-2xl border border-slate-100 bg-white hover:border-blue-200 hover:shadow-md hover:shadow-blue-900/5 transition-all duration-300">
+                                                                                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest block mb-2">
+                                                                                        {spec.label}
+                                                                                    </span>
+                                                                                    <span className="font-mono text-slate-900 font-semibold text-lg tracking-tight block break-words">
+                                                                                        {spec.value}
+                                                                                    </span>
+                                                                                </div>
+                                                                            ))}
+                                                                        </div>
+                                                                    )}
+
+                                                                    {tab.content.type === "steps" && tab.content.steps && (
+                                                                        <div className="space-y-6 max-w-4xl">
+                                                                            {tab.content.steps.map((step, i) => (
+                                                                                <div key={i} className="relative flex gap-6 items-start group">
+                                                                                    <div className="flex flex-col items-center shrink-0">
+                                                                                        <div className="h-12 w-12 rounded-full bg-blue-50 border-4 border-white shadow-sm flex items-center justify-center text-blue-600 font-bold z-10 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                                                                                            {step.step}
+                                                                                        </div>
+                                                                                        {i < tab.content.steps!.length - 1 && (
+                                                                                            <div className="w-0.5 flex-1 bg-slate-100 mt-2" />
+                                                                                        )}
+                                                                                    </div>
+                                                                                    <div className="flex-1 bg-white rounded-2xl p-6 border border-slate-100 group-hover:border-blue-100 group-hover:shadow-md group-hover:shadow-blue-900/5 transition-all duration-300 min-w-0 mb-2">
+                                                                                        <h4 className="font-bold text-slate-900 text-lg mb-3">{step.title}</h4>
+                                                                                        <DescriptionRenderer text={step.description} />
+                                                                                    </div>
+                                                                                </div>
+                                                                            ))}
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+                                                            );
+                                                        })}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                    </>
+                                ) : (
+                                    /* Lightweight loading state while animation finishes */
+                                    <div className="flex-1 flex items-center justify-center bg-slate-50/30">
+                                        <div className="w-8 h-8 border-4 border-blue-200 border-t-blue-500 rounded-full animate-spin" />
                                     </div>
                                 )}
-
-                                {/* MAIN CONTENT AREA */}
-                                <div className="flex-1 flex flex-col overflow-hidden min-w-0">
-
-                                    {/* MOBILE TABS — Horizontal scroll */}
-                                    {selectedFeature.tabs && selectedFeature.tabs.length > 0 && (
-                                        <div className="lg:hidden shrink-0 bg-white border-b border-slate-100 px-4 pt-4 pb-3">
-                                            <div className="flex items-center gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pb-1">
-                                                {selectedFeature.tabs.map((tab) => (
-                                                    <button
-                                                        key={tab.id}
-                                                        onClick={() => setActiveTab(tab.id)}
-                                                        className={`flex items-center justify-center transition-all duration-300 ease-out
-                                                            px-4 py-2 rounded-full min-w-max border text-sm font-bold tracking-wide
-                                                            ${activeTab === tab.id
-                                                                ? "bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-500/25"
-                                                                : "bg-white text-slate-500 border-slate-200 hover:border-blue-300 hover:bg-slate-50"
-                                                            }`}
-                                                    >
-                                                        {tab.label}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {/* SCROLLABLE CONTENT */}
-                                    <div
-                                        ref={mobileScrollRef}
-                                        onScroll={checkScroll}
-                                        className="flex-1 overflow-y-auto overscroll-contain [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-slate-200 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-slate-300"
-                                    >
-                                        {/* Scroll Indicator */}
-                                        <div
-                                            className={`fixed bottom-0 left-0 right-0 lg:left-64 xl:left-72 h-24 bg-gradient-to-t from-white/95 via-white/70 to-transparent pointer-events-none flex items-end justify-center pb-5 z-50 transition-opacity duration-500 ${showContentScrollHint ? 'opacity-100' : 'opacity-0'}`}
-                                        >
-                                            <div className="animate-bounce bg-white shadow-xl border border-slate-200 rounded-full p-2 text-blue-500">
-                                                <ChevronDown size={18} strokeWidth={2.5} />
-                                            </div>
-                                        </div>
-
-                                        <div className="p-6 pb-32 lg:p-10 lg:pb-32">
-                                            <div className="max-w-5xl">
-                                                {selectedFeature.tabs?.map((tab) => {
-                                                    if (tab.id !== activeTab) return null;
-
-                                                    return (
-                                                        <div key={tab.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-
-                                                            {/* Tab heading */}
-                                                            <div className="mb-8">
-                                                                <h3 className="text-2xl font-black text-slate-900 mb-2">{tab.label}</h3>
-                                                                <div className="h-1 w-12 rounded-full bg-blue-500" />
-                                                            </div>
-
-                                                            {/* Content Type: LIST */}
-                                                            {tab.content.type === "list" && tab.content.items && (
-                                                                <div className="grid md:grid-cols-2 gap-5">
-                                                                    {tab.content.items.map((item, i) => (
-                                                                        <div key={i} className="flex gap-4 p-6 rounded-2xl bg-slate-50/80 border border-slate-100 hover:border-blue-200 hover:shadow-md hover:shadow-blue-900/5 transition-all duration-300">
-                                                                            <CheckCircle2 className="text-blue-500 mt-0.5 shrink-0" size={20} />
-                                                                            <div className="min-w-0 flex-1">
-                                                                                <h4 className="font-bold text-slate-900 text-base mb-2">{item.term}</h4>
-                                                                                <DescriptionRenderer text={item.description} />
-                                                                            </div>
-                                                                        </div>
-                                                                    ))}
-                                                                </div>
-                                                            )}
-
-                                                            {/* Content Type: SPECS */}
-                                                            {tab.content.type === "specs" && tab.content.specs && (
-                                                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                                                                    {tab.content.specs.map((spec, i) => (
-                                                                        <div key={i} className="p-5 rounded-2xl border border-slate-100 bg-white hover:border-blue-200 hover:shadow-md hover:shadow-blue-900/5 transition-all duration-300">
-                                                                            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest block mb-2">
-                                                                                {spec.label}
-                                                                            </span>
-                                                                            <span className="font-mono text-slate-900 font-semibold text-lg tracking-tight block break-words">
-                                                                                {spec.value}
-                                                                            </span>
-                                                                        </div>
-                                                                    ))}
-                                                                </div>
-                                                            )}
-
-                                                            {/* Content Type: STEPS */}
-                                                            {tab.content.type === "steps" && tab.content.steps && (
-                                                                <div className="space-y-6 max-w-4xl">
-                                                                    {tab.content.steps.map((step, i) => (
-                                                                        <div key={i} className="relative flex gap-6 items-start group">
-                                                                            {/* Step number & connector */}
-                                                                            <div className="flex flex-col items-center shrink-0">
-                                                                                <div className="h-12 w-12 rounded-full bg-blue-50 border-4 border-white shadow-sm flex items-center justify-center text-blue-600 font-bold z-10 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                                                                                    {step.step}
-                                                                                </div>
-                                                                                {i < tab.content.steps!.length - 1 && (
-                                                                                    <div className="w-0.5 flex-1 bg-slate-100 mt-2" />
-                                                                                )}
-                                                                            </div>
-
-                                                                            {/* Step content */}
-                                                                            <div className="flex-1 bg-white rounded-2xl p-6 border border-slate-100 group-hover:border-blue-100 group-hover:shadow-md group-hover:shadow-blue-900/5 transition-all duration-300 min-w-0 mb-2">
-                                                                                <h4 className="font-bold text-slate-900 text-lg mb-3">{step.title}</h4>
-                                                                                <DescriptionRenderer text={step.description} />
-                                                                            </div>
-                                                                        </div>
-                                                                    ))}
-                                                                </div>
-                                                            )}
-                                                        </div>
-                                                    );
-                                                })}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </motion.div>
                     </div>

@@ -74,16 +74,16 @@ export default function ShippingAndExchange() {
           <div className="absolute -bottom-10 -left-10 w-40 h-40 md:w-125 md:h-125 bg-[#76ea27]/10 rounded-full blur-[60px] md:blur-[120px]" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 md:px-6">
+        <div className="relative mx-auto container-pd px-5 md:px-0">
           <div className="flex items-center  gap-4 mb-6">
             <Truck size={14} className="text-[#2776ea]" />
             <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#2776ea]">
               Global Operations
             </span>
           </div>
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-[1.1]">
-            Shipping &{" "}
-            <span className="bg-linear-to-r from-[#2776ea] to-[#76ea27] bg-clip-text text-transparent">
+          <h1 className="text-h1 font-black text-slate-900 tracking-tighter leading-[1.1] mb-6">
+            Shipping &
+            <span className="bg-linear-to-r text-h1 ml-2 from-[#2776ea] to-[#76ea27] bg-clip-text text-transparent">
               Exchange
             </span>
           </h1>
@@ -112,7 +112,7 @@ export default function ShippingAndExchange() {
         ))}
       </div>
 
-      <section className="mx-auto max-w-7xl px-4 md:px-6 py-10 md:py-20">
+      <section className="mx-auto container-pd px-5 md:px-0 py-10 md:py-20">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
           <aside className="hidden lg:block w-75 shrink-0 sticky top-32 h-[calc(100vh-140px)] overflow-y-auto custom-scrollbar">
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6 px-4">
@@ -319,7 +319,7 @@ export default function ShippingAndExchange() {
                     Document damage with photos and contact us within 24 hours.
                   </p>
                   <p className="text-xs font-bold text-[#2776ea] break-all">
-                    support@webronic.com
+                    contact@webronic.com
                   </p>
                 </div>
                 <div className="p-8 rounded-4xl bg-slate-900 text-white">
@@ -414,7 +414,7 @@ export default function ShippingAndExchange() {
                     8.2 Modification Process
                   </h4>
                   <p className="text-xs opacity-70 leading-relaxed">
-                    Submit written requests via support@webronic.com. We assess
+                    Submit written requests via contact@webronic.com. We assess
                     impacts on cost and timeline before providing a formal
                     change order.
                   </p>
@@ -522,7 +522,7 @@ export default function ShippingAndExchange() {
                 <div className="mt-8 space-y-4">
                   <div className="flex items-center gap-4 text-sm font-bold text-[#2776ea] break-all">
                     <Mail size={18} className="text-[#76ea27] shrink-0" />{" "}
-                    support@webronic.com
+                    contact@webronic.com
                   </div>
                   <div className="flex items-center gap-4 text-sm font-bold text-slate-900">
                     <Phone size={18} className="text-[#2776ea] shrink-0" /> +91
@@ -531,17 +531,7 @@ export default function ShippingAndExchange() {
                 </div>
               </div>
 
-              <div className="bg-[#2776ea]/5 p-8 md:p-10 rounded-[2.5rem] border border-[#2776ea]/10 flex flex-col justify-between">
-                <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-6 text-center md:text-left">
-                  Include order reference in all communications.
-                </p>
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="w-full flex items-center justify-center gap-3 bg-[#2776ea] text-white py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-[#76ea27] transition-all shadow-xl active:scale-95"
-                >
-                  Open Support Case <ArrowRight size={16} />
-                </button>
-              </div>
+
             </div>
           </div>
         </div>

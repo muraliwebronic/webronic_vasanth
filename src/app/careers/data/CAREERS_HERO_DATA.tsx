@@ -34,7 +34,7 @@ export const CAREERS_HERO_DATA = {
       icon: Briefcase 
     },
     { 
-      value: "50+", 
+      value: "3+", 
       label: "Countries Served", 
       icon: Globe 
     },

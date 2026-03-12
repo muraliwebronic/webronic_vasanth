@@ -11,8 +11,8 @@ interface FeaturedServicesProps {
 export default function FeaturedServices({ services, onCardClick }: FeaturedServicesProps) {
   return (
     <section className="py-24 bg-slate-50 font-sora">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        
+      <div className="container-pd mx-auto px-6 md:px-12 lg:px-24">
+
         {/* Section Header */}
         <div className="mb-16 md:mb-24">
           <span className="text-[#2776ea] font-bold tracking-widest uppercase text-xs mb-3 block">
@@ -29,7 +29,7 @@ export default function FeaturedServices({ services, onCardClick }: FeaturedServ
         {/* FEATURED GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
           {services.map((service, index) => (
-            <div 
+            <div
               key={service.id}
               onClick={() => onCardClick(service)}
               className="group relative bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 hover:border-[#2776ea]/30 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col"

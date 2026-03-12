@@ -14,13 +14,17 @@ import {
   Building2,
   Activity,
   Globe2,
+  Navigation,
   ExternalLink,
+  ArrowUpRight,
 } from "lucide-react";
 import { ABOUT_PAGE_DATA } from "@/AllData/About/ABOUT_PAGE_DATA";
 import SectionHeader from "@/components/common/SectionHeader";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import TeamComponent from "./TeamCompont";
+import Contact from "@/section/home/Contact";
+import { branches } from "@/AllData/branches/branches";
 
 export default function AboutPageContent() {
   const {
@@ -41,8 +45,8 @@ export default function AboutPageContent() {
   return (
     <div className="font-sora bg-slate-50 overflow-x-hidden selection:bg-[#2776ea] selection:text-white">
       {/* --- HERO SECTION (Using UniversalHero Layout) --- */}
-      <section className="relative w-full bg-white pt-24 pb-12 lg:pt-32 lg:pb-16 font-sora overflow-hidden border-b border-slate-100">
-        <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+      <section className="relative container-pd w-full bg-white pt-24 pb-12 lg:pt-32 lg:pb-16 font-sora overflow-hidden border-b border-slate-100">
+        <div className=" mx-auto px-6 md:px-12 lg:px-24 relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* --- LEFT: COMPACT TEXT --- */}
             <div className="max-w-2xl">
@@ -64,12 +68,12 @@ export default function AboutPageContent() {
                 >
                   Our Values
                 </Link>
-                <Link
+                {/* <Link
                   href="#leadership"
                   className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-slate-50 border border-slate-100 text-slate-600 text-menu font-bold uppercase tracking-wider hover:bg-white hover:border-[#2776ea]/30 hover:text-[#2776ea] transition-all active:scale-95"
                 >
                   Meet the Team
-                </Link>
+                </Link> */}
               </div>
             </div>
 
@@ -159,12 +163,12 @@ export default function AboutPageContent() {
       {/* --- COMPANY OVERVIEW --- */}
       <section
         id="values"
-        className="py-24 lg:py-32 relative overflow-hidden bg-white font-sora"
+        className="py-24 lg:py-32 relative container-pd overflow-hidden bg-white font-sora"
       >
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:32px_32px] opacity-30 pointer-events-none" />
 
-        <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+        <div className=" mx-auto px-6 relative z-10 max-w-7xl">
           {/* 1. Header Area */}
           <div className="max-w-3xl mx-auto mb-20 text-center">
             <SectionHeader
@@ -182,8 +186,8 @@ export default function AboutPageContent() {
                 key={i}
                 className="group relative p-8 lg:p-10 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:border-[#2776ea]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/5"
               >
-                <div className="flex flex-col sm:flex-row gap-6">
-                  {/* Icon Container */}
+                <div className="flex flex-col  gap-6">
+                  {/* Icon container  */}
                   <div className="h-16 w-16 shrink-0 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-center justify-center text-[#2776ea] group-hover:scale-110 group-hover:bg-[#2776ea] group-hover:text-white transition-all duration-500">
                     <item.icon size={28} strokeWidth={1.5} />
                   </div>
@@ -218,7 +222,7 @@ export default function AboutPageContent() {
                 />
               </div>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12">
+              <div className="grid sm:grid-cols-2  gap-12">
                 {overview.values.items.map((val, i) => (
                   <div
                     key={i}
@@ -245,11 +249,11 @@ export default function AboutPageContent() {
       </section>
 
       {/* --- OUR STORY (Animated Clean Version) --- */}
-      <section className="py-24 lg:py-32 bg-white relative overflow-hidden font-sora">
+      <section className="py-24 lg:py-32 container-pd bg-white relative overflow-hidden font-sora">
         {/* Background Decor */}
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
-        <div className="container mx-auto px-6 max-w-6xl relative z-10">
+        <div className=" mx-auto px-6 max-w-6xl relative z-10">
           <SectionHeader
             badge="Our Journey"
             title={story.title}
@@ -318,94 +322,13 @@ export default function AboutPageContent() {
           </div>
         </div>
       </section>
-      <section id="leadership" className="py-24 bg-slate-50">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <SectionHeader
-            badge="Team"
-            title={leadership.title}
-            description="The visionaries guiding our path"
-            centered={true}
-            className="mb-16"
-          />
 
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {leadership.members.map((leader, i) => {
-              // Alternate styling for visual interest
-              const isEven = i % 2 === 0;
-              const accentColor = isEven ? "text-[#2776ea]" : "text-[#76ea27]";
-              const accentBg = isEven ? "bg-[#2776ea]/10" : "bg-[#76ea27]/10";
-              const borderColor = isEven ? "bg-[#2776ea]" : "bg-[#76ea27]";
-
-              return (
-                <div
-                  key={i}
-                  className="group p-8 rounded-[2rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 relative overflow-hidden flex flex-col h-full hover:-translate-y-2"
-                >
-                  {/* Subtle Top Line Reveal */}
-                  <div
-                    className={`absolute top-0 left-0 w-full h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${borderColor}`}
-                  />
-
-                  {/* Header: Avatar & Action */}
-                  <div className="flex items-start justify-between mb-6">
-                    <div
-                      className={`h-14 w-14 rounded-2xl flex items-center justify-center ${accentBg} ${accentColor} group-hover:scale-105 transition-transform duration-300 shadow-sm`}
-                    >
-                      <Users size={24} strokeWidth={1.5} />
-                    </div>
-                    {/* Interactive Arrow Hint */}
-                    <div className="h-8 w-8 rounded-full bg-slate-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all text-slate-400">
-                      <ArrowRight size={16} className="-rotate-45" />
-                    </div>
-                  </div>
-
-                  {/* Role Badge */}
-                  <div
-                    className={`text-caption font-bold uppercase tracking-widest mb-2 ${accentColor}`}
-                  >
-                    {leader.role}
-                  </div>
-
-                  {/* Name */}
-                  <h3 className="text-h3 font-black text-slate-900 mb-4 group-hover:text-[#2776ea] transition-colors">
-                    {leader.name}
-                  </h3>
-
-                  {/* Bio Description */}
-                  <p className="text-body font-medium text-slate-500 leading-relaxed mb-8 flex-grow border-b border-slate-50 pb-8">
-                    {leader.bio}
-                  </p>
-
-                  {/* Expertise Tags */}
-                  <div className="mt-auto">
-                    <p className="text-caption font-bold text-slate-400 uppercase tracking-widest mb-3">
-                      Core Expertise
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {/* Assuming expertise might be a comma-separated string, or just one string. 
-                          Splitting it makes it look like tags if it contains commas. */}
-                      {leader.expertise.split(",").map((tag, t) => (
-                        <span
-                          key={t}
-                          className="px-2.5 py-1.5 bg-slate-50 border border-slate-100 rounded-lg text-caption font-bold text-slate-600 uppercase tracking-wide group-hover:border-[#2776ea]/20 group-hover:text-[#2776ea] transition-colors"
-                        >
-                          {tag.trim()}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
       {/* <TeamComponent /> */}
 
       {/* --- METRICS (Blue Strip) --- */}
-      <section className="py-20 bg-[#2776ea] text-white relative overflow-hidden">
+      <section className="py-20 bg-[#2776ea] container-pd text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <div className=" mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-y-12 gap-x-8 text-center divide-x divide-white/20">
             {metrics.stats.slice(0, 5).map((stat, i) => (
               <div key={i} className="group px-4">
@@ -421,19 +344,18 @@ export default function AboutPageContent() {
         </div>
       </section>
 
-      {/* --- LEADERSHIP TEAM (Floating Pedestal) --- */}
-      {/* --- LEADERSHIP TEAM (Redesigned with Universal Cards) --- */}
+
 
       {/* --- GLOBAL PRESENCE (Blue Map) --- */}
-      <section className="py-24 bg-[#2776ea] text-white relative overflow-hidden">
+      <section className="pb-24 bg-[#2776ea] text-white container-pd selection:bg-secondary relative overflow-hidden">
         {/* Background Decor */}
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden select-none">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3" />
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#76ea27]/20 rounded-full blur-[120px] -translate-x-1/3 translate-y-1/3" />
         </div>
 
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className=" mx-auto px-6 max-w-7xl relative z-10">
+          <div className="grid lg:grid-row-2 gap-16 lg:gap-24 items-start">
             {/* Left: Offices */}
             <div>
               <SectionHeader
@@ -445,43 +367,71 @@ export default function AboutPageContent() {
                 className="mb-12"
               />
 
-              <div className="space-y-12">
-                <div className="relative pl-8 border-l-2 border-white/30">
-                  <h3 className="text-white font-black uppercase tracking-widest text-caption mb-6">
-                    India Operations
-                  </h3>
-                  <div className="grid sm:grid-cols-2 gap-x-6 gap-y-10">
-                    {presence.india.map((loc, i) => (
-                      <div key={i} className="group">
-                        <div className="flex items-center gap-2 mb-2 text-white font-bold text-submenu">
-                          <MapPin size={16} />
-                          {loc.city.split("(")[0]}
-                        </div>
-                        <p className="text-caption text-blue-50 leading-relaxed font-medium mb-1 opacity-80">
-                          {loc.address}
-                        </p>
-                        {loc.phone && (
-                          <p className="text-caption text-white font-bold opacity-70">
-                            {loc.phone}
-                          </p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <div className="relative pl-0 lg:pl-8 lg:border-l-2 border-white/30">
+                <h3 className="text-white font-black uppercase tracking-widest text-sm mb-6 flex items-center gap-3">
+                  <span className="h-2 w-2 rounded-full bg-[#76ea27] animate-pulse" />
+                  India Operations
+                </h3>
 
-                <div className="relative pl-8 border-l-2 border-[#76ea27]">
-                  <h3 className="text-[#76ea27] font-black uppercase tracking-widest text-caption mb-4">
-                    European Operations
-                  </h3>
-                  <p className="font-bold text-h3 mb-2">
-                    {presence.europe.partner}
-                  </p>
-                  <p className="text-body text-blue-50 leading-relaxed max-w-md opacity-90">
-                    {presence.europe.desc}
-                  </p>
+                {/* Changed gap to make the cards breathe better */}
+                <div className="grid sm:grid-cols-2 gap-5">
+                  {branches.map((branch, i) => (
+                    <div
+                      key={i}
+                      // The new Card Wrapper: subtle background, rounded corners, and border
+                      className="group flex flex-col h-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#76ea27]/50 rounded-2xl p-6 transition-all duration-300"
+                    >
+
+                      {/* TOP: City & Type */}
+                      <div className="mb-4">
+                        <h4 className="text-white font-bold text-lg flex items-center gap-2.5 mb-1 group-hover:text-[#76ea27] transition-colors">
+                          <MapPin size={20} className="text-[#76ea27] shrink-0" />
+                          {branch.city}
+                        </h4>
+                        {/* ml-7 aligns the subtitle exactly with the city text, skipping the icon */}
+                        <p className="text-[10px] font-bold text-white/50 uppercase tracking-widest ml-7.5">
+                          {branch.type}
+                        </p>
+                      </div>
+
+                      {/* MIDDLE: Address */}
+                      <p className="text-sm text-blue-50/80 leading-relaxed font-medium mb-6 ml-7.5">
+                        {branch.address}
+                      </p>
+
+                      {/* BOTTOM: Action Links (Phone & Map) */}
+                      {/* mt-auto pushes this to the very bottom so all cards are equal height */}
+                      <div className="mt-auto ml-7.5 pt-4 border-t border-white/10 flex flex-wrap items-center gap-x-6 gap-y-3">
+
+                        {branch.contact && (
+                          <a
+                            href={`tel:${branch.contact.replace(/\s+/g, '')}`}
+                            className="flex items-center gap-2 text-sm text-white font-bold hover:text-[#76ea27] transition-colors"
+                          >
+                            <Phone size={14} className="shrink-0" />
+                            {branch.contact}
+                          </a>
+                        )}
+
+                        <a
+                          href={branch.mapUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors ml-auto"
+                        >
+                          <Navigation size={14} className="shrink-0" />
+                          View Map
+                          <ArrowUpRight size={14} className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                        </a>
+
+                      </div>
+
+                    </div>
+                  ))}
                 </div>
               </div>
+
+
             </div>
 
             {/* Right: Reach List & Extra Metrics */}
@@ -528,133 +478,11 @@ export default function AboutPageContent() {
         </div>
       </section>
 
-      {/* --- CERTIFICATIONS & AWARDS --- */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="text-center mb-20">
-            <SectionHeader
-              badge="Recognition"
-              title={certifications.title}
-              centered={true}
-            />
-            <div className="flex flex-wrap justify-center gap-3 mt-8">
-              {certifications.quality.map((cert, i) => (
-                <span
-                  key={i}
-                  className="px-5 py-2 rounded-xl bg-slate-50 text-slate-700 text-caption font-bold border border-slate-200 uppercase tracking-wider"
-                >
-                  {cert}
-                </span>
-              ))}
-            </div>
-          </div>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-16 mb-20">
-            {/* Partnerships (White Cards) */}
-            <div className="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100">
-              <h3 className="text-h3 font-black text-[#2776ea] mb-8 flex items-center gap-2">
-                <CheckCircle2 size={20} /> Cloud Partnerships
-              </h3>
-              <ul className="space-y-6">
-                {certifications.cloud.map((p, i) => (
-                  <li key={i} className="flex gap-4">
-                    <div className="h-2 w-2 rounded-full bg-[#2776ea] mt-2 shrink-0" />
-                    <div>
-                      <p className="font-bold text-slate-900 text-submenu">
-                        {p.name}
-                      </p>
-                      <p className="text-caption text-slate-500 mt-1">
-                        {p.desc}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100">
-              <h3 className="text-h3 font-black text-[#76ea27] mb-8 flex items-center gap-2">
-                <CheckCircle2 size={20} /> Tech Partnerships
-              </h3>
-              <ul className="space-y-6">
-                {certifications.tech.map((p, i) => (
-                  <li key={i} className="flex gap-4">
-                    <div className="h-2 w-2 rounded-full bg-[#76ea27] mt-2 shrink-0" />
-                    <div>
-                      <p className="font-bold text-slate-900 text-submenu">
-                        {p.name}
-                      </p>
-                      <p className="text-caption text-slate-500 mt-1">
-                        {p.desc}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Awards — Highlighted Section */}
-          <div className="relative bg-[#2776ea] rounded-[2.5rem] p-10 md:p-14 overflow-hidden shadow-2xl">
-            {/* Background Glow */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#76ea27]/20 rounded-full blur-[100px] pointer-events-none" />
-
-            <div className="relative z-10">
-              {/* Header */}
-              <div className="flex items-center justify-center gap-3 mb-10">
-                <div className="h-10 w-10 rounded-xl bg-white/20 flex items-center justify-center">
-                  <Award className="text-white" size={22} />
-                </div>
-                <h3 className="font-black text-white text-xl uppercase tracking-wider">
-                  Industry Recognition
-                </h3>
-              </div>
-
-              {/* Award Cards */}
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {metrics.awards.map((award, i) => {
-                  const parts = award.match(/^(\d{4}):\s*(.+?)\s*-\s*(.+)$/);
-                  const year = parts?.[1] || "";
-                  const title = parts?.[2] || award;
-                  const org = parts?.[3] || "";
-
-                  return (
-                    <div
-                      key={i}
-                      className="group relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/20 hover:border-white/40 hover:-translate-y-1 transition-all duration-500"
-                    >
-                      {/* Year Badge */}
-                      {year && (
-                        <span className="inline-block px-3 py-1 rounded-lg bg-[#76ea27]/30 text-[#76ea27] text-[11px] font-black tracking-wider mb-4">
-                          {year}
-                        </span>
-                      )}
-
-                      <h4 className="font-bold text-white text-sm leading-snug mb-2 group-hover:text-[#76ea27] transition-colors">
-                        {title}
-                      </h4>
-                      {org && (
-                        <p className="text-[11px] text-blue-100 font-medium uppercase tracking-wider">
-                          {org}
-                        </p>
-                      )}
-
-                      {/* Index */}
-                      <span className="absolute top-5 right-5 text-[10px] font-black text-white/15 tabular-nums">
-                        {(i + 1).toString().padStart(2, "0")}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* --- CSR & CULTURE --- */}
-      <section className="py-24 bg-slate-50/50">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <section className="py-24 container-pd bg-slate-50/50">
+        <div className=" mx-auto px-6 max-w-7xl">
           <SectionHeader
             badge="Impact"
             title={culture.title}
@@ -709,52 +537,63 @@ export default function AboutPageContent() {
           </div>
 
           {/* CSR Grid */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
             {[
               {
                 icon: Users,
                 color: "text-blue-500",
                 bg: "bg-blue-50",
+                bullet: "bg-blue-400", // Explicitly defining bullet color
                 data: csr.education,
               },
               {
                 icon: Leaf,
                 color: "text-green-500",
                 bg: "bg-green-50",
+                bullet: "bg-green-400",
                 data: csr.environment,
               },
               {
                 icon: Heart,
                 color: "text-red-500",
                 bg: "bg-red-50",
+                bullet: "bg-red-400",
                 data: csr.community,
               },
             ].map((item, i) => (
               <div
                 key={i}
-                className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="group relative bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-slate-200/50 hover:-translate-y-1.5 transition-all duration-500 flex flex-col h-full overflow-hidden"
               >
+                {/* Subtle Hover Gradient Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-slate-50/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                {/* Icon Box */}
                 <div
-                  className={`h-12 w-12 rounded-2xl ${item.bg} flex items-center justify-center ${item.color} mb-6`}
+                  className={`relative z-10 h-14 w-14 rounded-2xl ${item.bg} flex items-center justify-center ${item.color} mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3`}
                 >
-                  <item.icon size={24} />
+                  <item.icon size={26} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-bold text-h3 mb-4 text-slate-900">
+
+                {/* Title (Font size unchanged) */}
+                <h3 className="relative z-10 font-bold text-h3 mb-5 text-slate-900">
                   {item.data.title}
                 </h3>
-                <ul className="space-y-3">
+
+                {/* List Items (Font size unchanged) */}
+                <ul className="relative z-10 space-y-4 flex-1">
                   {item.data.items.map((txt, j) => (
                     <li
                       key={j}
-                      className="text-body text-slate-500 flex items-start gap-2 leading-relaxed"
+                      className="text-body text-slate-500 flex items-start gap-3 leading-relaxed group/list-item hover:text-slate-700 transition-colors"
                     >
+                      {/* Custom Animated Bullet aligned to text baseline */}
                       <span
-                        className={`mt-2 h-1.5 w-1.5 rounded-full ${item.bg.replace(
-                          "50",
-                          "400",
-                        )} shrink-0`}
+                        className={`mt-[0.6rem] h-1.5 w-1.5 rounded-full ${item.bullet} shrink-0 transition-transform duration-300 group-hover/list-item:scale-150`}
                       />
-                      {txt.replace("• ", "")}
+                      <span className="flex-1">
+                        {txt.replace("• ", "")}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -765,9 +604,9 @@ export default function AboutPageContent() {
       </section>
 
       {/* --- WHY CHOOSE WEBRONIC --- */}
-      <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
+      <section className="py-24 lg:py-32 container-pd bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:32px_32px] opacity-20 pointer-events-none" />
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <div className=" mx-auto px-6 max-w-7xl relative z-10">
           <SectionHeader
             badge="Why Us"
             title={whyChoose.title}
@@ -776,7 +615,7 @@ export default function AboutPageContent() {
             className="max-w-3xl mx-auto mb-16"
           />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyChoose.points.map((point, i) => (
               <motion.div
                 key={i}
@@ -804,8 +643,8 @@ export default function AboutPageContent() {
       </section>
 
       {/* --- CAREERS CTA (Blue Card) --- */}
-      <section className="py-24 bg-slate-50/50">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <section className="py-24 container-pd bg-slate-50/50">
+        <div className=" mx-auto px-6 max-w-7xl">
           <div className="bg-[#2776ea] rounded-[3rem] p-10 md:p-20 text-white relative overflow-hidden shadow-2xl">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-[100px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#76ea27]/20 rounded-full blur-[100px] pointer-events-none" />
@@ -849,105 +688,7 @@ export default function AboutPageContent() {
       </section>
 
       {/* --- CONTACT US + STAY CONNECTED --- */}
-      <section className="py-24 lg:py-32 bg-white relative overflow-hidden border-t border-slate-100">
-        <div className="container mx-auto px-6 max-w-5xl relative z-10">
-          <SectionHeader
-            badge="Reach Out"
-            title={contact.title}
-            description="We'd love to hear from you. Reach out through any of the channels below."
-            centered={true}
-            className="max-w-3xl mx-auto mb-16"
-          />
-
-          {/* Contact Cards Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
-            {/* General Inquiries */}
-            <div className="group p-6 rounded-[2rem] bg-slate-50/70 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1 transition-all duration-500">
-              <div className="h-12 w-12 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-center justify-center text-[#2776ea] mb-5 group-hover:bg-[#2776ea] group-hover:text-white group-hover:border-[#2776ea] transition-all duration-500">
-                <Mail size={22} />
-              </div>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">General</p>
-              <p className="text-sm font-bold text-slate-700 break-all">{contact.general.email}</p>
-            </div>
-
-            {/* Sales */}
-            <div className="group p-6 rounded-[2rem] bg-slate-50/70 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1 transition-all duration-500">
-              <div className="h-12 w-12 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-center justify-center text-green-600 mb-5 group-hover:bg-green-600 group-hover:text-white group-hover:border-green-600 transition-all duration-500">
-                <Globe2 size={22} />
-              </div>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Sales</p>
-              <p className="text-sm font-bold text-slate-700 break-all">{contact.sales}</p>
-            </div>
-
-            {/* Phone */}
-            <div className="group p-6 rounded-[2rem] bg-slate-50/70 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1 transition-all duration-500">
-              <div className="h-12 w-12 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-center justify-center text-orange-500 mb-5 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all duration-500">
-                <Phone size={22} />
-              </div>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Phone</p>
-              <p className="text-sm font-bold text-slate-700">{contact.general.phone}</p>
-            </div>
-
-            {/* Hours */}
-            <div className="group p-6 rounded-[2rem] bg-slate-50/70 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1 transition-all duration-500">
-              <div className="h-12 w-12 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-center justify-center text-purple-500 mb-5 group-hover:bg-purple-500 group-hover:text-white group-hover:border-purple-500 transition-all duration-500">
-                <Clock size={22} />
-              </div>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Hours</p>
-              <p className="text-sm font-bold text-slate-700">{contact.general.hours}</p>
-            </div>
-          </div>
-
-          {/* Departmental Emails (Compact) */}
-          <div className="bg-slate-50/50 rounded-[2rem] p-8 border border-slate-100 mb-16">
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-5">Department Emails</p>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="flex items-center gap-3">
-                <CheckCircle2 size={16} className="text-[#2776ea] shrink-0" />
-                <span className="text-sm text-slate-600"><span className="font-bold text-slate-800">Careers:</span> {contact.careers}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle2 size={16} className="text-[#2776ea] shrink-0" />
-                <span className="text-sm text-slate-600"><span className="font-bold text-slate-800">Media:</span> {contact.media}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Newsletter CTA */}
-          <div className="bg-[#2776ea]/5 rounded-[2rem] p-8 border border-[#2776ea]/10 mb-16 flex flex-col sm:flex-row items-center gap-6">
-            <div className="flex-1">
-              <p className="font-bold text-slate-800 mb-1">📬 Newsletter</p>
-              <p className="text-sm text-slate-500 font-medium">{contact.newsletter}</p>
-            </div>
-            <a
-              href="/contact"
-              className="shrink-0 px-6 py-3 rounded-xl bg-[#2776ea] text-white font-bold text-sm hover:bg-[#1a5fc4] transition-colors shadow-md"
-            >
-              Subscribe
-            </a>
-          </div>
-
-          {/* Social Links */}
-          <div className="text-center">
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6">Stay Connected</p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {contact.social.map((social, i) => (
-                <a
-                  key={i}
-                  href={social.link.startsWith("http") ? social.link : `https://${social.link.replace("@", "")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-[#2776ea] hover:border-[#2776ea] hover:text-white hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 transition-all duration-300"
-                >
-                  <social.icon size={18} className="text-slate-500 group-hover:text-white transition-colors" />
-                  <span className="text-sm font-bold text-slate-600 group-hover:text-white transition-colors">{social.platform}</span>
-                  <ExternalLink size={12} className="text-slate-300 group-hover:text-white/70 transition-colors" />
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <Contact />
     </div>
   );
 }

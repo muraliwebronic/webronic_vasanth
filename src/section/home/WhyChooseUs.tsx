@@ -30,11 +30,11 @@ const WhyChooseCard = ({
 
       {/* Content Section */}
       <div className="pt-16 relative z-10 flex-1 flex flex-col items-center text-center">
-<h3 className="text-h3 font-bold text-slate-900 mb-4 group-hover:text-[#2776ea] transition-colors leading-tight">
+        <h3 className="text-h3 font-bold text-slate-900 mb-4 group-hover:text-[#2776ea] transition-colors leading-tight">
           {title}
         </h3>
 
-<p className="text-submenu text-slate-500 leading-relaxed">
+        <p className="text-submenu text-slate-500 leading-relaxed">
           {description}
         </p>
       </div>
@@ -48,8 +48,8 @@ const WhyChooseCard = ({
 // --- PARENT COMPONENT ---
 export default function WhyChooseUs() {
   return (
-    <section className="relative py-24 bg-slate-50/50 overflow-hidden font-sora">
-      <div className="container relative z-10 mx-auto px-6">
+    <section className="relative py-24 container-pd bg-slate-50/50 overflow-hidden font-sora">
+      <div className=" relative z-10 mx-auto px-6">
         {/* REUSABLE HEADER */}
         <div className="mb-20">
           <SectionHeader

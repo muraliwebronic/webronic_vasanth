@@ -15,7 +15,7 @@ export default function CareerPage() {
     <main className="bg-[#fafbfc] min-h-screen pt-24 pb-20 font-sora relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-100 bg-linear-to-b from-[#2776ea]/5 to-transparent pointer-events-none" />
 
-      <div className="container mx-auto px-6 mt-5 lg:mt-10  max-w-5xl relative z-10">
+      <div className="container-pd mx-auto px-6 mt-5 lg:mt-10  max-w-5xl relative z-10">
         <Link
           href="/#career"
           className="inline-flex items-center gap-2 text-slate-400 hover:text-[#336fa5] font-bold text-[10px] uppercase tracking-[0.2em] mb-12 transition-all group"

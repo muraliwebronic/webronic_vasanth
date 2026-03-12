@@ -102,7 +102,7 @@ export const CONSULTING_DATA: ServicePageData = {
     cards: [
       { id: "workshop", title: "Strategy Workshop", description: "Define your technology roadmap", icon: "Map", theme: "light", list: ["Current state review", "Goal setting"], cta: { text: "Book Workshop", link: "#" } }
     ],
-    contact: { title: "Contact Consultants", subtitle: "Expert Advisors", methods: [{ label: "Email", value: "consulting@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
+    contact: { title: "Contact Consultants", subtitle: "Expert Advisors", methods: [{ label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
   },
   relatedResources: { services: [], columns: [] } // Add as needed
 };

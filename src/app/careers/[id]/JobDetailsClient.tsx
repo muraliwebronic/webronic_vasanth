@@ -2,9 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { 
-  ArrowLeft, MapPin, Briefcase, Clock, 
-   Loader2 
+import {
+  ArrowLeft, MapPin, Briefcase, Clock,
+  Loader2
 } from "lucide-react";
 
 import { openPositions } from "../data";
@@ -28,7 +28,7 @@ export default function JobDetailsClient({ id }: { id: string }) {
 
   return (
     <main className="bg-white min-h-screen pt-32 pb-20 font-sora">
-      <div className="container mx-auto px-6 max-w-6xl">
+      <div className="container-pd mx-auto px-6 max-w-6xl">
         <button onClick={() => router.back()} className="flex items-center gap-2 text-slate-400 hover:text-[#2776ea] font-bold text-sm mb-10 group">
           <ArrowLeft size={18} /> Back to Listings
         </button>
@@ -37,7 +37,7 @@ export default function JobDetailsClient({ id }: { id: string }) {
           <div className="animate-card-entry">
             <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">{job.title}</h1>
             <div className="flex flex-wrap gap-4 mb-12">
-               <span className="px-5 py-2 rounded-xl bg-blue-50 text-[#2776ea] font-black text-[10px] uppercase tracking-widest border border-blue-100 flex items-center gap-2">
+              <span className="px-5 py-2 rounded-xl bg-blue-50 text-[#2776ea] font-black text-[10px] uppercase tracking-widest border border-blue-100 flex items-center gap-2">
                 <Briefcase size={14} /> {job.department}
               </span>
               <span className="px-5 py-2 rounded-xl bg-green-50 text-[#76ea27] font-black text-[10px] uppercase tracking-widest border border-green-100 flex items-center gap-2">

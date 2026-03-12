@@ -14,7 +14,7 @@ export default function UniversalCaseStudies({ data }: { data: ServicePageData['
 
     return (
         <section id="case-studies" className="bg-slate-50 py-20 lg:py-24 font-sora relative" ref={containerRef}>
-            <div className="container mx-auto px-6 max-w-7xl">
+            <div className="container-pd mx-auto px-6 max-w-7xl">
 
                 {/* Header */}
                 <SectionHeader
@@ -26,7 +26,7 @@ export default function UniversalCaseStudies({ data }: { data: ServicePageData['
                     size="default"
                 />
 
-                {/* STACKING CARD CONTAINER */}
+                {/* STACKING CARD container  */}
                 <div className="flex flex-col gap-8 max-w-[64rem] mx-auto pb-16">
                     {data.items.map((study, index) => {
                         const stickyTop = `calc(100px + ${index * 24}px)`;
@@ -113,7 +113,7 @@ export default function UniversalCaseStudies({ data }: { data: ServicePageData['
                                                 <Zap size={14} className="text-amber-500 fill-amber-500" />
                                                 Key Impact
                                             </h4>
-                                            
+
                                             {/* Changed to a 2-column grid on desktop, single column on very small screens */}
                                             <div className="grid grid-cols-1  gap-3">
                                                 {study.results.map((res, i) => (

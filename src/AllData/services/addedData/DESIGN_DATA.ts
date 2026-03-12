@@ -103,7 +103,7 @@ export const DESIGN_DATA: ServicePageData = {
     cards: [
       { id: "audit", title: "UX Audit", description: "Expert review of your interface", icon: "Search", theme: "light", list: ["Heuristic eval", "Improvement plan"], cta: { text: "Book Audit", link: "#" } }
     ],
-    contact: { title: "Contact Design Team", subtitle: "Creative Studio", methods: [{ label: "Email", value: "design@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
+    contact: { title: "Contact Design Team", subtitle: "Creative Studio", methods: [{ label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
   },
   relatedResources: { services: [], columns: [] }
 };

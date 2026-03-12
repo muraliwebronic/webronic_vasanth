@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { 
-  HelpCircle, 
-  Plus, 
-  Minus, 
-  MessageCircle 
+import {
+  HelpCircle,
+  Plus,
+  Minus,
+  MessageCircle
 } from "lucide-react";
 import Link from "next/link";
 
@@ -40,7 +40,7 @@ interface FAQSectionProps {
 
 export default function FAQSection({ data }: FAQSectionProps) {
   const { header, items, cta } = data;
-  
+
   // State to track which FAQ is open (null = all closed)
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -56,15 +56,14 @@ export default function FAQSection({ data }: FAQSectionProps) {
   // Helper function to render a single FAQ item
   const renderFAQItem = (item: FAQItem, index: number) => {
     const isOpen = openIndex === index;
-    
+
     return (
-      <div 
+      <div
         key={index}
-        className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-          isOpen 
-            ? "bg-slate-50 border-[#2776ea] shadow-lg shadow-blue-900/5" 
-            : "bg-white border-slate-100 hover:border-[#76ea27]"
-        }`}
+        className={`rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen
+          ? "bg-slate-50 border-[#2776ea] shadow-lg shadow-blue-900/5"
+          : "bg-white border-slate-100 hover:border-[#76ea27]"
+          }`}
       >
         <button
           onClick={() => toggleFAQ(index)}
@@ -73,13 +72,12 @@ export default function FAQSection({ data }: FAQSectionProps) {
           <span className={`text-sm md:text-base font-bold transition-colors ${isOpen ? "text-[#2776ea]" : "text-slate-800"}`}>
             {item.question}
           </span>
-          <div className={`h-8 w-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-            isOpen ? "bg-[#2776ea] text-white" : "bg-slate-100 text-slate-400"
-          }`}>
+          <div className={`h-8 w-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${isOpen ? "bg-[#2776ea] text-white" : "bg-slate-100 text-slate-400"
+            }`}>
             {isOpen ? <Minus size={16} /> : <Plus size={16} />}
           </div>
         </button>
-        
+
         {/* Answer Wrapper */}
         {isOpen && (
           <div className="px-6 pb-6 animate-in fade-in slide-in-from-top-2 duration-300">
@@ -94,12 +92,12 @@ export default function FAQSection({ data }: FAQSectionProps) {
 
   return (
     <section className="relative bg-white py-10 font-sora overflow-hidden">
-      
+
       {/* Background Decor */}
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#76ea27]/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        
+      <div className="container-pd mx-auto px-6 max-w-7xl relative z-10">
+
         {/* --- HEADER --- */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-6">
@@ -108,14 +106,14 @@ export default function FAQSection({ data }: FAQSectionProps) {
               {header.badge}
             </span>
           </div>
-          
+
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter leading-[1.1] mb-6">
             {header.title}{" "}
             <span className="bg-gradient-to-r from-[#2776ea] to-[#76ea27] bg-clip-text text-transparent">
               {header.titleHighlight}
             </span>
           </h2>
-          
+
           <p className="text-lg text-slate-500 font-medium max-w-2xl mx-auto">
             {header.description}
           </p>
@@ -123,7 +121,7 @@ export default function FAQSection({ data }: FAQSectionProps) {
 
         {/* --- FAQ GRID (2 COLUMNS) --- */}
         <div className="grid lg:grid-cols-2 gap-6 items-start">
-          
+
           {/* Left Column */}
           <div className="space-y-4">
             {leftColumn.map((item, index) => renderFAQItem(item, index))}
@@ -150,8 +148,8 @@ export default function FAQSection({ data }: FAQSectionProps) {
                 Our team is available 24/7 to assist you.
               </p>
             </div>
-            <Link 
-              href={cta.url || "/contact"} 
+            <Link
+              href={cta.url || "/contact"}
               className="px-6 py-3 rounded-xl bg-white text-slate-900 font-black uppercase tracking-widest text-xs hover:bg-[#2776ea] hover:text-white transition-colors"
             >
               {cta.buttonText}

@@ -13,8 +13,8 @@ export default function UniversalCaseStudies({ data }: { data: ServicePageData['
     if (!data) return null;
 
     return (
-        <section id="case-studies" className="bg-slate-50 py-20 lg:py-24 font-sora relative" ref={containerRef}>
-            <div className="container mx-auto px-6 max-w-7xl">
+        <section id="case-studies" className="bg-slate-50 container-pd py-20 lg:py-24 font-sora relative" ref={containerRef}>
+            <div className=" mx-auto px-6 max-w-7xl">
 
                 {/* Header */}
                 <SectionHeader
@@ -26,7 +26,7 @@ export default function UniversalCaseStudies({ data }: { data: ServicePageData['
                     size="default"
                 />
 
-                {/* STANDARD SCROLLING CARD CONTAINER - Increased gap for clean separation */}
+                {/* STANDARD SCROLLING CARD container  - Increased gap for clean separation */}
                 <div className="flex flex-col gap-16 lg:gap-24 pb-16 w-full">
                     {data.items.map((study, index) => {
                         return (
@@ -112,7 +112,7 @@ export default function UniversalCaseStudies({ data }: { data: ServicePageData['
                                                 <Zap size={14} className="text-amber-500 fill-amber-500" />
                                                 Key Impact
                                             </h4>
-                                            
+
                                             <div className="grid grid-cols-1 gap-3">
                                                 {study.results.map((res, i) => (
                                                     <div key={i} className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm flex flex-col justify-center">

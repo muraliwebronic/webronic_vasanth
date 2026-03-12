@@ -18,8 +18,8 @@ export default function MediaHeroOverview() {
   return (
     <section className="font-sora bg-white overflow-hidden">
       {/* --- HERO SECTION --- */}
-      <div className="relative w-full bg-white pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28 overflow-hidden border-b border-slate-100">
-        <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+      <div className="relative w-full bg-white pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28 overflow-hidden border-b border-slate-100 container-pd">
+        <div className="mx-auto px-6 md:px-12 lg:px-24 relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* --- LEFT: TEXT CONTENT --- */}
             <div className="max-w-2xl">
@@ -128,8 +128,8 @@ export default function MediaHeroOverview() {
       </div>
 
       {/* --- INDUSTRY OVERVIEW --- */}
-      <div className="py-24 bg-white border-t border-slate-100">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="py-24 bg-white border-t border-slate-100 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <div className="flex flex-col lg:flex-row gap-16 mb-20">
             <div className="lg:w-1/3">
               <SectionHeader title={overview.title} centered={false} />
@@ -142,7 +142,7 @@ export default function MediaHeroOverview() {
           </div>
 
           <div className="mb-24">
-            <h3 className="text-2xl font-black text-slate-900 mb-10 text-center">
+            <h3 className="text-h3 font-black text-slate-900 mb-10 text-center">
               {overview.challenges.title}
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -155,9 +155,9 @@ export default function MediaHeroOverview() {
                     <div className="p-3 rounded-xl bg-[#2776ea]/10 text-[#2776ea]">
                       <item.icon size={28} strokeWidth={1.5} />
                     </div>
-                    <h4 className="text-lg font-bold text-slate-900 leading-tight">
+                    <h3 className="text-h3 font-bold text-slate-900 leading-tight">
                       {item.title}
-                    </h4>
+                    </h3>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed font-medium">
                     {item.description}

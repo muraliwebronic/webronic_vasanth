@@ -9,11 +9,11 @@ export default function DigitalTwinImplementation() {
 
   return (
     <section className="font-sora overflow-hidden">
-      
+
       {/* --- PART 1: IMPLEMENTATION PHASES (Vertical Timeline) --- */}
-      <div className="bg-white py-24 lg:py-32 relative">
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          
+      <div className="bg-white py-24 lg:py-32 relative container-pd">
+        <div className="mx-auto px-6 max-w-7xl relative z-10">
+
           <SectionHeader
             badge="Process Roadmap"
             title={sectionTitle}
@@ -30,10 +30,10 @@ export default function DigitalTwinImplementation() {
               {phases.map((phase, index) => {
                 const isEven = index % 2 === 0;
                 const PhaseIcon = phase.icon;
-                
+
                 return (
                   <div key={index} className={`flex flex-col lg:flex-row gap-8 items-center ${isEven ? "lg:flex-row-reverse" : ""} relative`}>
-                    
+
                     {/* Center Node */}
                     <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-4 border-[#2776ea] z-10 hidden lg:block" />
 
@@ -44,17 +44,17 @@ export default function DigitalTwinImplementation() {
                     <div className={`w-full lg:w-1/2 ${isEven ? "lg:pr-20" : "lg:pl-20"}`}>
                       <div className="group bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 hover:border-[#2776ea] transition-all duration-300">
                         <div className="flex items-center justify-between mb-6">
-                           <div className="p-3 rounded-2xl bg-white text-[#2776ea] border border-slate-100 shadow-sm">
-                              <PhaseIcon size={24} strokeWidth={1.5} />
-                           </div>
-                           <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                             {phase.phase}
-                           </span>
+                          <div className="p-3 rounded-2xl bg-white text-[#2776ea] border border-slate-100 shadow-sm">
+                            <PhaseIcon size={24} strokeWidth={1.5} />
+                          </div>
+                          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                            {phase.phase}
+                          </span>
                         </div>
 
-                        <h4 className="text-xl font-bold text-slate-900 mb-4">
+                        <h3 className="text-h3 font-bold text-slate-900 mb-4">
                           {phase.title}
-                        </h4>
+                        </h3>
 
                         <ul className="space-y-3">
                           {phase.items.map((item, i) => (
@@ -76,8 +76,8 @@ export default function DigitalTwinImplementation() {
       </div>
 
       {/* --- PART 2: USE CASES (Primary Blue Background) --- */}
-      <div className="bg-[#2776ea] py-24 lg:py-32 relative">
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="bg-[#2776ea] py-24 lg:py-32 relative container-pd">
+        <div className="mx-auto px-6 max-w-7xl relative z-10">
           <SectionHeader
             badge="Applications"
             title={useCases.title}
@@ -91,17 +91,17 @@ export default function DigitalTwinImplementation() {
             {useCases.cases.map((useCase, index) => {
               const CaseIcon = useCase.icon;
               return (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="bg-white p-10 rounded-[3rem] shadow-xl shadow-blue-900/10 flex flex-col"
                 >
                   <div className="flex items-center gap-5 mb-8 border-b border-slate-100 pb-6">
                     <div className="h-14 w-14 rounded-2xl bg-[#2776ea]/10 text-[#2776ea] flex items-center justify-center shrink-0">
                       <CaseIcon size={28} />
                     </div>
-                    <h3 className="text-xl font-black text-slate-900 leading-tight">{useCase.title}</h3>
+                    <h3 className="text-h3 font-black text-slate-900 leading-tight">{useCase.title}</h3>
                   </div>
-                  
+
                   <ul className="space-y-4">
                     {useCase.items.map((item, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-slate-600 font-medium leading-relaxed">
@@ -118,8 +118,8 @@ export default function DigitalTwinImplementation() {
       </div>
 
       {/* --- PART 3: ROI HIGHLIGHT --- */}
-      <div className="bg-slate-50 py-24 lg:py-32">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="bg-slate-50 py-24 lg:py-32 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <div className="bg-white rounded-[3rem] p-10 md:p-16 border border-slate-200">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>

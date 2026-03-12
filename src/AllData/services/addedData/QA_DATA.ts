@@ -102,7 +102,7 @@ export const QA_DATA: ServicePageData = {
     cards: [
       { id: "audit", title: "QA Audit", description: "Review your testing process", icon: "CheckCircle", theme: "light", list: ["Process review", "Automation potential"], cta: { text: "Start Audit", link: "#" } }
     ],
-    contact: { title: "Contact QA Team", subtitle: "Test Engineers", methods: [{ label: "Email", value: "qa@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
+    contact: { title: "Contact QA Team", subtitle: "Test Engineers", methods: [{ label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
   },
   relatedResources: { services: [], columns: [] }
 };

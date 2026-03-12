@@ -9,11 +9,11 @@ export default function ManufacturingMesMaintenance() {
 
   return (
     <section className="font-sora overflow-hidden">
-      
+
       {/* --- SECTION 1: MES (Clean Grid) --- */}
-      <div className="bg-white py-24 lg:py-32">
-        <div className="container mx-auto px-6 max-w-7xl">
-          
+      <div className="bg-white py-24 lg:py-32 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+
           <SectionHeader
             badge="Operational Core"
             title={mes.title}
@@ -27,7 +27,7 @@ export default function ManufacturingMesMaintenance() {
             {mes.functions.map((func, index) => {
               const FuncIcon = func.icon;
               return (
-                <div 
+                <div
                   key={index}
                   className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 hover:border-[#2776ea]/50 hover:bg-white transition-all duration-300"
                 >
@@ -35,9 +35,9 @@ export default function ManufacturingMesMaintenance() {
                     <div className="h-12 w-12 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#2776ea]">
                       <FuncIcon size={24} strokeWidth={1.5} />
                     </div>
-                    <h5 className="text-lg font-bold text-slate-900 leading-tight">
+                    <h3 className="text-h3 font-bold text-slate-900 leading-tight">
                       {func.title}
-                    </h5>
+                    </h3>
                   </div>
                   <ul className="space-y-3">
                     {func.items.map((item, i) => (
@@ -54,53 +54,53 @@ export default function ManufacturingMesMaintenance() {
 
           {/* Integration Flow (Primary Blue) */}
           <div className="bg-[#2776ea] rounded-[3rem] p-10 md:p-16 text-white relative">
-             <div className="relative z-10">
-                <h3 className="text-2xl font-black text-center mb-16">{mes.integration.title}</h3>
-                
-                <div className="grid md:grid-cols-3 gap-8 items-start">
-                  {mes.integration.streams.map((stream, index) => {
-                    const StreamIcon = stream.icon;
-                    // Center card is highlighted with White, others are transparent white
-                    const isCenter = index === 1; 
-                    
-                    return (
-                      <div 
-                        key={index} 
-                        className={`relative p-8 rounded-[2.5rem] ${isCenter ? "bg-white text-slate-900 shadow-xl" : "bg-white/10 border border-white/20 text-white"}`}
-                      >
-                        {/* Connecting Lines (Desktop Only) */}
-                        {index < 2 && (
-                          <div className="hidden md:block absolute top-1/2 -right-6 w-12 h-px bg-white/40 z-0" />
-                        )}
+            <div className="relative z-10">
+              <h3 className="text-h3 font-black text-center mb-16">{mes.integration.title}</h3>
 
-                        <div className="relative z-10 flex flex-col items-center text-center">
-                          <div className={`h-16 w-16 rounded-2xl flex items-center justify-center mb-6 ${isCenter ? "bg-[#2776ea] text-white" : "bg-white text-[#2776ea]"}`}>
-                            <StreamIcon size={32} />
-                          </div>
-                          <h4 className="text-xl font-bold mb-6">{stream.direction}</h4>
-                          <ul className="space-y-3 text-left w-full">
-                            {stream.details.map((item, i) => (
-                              <li key={i} className="flex items-start gap-3 text-sm font-bold">
-                                <CheckCircle2 size={16} className={`shrink-0 mt-0.5 ${isCenter ? "text-[#76ea27]" : "text-white"}`} />
-                                <span className={isCenter ? "text-slate-600" : "text-blue-50"}>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
+              <div className="grid md:grid-cols-3 gap-8 items-start">
+                {mes.integration.streams.map((stream, index) => {
+                  const StreamIcon = stream.icon;
+                  // Center card is highlighted with White, others are transparent white
+                  const isCenter = index === 1;
+
+                  return (
+                    <div
+                      key={index}
+                      className={`relative p-8 rounded-[2.5rem] ${isCenter ? "bg-white text-slate-900 shadow-xl" : "bg-white/10 border border-white/20 text-white"}`}
+                    >
+                      {/* Connecting Lines (Desktop Only) */}
+                      {index < 2 && (
+                        <div className="hidden md:block absolute top-1/2 -right-6 w-12 h-px bg-white/40 z-0" />
+                      )}
+
+                      <div className="relative z-10 flex flex-col items-center text-center">
+                        <div className={`h-16 w-16 rounded-2xl flex items-center justify-center mb-6 ${isCenter ? "bg-[#2776ea] text-white" : "bg-white text-[#2776ea]"}`}>
+                          <StreamIcon size={32} />
                         </div>
+                        <h3 className="text-h3 font-bold mb-6">{stream.direction}</h3>
+                        <ul className="space-y-3 text-left w-full">
+                          {stream.details.map((item, i) => (
+                            <li key={i} className="flex items-start gap-3 text-sm font-bold">
+                              <CheckCircle2 size={16} className={`shrink-0 mt-0.5 ${isCenter ? "text-[#76ea27]" : "text-white"}`} />
+                              <span className={isCenter ? "text-slate-600" : "text-blue-50"}>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                    );
-                  })}
-                </div>
-             </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
         </div>
       </div>
 
       {/* --- SECTION 2: PREDICTIVE MAINTENANCE --- */}
-      <div className="bg-slate-50 py-24 lg:py-32">
-        <div className="container mx-auto px-6 max-w-7xl">
-          
+      <div className="bg-slate-50 py-24 lg:py-32 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+
           <SectionHeader
             badge="Asset Health"
             title={maintenance.title}
@@ -119,7 +119,7 @@ export default function ManufacturingMesMaintenance() {
               let borderColor = "border-slate-200";
               let badgeColor = "bg-slate-100 text-slate-500";
               let cardBg = "bg-white";
-              
+
               if (isPredictive) {
                 borderColor = "border-[#2776ea]";
                 badgeColor = "bg-[#2776ea] text-white";
@@ -127,7 +127,7 @@ export default function ManufacturingMesMaintenance() {
               }
 
               return (
-                <div 
+                <div
                   key={index}
                   className={`p-10 rounded-[3rem] border-2 transition-transform duration-300 ${borderColor} ${cardBg} ${isPredictive ? "md:-translate-y-4" : ""}`}
                 >
@@ -142,10 +142,10 @@ export default function ManufacturingMesMaintenance() {
                     )}
                   </div>
 
-                  <h3 className="text-2xl font-black text-slate-900 mb-2">
+                  <h3 className="text-h3 font-black text-slate-900 mb-2">
                     {approach.type}
                   </h3>
-                  <p className="text-sm font-medium text-slate-500 mb-8 italic">
+                  <p className="text-body font-medium text-slate-500 mb-8 italic">
                     "{approach.concept}"
                   </p>
 

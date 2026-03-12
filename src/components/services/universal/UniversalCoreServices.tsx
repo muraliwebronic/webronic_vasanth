@@ -28,20 +28,20 @@ export default function UniversalCoreServices({ data }: { data: ServicePageData[
     // Smart scroll checker that adapts to Mobile vs PC
     const checkScroll = () => {
         let isScrollable = false;
-        
+
         if (typeof window !== "undefined") {
             // Mobile: Check the outer full-page scroll container
             if (window.innerWidth < 768 && mobileScrollRef.current) {
                 const { scrollTop, scrollHeight, clientHeight } = mobileScrollRef.current;
                 isScrollable = scrollHeight > clientHeight && scrollTop + clientHeight < scrollHeight - 20;
-            } 
+            }
             // PC: Check the left sidebar scroll container
             else if (window.innerWidth >= 768 && sidebarRef.current) {
                 const { scrollTop, scrollHeight, clientHeight } = sidebarRef.current;
                 isScrollable = scrollHeight > clientHeight && scrollTop + clientHeight < scrollHeight - 20;
             }
         }
-        
+
         setShowScrollHint(isScrollable);
     };
 
@@ -60,8 +60,8 @@ export default function UniversalCoreServices({ data }: { data: ServicePageData[
     if (!data) return null;
 
     return (
-        <section className="relative bg-slate-50 py-24 font-sora overflow-hidden border-b border-slate-200/60">
-            <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <section className="relative container-pd bg-slate-50 py-24 font-sora overflow-hidden border-b border-slate-200/60">
+            <div className=" mx-auto px-6 max-w-7xl relative z-10">
 
                 <SectionHeader
                     badge={data.badge}
@@ -74,7 +74,7 @@ export default function UniversalCoreServices({ data }: { data: ServicePageData[
                 />
 
                 {/* CARDS GRID */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div className="grid md:grid-cols-2  gap-8 mb-16">
                     {data.cards.map((card, index) => {
                         const hasRichContent = (card.subSections && card.subSections.length > 0) || (card.fullDescription && card.fullDescription.length > 0);
 
@@ -160,14 +160,14 @@ export default function UniversalCoreServices({ data }: { data: ServicePageData[
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm flex items-center gap-6">
+                    <div className={`${Array.isArray(data.footer.right?.content) ? "" : "hidden"} bg-white rounded-2xl p-8 border border-slate-100 shadow-sm flex items-center gap-6`}>
                         <div className="h-12 w-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-600 shrink-0">
                             <Cpu size={24} />
                         </div>
                         <div className="flex-1">
-                            <h4 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">{data.footer.right.title}</h4>
+                            <h4 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">{data.footer.right?.title}</h4>
                             <div className="flex flex-wrap gap-2">
-                                {Array.isArray(data.footer.right.content) && data.footer.right.content.map((tag: string, i: number) => (
+                                {Array.isArray(data.footer.right?.content) && data.footer.right.content.map((tag: string, i: number) => (
                                     <span key={i} className="px-2 py-1 rounded bg-slate-50 text-xs font-bold text-slate-600 border border-slate-100">
                                         {tag}
                                     </span>
@@ -198,7 +198,7 @@ export default function UniversalCoreServices({ data }: { data: ServicePageData[
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: "100%", opacity: 0, scale: 0.95 }}
                             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                            className="relative w-full max-w-6xl h-[100dvh] md:h-[85vh] bg-white md:rounded-[2rem] shadow-2xl overflow-hidden"
+                            className="relative w-full max-w-6xl h-[100dvh] md:h-[85vh] bg-white md:rounded-xl shadow-2xl overflow-hidden"
                         >
 
                             {/* FLOATING CLOSE BUTTON - Unified for all screens */}
@@ -210,7 +210,7 @@ export default function UniversalCoreServices({ data }: { data: ServicePageData[
                             </button>
 
                             {/* SMART SCROLL INDICATOR (MOBILE ONLY) */}
-                            <div 
+                            <div
                                 className={`flex md:hidden absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/90 via-white/60 to-transparent backdrop-blur-[2px] pointer-events-none items-end justify-center pb-8 z-50 transition-opacity duration-500 ${showScrollHint ? 'opacity-100' : 'opacity-0'}`}
                             >
                                 <div className="animate-bounce bg-white shadow-md border border-slate-200 rounded-full p-2 text-blue-500">
@@ -218,18 +218,18 @@ export default function UniversalCoreServices({ data }: { data: ServicePageData[
                                 </div>
                             </div>
 
-                            {/* SCROLL CONTAINER */}
-                            <div 
+                            {/* SCROLL container  */}
+                            <div
                                 ref={mobileScrollRef}
                                 onScroll={checkScroll}
                                 className="h-full w-full overflow-y-auto md:overflow-hidden flex flex-col md:flex-row overscroll-contain [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                             >
-                                
+
                                 {/* SIDEBAR WRAPPER */}
                                 <div className="relative md:w-[35%] lg:w-[30%] shrink-0 border-b md:border-b-0 md:border-r border-slate-200 bg-slate-50 flex flex-col">
-                                    
+
                                     {/* SIDEBAR CONTENT */}
-                                    <div 
+                                    <div
                                         ref={sidebarRef}
                                         onScroll={checkScroll}
                                         className="h-full w-full p-8 pt-20 md:p-10 md:pb-12 md:pr-8 flex flex-col md:overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-slate-200/80 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-slate-300"
@@ -248,7 +248,7 @@ export default function UniversalCoreServices({ data }: { data: ServicePageData[
                                     </div>
 
                                     {/* SMART SCROLL INDICATOR (PC ONLY) */}
-                                    <div 
+                                    <div
                                         className={`hidden md:flex absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-slate-50 via-slate-50/90 to-transparent pointer-events-none items-end justify-center pb-6 transition-opacity duration-500 ${showScrollHint ? 'opacity-100' : 'opacity-0'}`}
                                     >
                                         <div className="animate-bounce bg-white shadow-md border border-slate-200 rounded-full p-2 text-blue-500">

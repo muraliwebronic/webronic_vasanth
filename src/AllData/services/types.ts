@@ -71,7 +71,7 @@ export interface ServicePageData {
     }[];
     footer: {
       left: { title: string; type: string; content: any };
-      right: { title: string; type: string; content: any };
+      right?: { title: string; type: string; content: any };
     };
   };
 

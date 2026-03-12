@@ -9,16 +9,16 @@ export default function MediaCasesPricing() {
 
   return (
     <section className="font-sora">
-      
+
       {/* --- PART 1: CASE STUDIES (Clean Light) --- */}
-      <div id="case-studies" className="bg-white py-24 lg:py-32">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div id="case-studies" className="bg-white py-24 lg:py-32 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader title={caseStudies.title} centered={true} className="mb-24" />
 
           <div className="space-y-24">
             {caseStudies.cases.map((study, index) => (
               <div key={index} className="bg-white rounded-[3rem] border border-slate-200 shadow-xl overflow-hidden group hover:border-[#2776ea]/30 transition-colors">
-                
+
                 {/* Header (Clean Slate-50) */}
                 <div className="bg-slate-50 p-8 md:p-12 border-b border-slate-100">
                   <div className="flex items-center gap-5">
@@ -26,14 +26,14 @@ export default function MediaCasesPricing() {
                       <study.icon size={32} />
                     </div>
                     <div>
-                       <h3 className="text-2xl md:text-3xl font-black text-slate-900">{study.title}</h3>
-                       <p className="text-sm font-bold text-slate-500 mt-1">Client: {study.client}</p>
+                      <h3 className="text-h3 font-black text-slate-900">{study.title}</h3>
+                      <p className="text-sm font-bold text-slate-500 mt-1">Client: {study.client}</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="p-8 md:p-12 grid gap-12">
-                  
+
                   <div className="grid md:grid-cols-2 gap-12">
                     {/* Challenge */}
                     <div>
@@ -108,8 +108,8 @@ export default function MediaCasesPricing() {
       </div>
 
       {/* --- PART 2: PRICING --- */}
-      <div className="bg-slate-50 py-24">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="bg-slate-50 py-24 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader title={pricing.title} centered={true} className="mb-20" />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pricing.categories.map((cat, index) => (
@@ -120,7 +120,7 @@ export default function MediaCasesPricing() {
                       <cat.icon size={28} />
                     </div>
                   </div>
-                  <h3 className="text-xl font-black text-slate-900">{cat.title}</h3>
+                  <h3 className="text-h3 font-black text-slate-900">{cat.title}</h3>
                 </div>
                 <div className="p-8">
                   <ul className="space-y-6">

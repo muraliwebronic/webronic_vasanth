@@ -5,7 +5,7 @@ export const WEB_DATA: ServicePageData = {
 
   // --- PREVIEW SECTION ---
   preview: {
-    title: "Website Development & E-Commerce Solutions",
+    title: "Website Development",
     tagline: "High-Performance Experiences",
     description: "Build high-performance websites that drive measurable business growth. We deliver solutions that load in under 2 seconds and rank on the first page of Google",
     image: "/assets/images/webdevelopment.png",
@@ -710,7 +710,7 @@ export const WEB_DATA: ServicePageData = {
     cloudPlatforms: [
       {
         provider: "Hosting & Deployment",
-        color: "text-black",
+        color: "text-green-600",
         services: ["Vercel", "Netlify", "WP Engine", "Kinsta", "AWS", "Google Cloud", "DigitalOcean"]
       },
       {
@@ -1027,7 +1027,7 @@ export const WEB_DATA: ServicePageData = {
       title: "Contact Our Development Team",
       subtitle: "Direct access to web development experts",
       methods: [
-        { label: "Email", value: "web@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
+        { label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
         { label: "Phone", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }

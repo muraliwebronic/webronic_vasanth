@@ -10,8 +10,10 @@ import {
   Briefcase,
 } from "lucide-react";
 import SectionHeader from "@/components/common/SectionHeader";
+import Image from "next/image";
 
 // --- CHILD COMPONENT: 3D LOCATION CARD (REDESIGNED) ---
+
 const LocationCard = ({
   title,
   addr,
@@ -19,6 +21,7 @@ const LocationCard = ({
   accentColor = "#2776ea",
   tag,
   mapUrl,
+  logo,
 }: {
   title: string;
   addr: string;
@@ -26,6 +29,7 @@ const LocationCard = ({
   accentColor?: string;
   tag?: string;
   mapUrl?: string;
+  logo?: string;
 }) => (
   <div
     role="button"
@@ -36,16 +40,30 @@ const LocationCard = ({
         window.open(mapUrl, "_blank");
       }
     }}
-    className="group h-full bg-white rounded-2xl border border-slate-200 p-6 flex flex-col hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 cursor-pointer"
+    className="group w-full h-full bg-white rounded-2xl border border-slate-200 p-6 flex flex-col hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 cursor-pointer"
   >
-    <div className="flex items-start justify-between mb-4">
-      {/* Icon Box */}
-      <div
-        className="h-10 w-10 rounded-lg flex items-center justify-center transition-colors duration-300"
-        style={{ backgroundColor: `${accentColor}15`, color: accentColor }}
-      >
-        <Icon size={20} strokeWidth={1.5} />
-      </div>
+    <div className="flex items-start justify-between mb-6">
+      {/* --- LOGO OR ICON SWITCH --- */}
+      {logo ? (
+        // 1. If logo exists, show Image in the same size box (h-10 w-10)
+        <div className="relative h-14 w-24">
+          <Image
+            src={logo}
+            alt={title}
+            fill
+            // object-contain keeps aspect ratio, p-0.5 gives slight padding
+            className="object-contain  transition-opacity duration-300 group-hover:opacity-80"
+          />
+        </div>
+      ) : (
+        // 2. Otherwise, show the standard colored Icon Box
+        <div
+          className="h-10 w-10 rounded-lg flex items-center justify-center transition-colors duration-300"
+          style={{ backgroundColor: `${accentColor}15`, color: accentColor }}
+        >
+          <Icon size={20} strokeWidth={1.5} />
+        </div>
+      )}
 
       {/* Tag */}
       {tag && (
@@ -55,7 +73,7 @@ const LocationCard = ({
       )}
     </div>
 
-    <div className="mt-auto">
+    <div className="flex flex-col flex-1">
       <h3 className="text-menu font-black text-slate-900 mb-2 leading-tight group-hover:text-[#2776ea] transition-colors">
         {title}
       </h3>
@@ -66,6 +84,7 @@ const LocationCard = ({
     </div>
   </div>
 );
+
 
 export default function Branches() {
   const branches = [
@@ -82,9 +101,9 @@ export default function Branches() {
   return (
     <section
       id="location"
-      className="relative bg-white py-24 font-sora overflow-hidden"
+      className="relative bg-white container-pd py-24 font-sora overflow-hidden"
     >
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className=" mx-auto px-6 max-w-7xl relative z-10">
         {/* --- HEADER --- */}
         <SectionHeader
           title="Global Presence"
@@ -94,7 +113,7 @@ export default function Branches() {
           className="max-w-3xl mx-auto mb-16"
         />
 
-        {/* --- MAP CONTAINER --- */}
+        {/* --- MAP container  --- */}
         <div className="group relative w-full h-[500px] rounded-[2.5rem] border border-slate-200 bg-white overflow-hidden shadow-2xl shadow-slate-200/50 mb-24">
           <iframe
             title="Webronic Industries Locations"
@@ -108,7 +127,7 @@ export default function Branches() {
         </div>
 
         {/* --- LOCATIONS GRID --- */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-8">
+        <div className="grid  gap-8 lg:gap-8">
           {/* INDIA OPERATIONS (Left) */}
           <div className="lg:col-span-8">
             <div className="flex items-center gap-3 mb-8 pl-1">
@@ -124,7 +143,7 @@ export default function Branches() {
               {[
                 {
                   title: "Madurai R&D",
-                  addr: "JS Tower, Sikkandar Savadi - 625018",
+                  addr: "2nd Floor, 3/92B JS TOWER, Alanganallur Main Road, Sikkandar Savadi, Madurai, Tamil Nadu 625018",
                   icon: Building2,
                   tag: "HQ",
                   mapUrl:
@@ -132,7 +151,7 @@ export default function Branches() {
                 },
                 {
                   title: "Chennai Admin",
-                  addr: "Sakthi Apts, Cenotoph Rd, Teynampet",
+                  addr: "A1 - No. 20, Sakthi Apartments, Cenotoph Road, Rathna Nagar, Teynampet, Chennai, Tamil Nadu 600004",
                   icon: Briefcase,
                   tag: "Admin",
                   mapUrl:
@@ -140,7 +159,7 @@ export default function Branches() {
                 },
                 {
                   title: "Salem Hub",
-                  addr: "Sannasi Muniyappan Kovil, Surappalli",
+                  addr: "1-718, Sannasi Muniyappan Kovil, Surappalli (PO), Mettur (TK), Jalakandapuram, Salem - 636501",
                   icon: Navigation,
                   tag: "Dev",
                   mapUrl: "https://maps.app.goo.gl/g53opWY3u7S4NLMN7",
@@ -160,25 +179,28 @@ export default function Branches() {
 
           {/* INTERNATIONAL (Right) */}
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-3 mb-8 pl-1">
-              <div className="p-2 rounded-lg bg-green-50 text-[#76ea27]">
-                <Globe2 size={18} />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900">
-                International
-              </h3>
-            </div>
+  <div className="flex items-center gap-3 mb-8 pl-1">
+    <div className="p-2 rounded-lg bg-green-50 text-[#76ea27]">
+      <Globe2 size={18} />
+    </div>
+    <h3 className="text-lg font-bold text-slate-900">
+      International
+    </h3>
+  </div>
 
-            <div className="h-fit">
-              <LocationCard
-                title="Thingsatweb Sweden AB"
-                addr="Collaborating to bring Scandinavian innovation standards globally"
-                icon={Globe2}
-                accentColor="#76ea27"
-                tag="Partner"
-              />
-            </div>
-          </div>
+  <div className="h-fit">
+    <LocationCard
+      // Pass the logo as a new prop here
+      logo="/assets/images/thingsatweb.png"
+      title="Thingsatweb Sweden AB"
+      addr="Sockerbruksgatan 7 53140 Lidköping - Collaborating to bring Scandinavian innovation standards globally"
+      icon={Globe2}
+      accentColor="#76ea27"
+      tag="Partner"
+      mapUrl={"https://www.google.com/maps/place/Sockerbruksgatan+7,+531+40+Lidk%C3%B6ping,+Sweden/@58.5032049,13.1775654,455m/data=!3m2!1e3!4b1!4m6!3m5!1s0x465b28a468894b7d:0xd1df8b4fbd46a4e5!8m2!3d58.5032049!4d13.1775654!16s%2Fg%2F11c4wx0mt4?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D"}
+    />
+  </div>
+</div>
         </div>
       </div>
     </section>

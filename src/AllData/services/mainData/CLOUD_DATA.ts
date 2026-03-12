@@ -154,7 +154,7 @@ export const CLOUD_DATA: ServicePageData = {
             heading: "Cloud Native Architecture Principles",
             items: [
               { term: "Microservices Architecture", description: "Decompose applications into small, independent services that can be developed, deployed, and scaled independently. Each microservice owns its data and communicates via APIs." },
-              { term: "Containerization", description: "Package applications with all dependencies using Docker containers. Deploy containers on orchestration platforms like Kubernetes, AWS ECS, or Azure Container Instances." },
+              { term: "Containerization", description: "Package applications with all dependencies using Docker containers. Deploy containers on orchestration platforms like Kubernetes, AWS ECS, or Azure container  Instances." },
               { term: "Serverless Computing", description: "Build event-driven applications using serverless functions (AWS Lambda, Azure Functions, Google Cloud Functions). Pay only for actual execution time with automatic scaling." },
               { term: "API-First Design", description: "Design APIs before implementation, ensuring clean interfaces between services. Use API gateways for security, throttling, and monitoring." },
               { term: "DevOps Integration", description: "Implement CI/CD pipelines for automated testing and deployment. Infrastructure as Code for reproducible, version-controlled infrastructure." }
@@ -163,7 +163,7 @@ export const CLOUD_DATA: ServicePageData = {
           {
             heading: "Cloud Native Technologies",
             items: [
-              { term: "Container Orchestration", description: "Kubernetes (EKS, AKS, GKE), Docker Swarm, AWS ECS/Fargate, Azure Container Instances" },
+              { term: "container  Orchestration", description: "Kubernetes (EKS, AKS, GKE), Docker Swarm, AWS ECS/Fargate, Azure container  Instances" },
               { term: "Serverless Platforms", description: "AWS Lambda with API Gateway, Azure Functions with Logic Apps, Google Cloud Functions with Cloud Run, Event-driven architectures" },
               { term: "Managed Databases", description: "Amazon RDS, Aurora, DynamoDB, Azure SQL Database, Cosmos DB, Google Cloud SQL, Firestore, Spanner" },
               { term: "Message Queues & Event Streaming", description: "Amazon SQS, SNS, Kinesis, Azure Service Bus, Event Hub, Google Pub/Sub, Dataflow, Apache Kafka on cloud" }
@@ -241,7 +241,7 @@ export const CLOUD_DATA: ServicePageData = {
               { term: "Network Security", description: "Virtual private clouds, security groups, network ACLs, and web application firewalls. Micro-segmentation isolating workloads and preventing lateral movement." },
               { term: "Data Encryption", description: "Encryption at rest and in transit using cloud first services. Key management with AWS KMS, Azure Key Vault, or Google Cloud KMS. Automated encryption policies." },
               { term: "Security Monitoring", description: "Continuous monitoring using cloud first tools (AWS GuardDuty, Azure Security Center, Google Security Command Center) plus third-party SIEM integration." },
-              { term: "Vulnerability Management", description: "Automated vulnerability scanning, patch management, and security assessment. Container image scanning and infrastructure as code security analysis." }
+              { term: "Vulnerability Management", description: "Automated vulnerability scanning, patch management, and security assessment. container  image scanning and infrastructure as code security analysis." }
             ]
           },
           {
@@ -419,7 +419,7 @@ export const CLOUD_DATA: ServicePageData = {
         provider: "Amazon Web Services (AWS)",
         color: "text-orange-500",
         services: [
-          { name: "Core Services", desc: "EC2 (Elastic Compute Cloud), S3 (Simple Storage Service), RDS, Aurora, DynamoDB, Lambda (Serverless), ECS, EKS (Container Services), CloudFront (CDN), Route 53 (DNS), VPC (Networking)" },
+          { name: "Core Services", desc: "EC2 (Elastic Compute Cloud), S3 (Simple Storage Service), RDS, Aurora, DynamoDB, Lambda (Serverless), ECS, EKS (container  Services), CloudFront (CDN), Route 53 (DNS), VPC (Networking)" },
           { name: "Advanced Services", desc: "SageMaker (Machine Learning), Kinesis (Streaming), Redshift (Data Warehouse), EMR (Big Data Processing), Glue (ETL), Step Functions (Workflows)" },
           { name: "Certifications", desc: "AWS Solutions Architect Professional, AWS DevOps Engineer Professional, AWS Security Specialty, AWS Advanced Networking" }
         ]
@@ -700,7 +700,7 @@ export const CLOUD_DATA: ServicePageData = {
       title: "Contact Cloud Team",
       subtitle: "Direct access to architects",
       methods: [
-        { label: "Email Us", value: "cloud@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
+        { label: "Email Us", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
         { label: "Call Us", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }

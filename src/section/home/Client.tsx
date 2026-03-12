@@ -28,7 +28,7 @@ const TestimonialCard = ({ item }: { item: (typeof TESTIMONIALS)[0] }) => (
 
       {/* Content */}
       <div className="relative z-10 mb-6 flex-1 flex items-center mt-4">
-        <p className="text-submenu text-slate-600 leading-relaxed italic line-clamp-4">
+        <p className="text-submenu text-slate-600 leading-relaxed italic ">
           "{item.text}"
         </p>
       </div>
@@ -49,7 +49,7 @@ const TestimonialCard = ({ item }: { item: (typeof TESTIMONIALS)[0] }) => (
   </div>
 );
 
-// --- CAROUSEL CONTAINER ---
+// --- CAROUSEL container  ---
 function TestimonialCarousel() {
   const [width, setWidth] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -114,11 +114,11 @@ export default function Clients() {
   return (
     <section
       id="client"
-      className="relative overflow-hidden bg-white py-12 md:py-24 font-sora"
+      className="relative overflow-hidden  bg-white py-12 md:py-24 font-sora"
     >
-      <div className="absolute inset-0 pointer-events-none bg-slate-50/30" />
+      {/* <div className="absolute inset-0 pointer-events-none bg-slate-50/30" /> */}
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-6 z-10">
+      <div className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-[4vw] z-10">
         <SectionHeader
           badge="clients"
           title="Trusted by"
@@ -162,7 +162,7 @@ export default function Clients() {
         </div>
 
         {/* STATS & TESTIMONIALS GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 container-pd lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           {/* LEFT: DEPLOYMENT STATS */}
           <div className="lg:col-span-5 relative pt-10 md:pt-16">
             <div className="group relative flex flex-col">
@@ -225,7 +225,7 @@ export default function Clients() {
           </div>
 
           {/* RIGHT: TESTIMONIALS CAROUSEL */}
-          <div className="lg:col-span-7 flex flex-col gap-4 md:gap-8 mt-8 lg:mt-0">
+          <div className="lg:col-span-7   flex flex-col gap-4 md:gap-8 mt-8 lg:mt-0">
             {/* FIX: Added 'relative z-30' to ensure this sits ABOVE the carousel gradients */}
             <div className="relative z-30 flex items-center justify-between mb-2 px-2">
               <div className="flex items-center gap-3">
@@ -257,7 +257,7 @@ export default function Clients() {
 
 function LogoCard({ src }: { src: string }) {
   return (
-    <div className="relative h-8 w-24 md:h-10 md:w-28 transition-all duration-300 hover:scale-110 cursor-pointer">
+    <div className="relative h-8 w-24 md:h-10 md:w-28 lg:h-14 lg:w-36 transition-all duration-300 hover:scale-105">
       <Image src={src} alt="Client Logo" fill className="object-contain" />
     </div>
   );

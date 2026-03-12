@@ -12,7 +12,7 @@ const cardVariants = {
     scale: 1,
     transition: {
       duration: 0.6,
-      ease: [0.22, 1, 0.36, 1] as const, 
+      ease: [0.22, 1, 0.36, 1] as const,
     },
   },
 };
@@ -24,7 +24,7 @@ const lineVariants = {
     height: "100%",
     transition: {
       duration: 1.5,
-      ease: [0.4, 0.0, 0.2, 1] as const, 
+      ease: [0.4, 0.0, 0.2, 1] as const,
     },
   },
 };
@@ -32,7 +32,7 @@ const lineVariants = {
 export default function StoryTimeline({ story }: { story: any }) {
   return (
     <section className="py-24 lg:py-32 bg-white relative overflow-hidden font-sora">
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+      <div className="container-pd mx-auto px-6 max-w-6xl relative z-10">
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -68,9 +68,8 @@ export default function StoryTimeline({ story }: { story: any }) {
               return (
                 <div
                   key={i}
-                  className={`relative flex flex-col md:flex-row items-center justify-between ${
-                    isEven ? "md:flex-row-reverse" : ""
-                  }`}
+                  className={`relative flex flex-col md:flex-row items-center justify-between ${isEven ? "md:flex-row-reverse" : ""
+                    }`}
                 >
                   <motion.div
                     className="w-full md:w-[45%] pl-12 md:pl-0"
@@ -80,9 +79,8 @@ export default function StoryTimeline({ story }: { story: any }) {
                     viewport={{ once: true, margin: "-50px" }}
                   >
                     <div
-                      className={`group p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl hover:shadow-blue-500/5 hover:border-[#2776ea]/30 transition-all duration-500 ${
-                        isEven ? "md:text-right" : "md:text-left"
-                      }`}
+                      className={`group p-8 rounded-[2.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl hover:shadow-blue-500/5 hover:border-[#2776ea]/30 transition-all duration-500 ${isEven ? "md:text-right" : "md:text-left"
+                        }`}
                     >
                       <div className="md:hidden inline-block px-3 py-1 rounded-full bg-[#2776ea] text-white text-[10px] font-bold uppercase tracking-widest mb-4">
                         {event.year}
@@ -113,9 +111,8 @@ export default function StoryTimeline({ story }: { story: any }) {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.3 }}
-                      className={`hidden md:block absolute top-0 whitespace-nowrap px-4 py-1.5 rounded-full bg-white border border-slate-100 shadow-sm text-[#2776ea] font-black text-xs tracking-tighter ${
-                        isEven ? "right-12" : "left-12"
-                      }`}
+                      className={`hidden md:block absolute top-0 whitespace-nowrap px-4 py-1.5 rounded-full bg-white border border-slate-100 shadow-sm text-[#2776ea] font-black text-xs tracking-tighter ${isEven ? "right-12" : "left-12"
+                        }`}
                     >
                       {event.year}
                     </motion.div>

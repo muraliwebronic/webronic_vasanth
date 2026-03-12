@@ -17,8 +17,8 @@ export default function ManufacturingHero() {
   const { h1, description } = MANUFACTURING_HERO_DATA;
 
   return (
-    <section className="relative w-full bg-white pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28 font-sora overflow-hidden border-b border-slate-100">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+    <section className="relative w-full container-pd bg-white pt-24  pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28 font-sora overflow-hidden border-b border-slate-100">
+      <div className=" mx-auto px-6 md:px-12 lg:px-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* --- LEFT: TEXT CONTENT --- */}
           <div className="max-w-2xl">

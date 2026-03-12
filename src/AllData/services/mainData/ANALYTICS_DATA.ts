@@ -567,7 +567,7 @@ export const ANALYTICS_DATA: ServicePageData = {
         icon: "Mail",
         theme: "dark",
         list: [
-          "Email: analytics@webronic.com",
+          "Email: contact@webronic.com",
           "Phone: +91 72000 88500"
         ],
         cta: { text: "Contact Us", link: "#contact" }
@@ -577,7 +577,7 @@ export const ANALYTICS_DATA: ServicePageData = {
       title: "Contact Analytics Team",
       subtitle: "Direct access to data architects",
       methods: [
-        { label: "Email Us", value: "analytics@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
+        { label: "Email Us", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
         { label: "Call Us", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }

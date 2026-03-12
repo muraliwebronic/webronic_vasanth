@@ -99,10 +99,10 @@ export default function Footer() {
   };
 
   const socialIcons = [
-    { src: "/assets/icons/facebook.png", href: "https://www.facebook.com/thingsatweb" },
-    { src: "/assets/icons/instagram.png", href: "https://www.instagram.com/thingsatweb/" },
-    { src: "/assets/icons/youtube.png", href: "https://www.youtube.com/channel/UCp53pdpbd7qL-JNoAkAW0Ag" },
-    { src: "/assets/icons/linkedin.png", href: "https://www.linkedin.com/company/thingsatweb/" },
+    { src: "/assets/icons/facebook.png", href: "https://www.facebook.com/webronic/" },
+    { src: "/assets/icons/instagram.png", href: "https://www.instagram.com/webronic_/" },
+    { src: "/assets/icons/youtube.png", href: "https://www.youtube.com/@WEBRONIC/" },
+    { src: "/assets/icons/linkedin.png", href: "https://www.linkedin.com/company/webronic/" },
   ];
 
   const policyLinks = [
@@ -116,16 +116,16 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="relative w-full z-10 overflow-hidden bg-white border-t border-slate-100 pt-16 md:pt-20 pb-10 font-sora"
+      className="relative w-full z-10 overflow-hidden container-pd bg-white border-t border-slate-100 pt-16 md:pt-20 pb-10 font-sora"
     >
       <div className="absolute -bottom-24 -left-24 h-64 w-64 md:h-96 md:w-96 rounded-full bg-blue-100/50 blur-[80px] md:blur-[120px] pointer-events-none" />
       <div className="absolute top-0 right-0 h-48 w-48 md:h-64 md:w-64 rounded-full bg-indigo-100/50 blur-[70px] md:blur-[100px] pointer-events-none" />
 
-      <div className="relative mx-auto max-w-7xl px-6">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-[4vw]">
         <div className="grid gap-10 lg:grid-cols-5 md:grid-cols-3 grid-cols-1 sm:grid-cols-2">
 
           {/* COLUMN 1: BRAND */}
-          <div className="space-y-6 lg:col-span-2 md:col-span-3">
+          <div className="space-y-6 lg:col-span-2 md:col-span-2">
             <div className="flex justify-start">
               <Link href="/">
                 <Image
@@ -168,7 +168,7 @@ export default function Footer() {
                     href={service.href}
                     className="text-submenu text-slate-500 hover:text-[#2776ea] transition-all flex items-center group text-left"
                   >
-                 
+
                     {service.name}
                   </Link>
                 </li>
@@ -190,29 +190,15 @@ export default function Footer() {
                   >
                     <item.icon
                       size={13}
-                      className={`mr-2 transition-colors shrink-0 ${item.name === "StoreTech"
-                        ? "text-[#2776ea]"
-                        : "text-slate-400 group-hover:text-[#2776ea]"
-                        }`}
+                      className={`mr-2 transition-colors shrink-0 text-slate-400 group-hover:text-[#2776ea] `}
                     />
-                    <span className={item.name === "StoreTech" ? "font-bold text-[#2776ea]" : ""}>
+                    <span >
                       {item.name}
                     </span>
                   </button>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/about#team"
-                  className="text-submenu text-slate-500 hover:text-[#2776ea] transition-all flex items-center group"
-                >
-                  <Users
-                    size={13}
-                    className="mr-2 text-slate-400 group-hover:text-[#2776ea] transition-colors shrink-0"
-                  />
-                  Team
-                </Link>
-              </li>
+
             </ul>
           </div>
 
@@ -253,12 +239,15 @@ export default function Footer() {
             {branches.map((hub, idx) => (
               <div
                 key={idx}
-                className="group transition-all text-center md:text-left hover:bg-slate-50/50 p-4 rounded-xl border border-transparent hover:border-slate-100"
+                // 1. Added: flex, flex-col, and h-full
+                className="flex flex-col h-full group transition-all text-center md:text-left hover:bg-slate-50/50 p-4 rounded-xl border border-transparent hover:border-slate-100"
               >
+                {/* TOP: Title stays exactly as it was */}
                 <p className="text-caption font-black uppercase tracking-widest text-slate-400 mb-2 group-hover:text-[#2776ea] transition-colors">
                   {hub.city} : {hub.type}
                 </p>
 
+                {/* MIDDLE: Address link */}
                 <a
                   href={hub.mapUrl}
                   target="_blank"
@@ -268,7 +257,9 @@ export default function Footer() {
                   {hub.address}
                 </a>
 
-                <p className="text-sm mt-2 text-[#2776ea] font-bold">
+                {/* BOTTOM: Pinned to the bottom using mt-auto */}
+                {/* 2. Added: mt-auto (margin-top: auto) to push it down */}
+                <p className="mt-auto pt-4 text-sm text-[#2776ea] font-bold">
                   <a href={`tel:${hub.contact}`} className="hover:underline">
                     {hub.contact}
                   </a>
@@ -280,8 +271,12 @@ export default function Footer() {
           {/* COPYRIGHT */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 text-center md:text-left border-t border-slate-100 pt-8">
             <div className="order-2 md:order-1">
-              <p className="text-caption font-bold uppercase tracking-[0.15em] md:tracking-[0.25em] text-slate-900 max-w-xs md:max-w-none">
+              <p className="text-caption hidden md:block  font-bold uppercase tracking-[0.15em] md:tracking-[0.25em] text-slate-900  md:max-w-none">
                 © {new Date().getFullYear()} WEBRONIC INDUSTRIES PRIVATE LIMITED.
+                <br className="block md:hidden" /> ALL RIGHTS RESERVED.
+              </p>
+              <p className="text-caption md:hidden font-bold uppercase tracking-[0.15em] md:tracking-[0.25em] text-slate-900  md:max-w-none">
+                © {new Date().getFullYear()} WEBRONIC INDUSTRIES PVT. LTD.
                 <br className="block md:hidden" /> ALL RIGHTS RESERVED.
               </p>
               {/* 
@@ -301,7 +296,7 @@ export default function Footer() {
                 className="transition-opacity"
               >
                 <Image
-                  src="/assets/images/thingsatweb.png"
+                  src="/assets/webonic2.png"
                   alt="ThingsAtWeb"
                   width={100}
                   height={28}

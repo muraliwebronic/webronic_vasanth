@@ -19,7 +19,7 @@ export const IOT_DATA: ServicePageData = {
     technologies: [
       { name: "AWS IoT", logo: "/assets/images/Technology/Amazon_Web_Services_Logo.svg" },
       { name: "Azure IoT", logo: "/assets/images/Technology/Microsoft_Azure.svg" },
-      { name: "Google Cloud IoT", logo: "/assets/images/Technology/Google_Cloud_Logo.svg" },
+      { name: "Google Cloud IoT", logo: "/assets/images/Technology/Google_Cloud_logo.svg" },
       { name: "MQTT", logo: "/assets/images/Technology/Mqtt-hor.svg" },
       { name: "Docker", logo: "/assets/images/Technology/Docker_Logo.svg" }
     ]
@@ -673,7 +673,7 @@ export const IOT_DATA: ServicePageData = {
       title: "Contact IoT Team",
       subtitle: "Talk to our experts",
       methods: [
-        { label: "Email", value: "iot@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
+        { label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
         { label: "Phone", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }

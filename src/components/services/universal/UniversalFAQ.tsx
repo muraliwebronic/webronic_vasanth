@@ -12,12 +12,13 @@ export default function UniversalFAQ({ data }: { data: ServicePageData['faq'] })
     setOpenItem(openItem === index ? null : index);
   };
 
-  if (!data) return null;
+  // Hides the component if data is missing OR if there are no FAQ items
+  if (!data || !data.items || data.items.length === 0) return null;
 
   return (
-    <section className="bg-white py-24 md:py-32 font-sora relative overflow-hidden" id="faq">
+    <section className="bg-white container-pd py-24 md:py-32 font-sora relative overflow-hidden" id="faq">
 
-      <div className="container mx-auto px-6 max-w-3xl relative z-10">
+      <div className=" mx-auto px-6 max-w-3xl relative z-10">
 
         {/* CENTERED HEADER */}
         <SectionHeader
@@ -26,7 +27,7 @@ export default function UniversalFAQ({ data }: { data: ServicePageData['faq'] })
           description="Answers to common questions about our process and deliverables"
           centered={true}
           className="mb-12"
-          size="default" // Using standard size
+          size="default"
         />
 
         {/* FAQ LIST (Clean & Compact) */}
@@ -50,7 +51,7 @@ export default function UniversalFAQ({ data }: { data: ServicePageData['faq'] })
 
                   <div className="flex-1">
                     {/* Question */}
-                    <h3 className={`text-h3 font-bold leading-relaxed transition-colors duration-300 ${isOpen ? "text-primary" : "text-slate-900 group-hover:text-slate-700"
+                    <h3 className={`text-h3 leading-relaxed transition-colors duration-300 ${isOpen ? "text-primary" : "text-slate-900 group-hover:text-slate-700"
                       }`}>
                       {item.question}
                     </h3>

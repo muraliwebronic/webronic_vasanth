@@ -103,7 +103,7 @@ export const APP_SERVICES_DATA: ServicePageData = {
     cards: [
       { id: "consult", title: "Application Audit", description: "Review your current landscape", icon: "Search", theme: "light", list: ["Health check", "Optimization plan"], cta: { text: "Book Audit", link: "#" } }
     ],
-    contact: { title: "Contact App Team", subtitle: "Software Experts", methods: [{ label: "Email", value: "apps@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
+    contact: { title: "Contact App Team", subtitle: "Software Experts", methods: [{ label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
   },
   relatedResources: { services: [], columns: [] }
 };

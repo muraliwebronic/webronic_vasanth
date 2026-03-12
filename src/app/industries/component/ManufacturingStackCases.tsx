@@ -8,26 +8,26 @@ export default function ManufacturingStackCases() {
   const { stack, caseStudies } = MANUFACTURING_STACK_CASES_DATA;
 
   return (
-    <section  className="font-sora">
-      
+    <section className="font-sora">
+
       {/* --- PART 1: TECHNOLOGY STACK (Primary Blue) --- */}
-      <div  className="bg-[#2776ea] py-24 lg:py-32 text-white relative overflow-hidden">
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="bg-[#2776ea] py-24 lg:py-32 text-white relative overflow-hidden container-pd">
+        <div className="mx-auto px-6 max-w-7xl relative z-10">
           <SectionHeader isWhite title={stack.title} centered={true} className="mb-20" />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {stack.categories.map((cat, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-white p-8 rounded-[2.5rem] shadow-xl text-slate-900 transition-transform duration-300 hover:-translate-y-2"
               >
                 <div className="flex items-center gap-4 mb-8">
                   <div className="p-3 rounded-2xl bg-[#2776ea]/10 text-[#2776ea]">
                     <cat.icon size={28} />
                   </div>
-                  <h3 className="text-xl font-black">{cat.title}</h3>
+                  <h3 className="text-h3 font-black">{cat.title}</h3>
                 </div>
-                
+
                 <ul className="space-y-3">
                   {cat.items.map((item, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm text-slate-600 font-medium leading-relaxed">
@@ -43,15 +43,15 @@ export default function ManufacturingStackCases() {
       </div>
 
       {/* --- PART 2: CASE STUDIES (Clean Light) --- */}
-      <div id="case-studies" className="bg-slate-50 py-24 lg:py-32">
-        <div className="container mx-auto px-6 max-w-7xl">
-          
+      <div id="case-studies" className="bg-slate-50 py-24 lg:py-32 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+
           <SectionHeader title={caseStudies.title} centered={true} className="mb-24" />
 
           <div className="space-y-24">
             {caseStudies.cases.map((study, index) => (
               <div key={index} className="bg-white rounded-[3rem] border border-slate-200 shadow-xl overflow-hidden group hover:border-[#2776ea]/30 transition-colors">
-                
+
                 {/* Header */}
                 <div className="bg-slate-50 p-8 md:p-12 border-b border-slate-100">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -60,8 +60,8 @@ export default function ManufacturingStackCases() {
                         <study.icon size={32} />
                       </div>
                       <div>
-                         <h3 className="text-2xl md:text-3xl font-black text-slate-900">{study.title}</h3>
-                         <p className="text-sm font-bold text-slate-500 mt-1">Client: {study.client}</p>
+                        <h3 className="text-h3 font-black text-slate-900">{study.title}</h3>
+                        <p className="text-sm font-bold text-slate-500 mt-1">Client: {study.client}</p>
                       </div>
                     </div>
                     <span className="px-4 py-1.5 bg-[#76ea27]/10 text-[#76ea27] text-xs font-black uppercase tracking-widest rounded-full self-start">
@@ -71,7 +71,7 @@ export default function ManufacturingStackCases() {
                 </div>
 
                 <div className="p-8 md:p-12 grid gap-12">
-                  
+
                   {/* Challenge & Solution Grid */}
                   <div className="grid md:grid-cols-2 gap-12">
                     {/* Challenge */}
@@ -92,11 +92,11 @@ export default function ManufacturingStackCases() {
                     {/* Solution */}
                     <div className="bg-[#2776ea]/5 p-8 rounded-[2rem] border border-[#2776ea]/10">
                       <div className="flex items-center justify-between mb-6">
-                         <h4 className="flex items-center gap-3 text-lg font-black text-[#2776ea] uppercase tracking-wider">
-                           <TrendingUp size={20} /> Solution
-                         </h4>
+                        <h4 className="flex items-center gap-3 text-lg font-black text-[#2776ea] uppercase tracking-wider">
+                          <TrendingUp size={20} /> Solution
+                        </h4>
                       </div>
-                      
+
                       <div className="grid gap-6">
                         {study.solution.sections.map((section, i) => (
                           <div key={i}>

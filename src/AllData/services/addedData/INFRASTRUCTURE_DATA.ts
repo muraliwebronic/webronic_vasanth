@@ -52,7 +52,6 @@ export const INFRASTRUCTURE_DATA: ServicePageData = {
     ],
     footer: {
       left: { title: "Typical DR RTO", type: "highlight", content: "< 4 Hours" },
-      right: { title: "Partners", type: "tags", content: ["Cisco", "Dell", "VMware", "AWS"] }
     }
   },
   process: {
@@ -103,7 +102,7 @@ export const INFRASTRUCTURE_DATA: ServicePageData = {
     cards: [
       { id: "assess", title: "Free Assessment", description: "Audit your network and servers", icon: "Activity", theme: "light", list: ["Security check", "Performance review"], cta: { text: "Start Assessment", link: "#" } }
     ],
-    contact: { title: "Contact Infra Team", subtitle: "Network Engineers", methods: [{ label: "Email", value: "infra@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
+    contact: { title: "Contact Infra Team", subtitle: "Network Engineers", methods: [{ label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
   },
   relatedResources: { services: [], columns: [] }
 };

@@ -9,10 +9,10 @@ export default function RealEstateSmartCrm() {
 
   return (
     <section className="font-sora">
-      
+
       {/* --- PART 1: SMART BUILDING AUTOMATION (Primary Blue) --- */}
-      <div className="bg-[#2776ea] py-24 text-white relative overflow-hidden">
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="bg-[#2776ea] py-24 text-white relative overflow-hidden container-pd">
+        <div className="mx-auto px-6 max-w-7xl relative z-10">
           <SectionHeader isWhite title={smartBuilding.title} centered={true} className="mb-16" />
 
           {/* BMS Grid */}
@@ -39,7 +39,7 @@ export default function RealEstateSmartCrm() {
 
           {/* IoT & Tenant Experience */}
           <div className="grid lg:grid-cols-2 gap-12">
-            
+
             {/* IoT Sensors (White Card) */}
             <div className="bg-white p-8 rounded-[2.5rem] text-slate-900 shadow-2xl">
               <h3 className="text-h3 font-bold mb-6 text-slate-900">{smartBuilding.iot.title}</h3>
@@ -60,7 +60,7 @@ export default function RealEstateSmartCrm() {
             {/* Tenant Experience (Glass Card) */}
             <div className="bg-white/10 border border-white/20 p-8 rounded-[2.5rem] text-white">
               <h3 className="text-h3 font-bold mb-6">{smartBuilding.tenantExp.title}</h3>
-              
+
               <div className="bg-white/10 p-6 rounded-3xl mb-6 border border-white/10">
                 <div className="flex items-center gap-3 mb-4">
                   <smartBuilding.tenantExp.app.icon />
@@ -92,13 +92,13 @@ export default function RealEstateSmartCrm() {
       </div>
 
       {/* --- PART 2: CRM & TECH STACK (Light Theme) --- */}
-      <div className="bg-slate-50 py-24">
-        <div className="container mx-auto px-6 max-w-7xl">
-          
+      <div className="bg-slate-50 py-24 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+
           {/* CRM Section */}
           <div className="mb-24">
             <SectionHeader title={crm.title} centered={true} className="mb-12" />
-            
+
             <div className="grid lg:grid-cols-2 gap-12 mb-12">
               {crm.stages.map((stage, index) => (
                 <div key={index} className="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm hover:shadow-lg transition-shadow">
@@ -165,26 +165,26 @@ export default function RealEstateSmartCrm() {
       </div>
 
       {/* --- PART 3: CASE STUDIES & PRICING (White Theme) --- */}
-      <div id="case-studies" className="bg-white py-24 border-t border-slate-100">
-        <div className="container mx-auto px-6 max-w-7xl">
-          
+      <div id="case-studies" className="bg-white py-24 border-t border-slate-100 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+
           <div className="mb-24">
             <SectionHeader title={caseStudies.title} centered={true} className="mb-16" />
             <div className="space-y-16">
               {caseStudies.cases.map((study, index) => (
                 <div key={index} className="bg-slate-50 rounded-[3rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-shadow">
-                  
+
                   {/* Header (Clean White) */}
                   <div className="bg-white p-8 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
-                    
-                       <div>
-                          <h3 className="text-h2 font-black text-slate-900">{study.title}</h3>
-                          <p className="text-slate-500 text-submenu font-medium mt-1">{study.client}</p>
-                       </div>
+
+                      <div>
+                        <h3 className="text-h2 font-black text-slate-900">{study.title}</h3>
+                        <p className="text-slate-500 text-submenu font-medium mt-1">{study.client}</p>
+                      </div>
                     </div>
                   </div>
-                  
+
                   <div className="p-8 md:p-12 grid md:grid-cols-2 gap-12">
                     <div className="space-y-8">
                       <div>

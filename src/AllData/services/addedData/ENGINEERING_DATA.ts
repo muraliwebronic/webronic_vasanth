@@ -102,7 +102,7 @@ export const ENGINEERING_DATA: ServicePageData = {
     cards: [
       { id: "poc", title: "Proof of Concept", description: "Validate your idea", icon: "Lightbulb", theme: "light", list: ["Feasibility study", "Rough prototype"], cta: { text: "Start PoC", link: "#" } }
     ],
-    contact: { title: "Contact Engineers", subtitle: "Product Team", methods: [{ label: "Email", value: "engineering@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
+    contact: { title: "Contact Engineers", subtitle: "Product Team", methods: [{ label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
   },
   relatedResources: { services: [], columns: [] }
 };

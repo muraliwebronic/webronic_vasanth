@@ -46,27 +46,27 @@ export default function TermsAndConditions() {
   };
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <main className="bg-white font-sora pt-24 pb-20">
-      <section className="relative overflow-hidden  py-24 ">
+    <main className="bg-white font-sora pt-20 pb-12 md:pt-24 md:pb-20 w-full max-w-[100vw]">
+      <section className="relative overflow-hidden py-12 md:py-24">
         <div className="absolute inset-0 pointer-events-none opacity-40">
-          <div className="absolute top-0 right-0 w-125 h-125 bg-[#2776ea]/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 left-0 w-125 h-125 bg-[#76ea27]/10 rounded-full blur-[120px]" />
+          <div className="absolute top-0 right-0 w-50 h-50 md:w-125 md:h-125 bg-[#2776ea]/10 rounded-full blur-[60px] md:blur-[120px]" />
+          <div className="absolute bottom-0 left-0 w-50 h-50 md:w-125 md:h-125 bg-[#76ea27]/10 rounded-full blur-[60px] md:blur-[120px]" />
         </div>
 
-        <div className="relative mx-auto max-w-5xl px-6">
+        <div className="relative mx-auto container-pd px-5 md:px-0">
           <div className="flex items-center  gap-4 mb-6">
             <FileText size={14} className="text-[#2776ea]" />
             <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#2776ea]">
               Corporate Governance
             </span>
           </div>
-          <h1 className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter leading-tight">
+          <h1 className="text-h1 font-black text-slate-900 tracking-tighter leading-[1.1] mb-6">
             Terms &{" "}
-            <span className="bg-linear-to-r from-[#2776ea] to-[#76ea27] bg-clip-text text-transparent">
+            <span className="bg-linear-to-r text-h1 from-[#2776ea] to-[#76ea27] bg-clip-text text-transparent">
               Conditions
             </span>
           </h1>
-          <div className="mt-8 flex flex-wrap items-center gap-8 text-sm font-bold text-slate-400">
+          <div className="mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 text-xs md:text-sm font-bold text-slate-400">
             <div className="flex items-center gap-2">
               <Clock size={18} className="text-[#2776ea]" />{" "}
               <span>Last Updated: Dec 18, 2025</span>
@@ -79,8 +79,8 @@ export default function TermsAndConditions() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid lg:grid-cols-[320px_1fr] gap-16">
+      <section className="mx-auto container-pd px-5 md:px-0 py-12 md:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-12 lg:gap-16 items-start">
           <aside className="hidden lg:block sticky top-32 h-[calc(100vh-140px)] overflow-y-auto pr-4 custom-scrollbar">
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6 px-4">
               Legal Framework
@@ -102,7 +102,7 @@ export default function TermsAndConditions() {
             </div>
           </aside>
 
-          <div className="space-y-24">
+          <div className="space-y-20 lg:space-y-32 w-full">
             <div className="bg-[#2776ea]/5 rounded-3xl p-10 border border-[#2776ea]/10">
               <h2 className="text-xl font-black text-slate-900 mt-0 mb-4 flex items-center gap-3">
                 <ShieldAlert className="text-[#2776ea]" /> Important Notice
@@ -334,7 +334,7 @@ export default function TermsAndConditions() {
               </p>
             </div>
 
-            <div id="law" className="scroll-mt-32">
+            <div id="jurisdiction" className="scroll-mt-32">
               <h3 className="text-xl font-black uppercase tracking-widest text-[#2776ea] mb-8 flex items-center gap-3">
                 <Gavel size={24} /> 13. Governing Law & Jurisdiction
               </h3>
@@ -400,10 +400,10 @@ export default function TermsAndConditions() {
                       <Mail size={18} /> contact@webronic.com
                     </a>
                     <a
-                      href="mailto:support@webronic.com"
+                      href="mailto:contact@webronic.com"
                       className="flex items-center gap-4 text-[#2776ea] font-black text-[11px] uppercase tracking-widest"
                     >
-                      <ArrowRight size={18} /> support@webronic.com
+                      <ArrowRight size={18} /> contact@webronic.com
                     </a>
                     <div className="flex items-center gap-4 text-slate-900 font-bold">
                       <Phone size={18} className="text-[#76ea27]" /> +91 72000
@@ -411,115 +411,7 @@ export default function TermsAndConditions() {
                     </div>
                   </div>
                 </div>
-                <div className="bg-[#2776ea]/5 p-10 rounded-[2.5rem] border border-[#2776ea]/10 flex flex-col justify-between">
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2776ea] mb-4">
-                      Headquarters
-                    </p>
-                    <p className="text-lg font-bold text-slate-900 leading-tight">
-                      Webronic Industries Private Limited
-                    </p>
-                    <p className="text-sm text-slate-500 mt-2 font-medium">
-                      Chennai, Tamil Nadu, India
-                    </p>
-                  </div>
 
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="mt-10 flex items-center justify-center gap-3 bg-[#2776ea] text-white px-8 py-4 rounded-2xl font-black text-[11px] uppercase tracking-widest hover:bg-[#76ea27] transition-all shadow-xl active:scale-95"
-                  >
-                    Service Inquiries <ArrowRight size={16} />
-                  </button>
-
-                  {isModalOpen && (
-                    <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
-                      <div
-                        className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-300"
-                        onClick={() => setIsModalOpen(false)}
-                      />
-
-                      <div className="relative w-full max-w-lg bg-white rounded-[2.5rem] shadow-2xl p-8 md:p-10 animate-in zoom-in-95 slide-in-from-bottom-4 duration-300">
-                        <button
-                          onClick={() => setIsModalOpen(false)}
-                          className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition-colors"
-                        >
-                          <X size={20} />
-                        </button>
-
-                        <div className="mb-8">
-                          <div className="h-12 w-12 bg-[#2776ea]/10 rounded-2xl flex items-center justify-center mb-6">
-                            <Mail className="text-[#2776ea]" size={24} />
-                          </div>
-                          <h3 className="text-2xl font-black text-slate-900 tracking-tight">
-                            Service Inquiry
-                          </h3>
-                          <p className="text-slate-500 text-sm font-medium mt-1">
-                            Briefly tell us about your requirement.
-                          </p>
-                        </div>
-
-                        <form
-                          className="space-y-4"
-                          onSubmit={(e) => {
-                            e.preventDefault();
-                          }}
-                        >
-                          <div className="grid grid-cols-2 gap-4">
-                            <div className="space-y-1.5">
-                              <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">
-                                Full Name
-                              </label>
-                              <input
-                                type="text"
-                                className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-sm outline-none focus:ring-2 focus:ring-[#2776ea]/20 focus:border-[#2776ea] transition-all"
-                                placeholder="Your Name"
-                                required
-                              />
-                            </div>
-                            <div className="space-y-1.5">
-                              <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">
-                                Company
-                              </label>
-                              <input
-                                type="text"
-                                className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-sm outline-none focus:ring-2 focus:ring-[#2776ea]/20 focus:border-[#2776ea] transition-all"
-                                placeholder="Enter Company"
-                              />
-                            </div>
-                          </div>
-
-                          <div className="space-y-1.5">
-                            <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">
-                              Email Address
-                            </label>
-                            <input
-                              type="email"
-                              className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-sm outline-none focus:ring-2 focus:ring-[#2776ea]/20 focus:border-[#2776ea] transition-all"
-                              placeholder="yourcompany@company.com"
-                              required
-                            />
-                          </div>
-
-                          <div className="space-y-1.5">
-                            <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">
-                              Message
-                            </label>
-                            <textarea
-                              rows={4}
-                              className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-sm outline-none focus:ring-2 focus:ring-[#2776ea]/20 focus:border-[#2776ea] transition-all resize-none"
-                              placeholder="How can we help?"
-                              required
-                            ></textarea>
-                          </div>
-
-                          <button className="w-full bg-[#2776ea] text-white py-4 rounded-xl font-black text-[11px] uppercase tracking-[0.2em] shadow-lg shadow-blue-200 hover:bg-slate-900 transition-all active:scale-95">
-                            Send Message
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                  )}
-                </div>
               </div>
             </div>
           </div>

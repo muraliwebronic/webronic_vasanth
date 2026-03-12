@@ -838,7 +838,7 @@ export const AI_DATA: ServicePageData = {
       title: "Contact Our AI Team",
       subtitle: "Direct access to experts",
       methods: [
-        { label: "Email Us", value: "ai@webronic.com", icon: "Mail", iconColor: "text-[#2776ea]" },
+        { label: "Email Us", value: "contact@webronic.com", icon: "Mail", iconColor: "text-[#2776ea]" },
         { label: "Call Us", value: "+91 72000 88500", icon: "Phone", iconColor: "text-[#76ea27]" }
       ]
     }

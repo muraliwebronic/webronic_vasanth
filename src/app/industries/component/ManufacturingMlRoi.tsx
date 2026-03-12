@@ -9,12 +9,12 @@ export default function ManufacturingMlRoi() {
 
   return (
     <section className="font-sora">
-      
+
       {/* --- PART 1: ML PERFORMANCE (Primary Blue) --- */}
-      <div className="bg-[#2776ea] py-24 lg:py-32 text-white relative overflow-hidden">
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          
-          <SectionHeader 
+      <div className="bg-[#2776ea] py-24 lg:py-32 text-white relative overflow-hidden container-pd">
+        <div className="mx-auto px-6 max-w-7xl relative z-10">
+
+          <SectionHeader
             isWhite
             badge="Benchmarks"
             title={mlPerformance.title}
@@ -29,9 +29,9 @@ export default function ManufacturingMlRoi() {
                 <div className="p-3 rounded-2xl bg-[#2776ea]/10 text-[#2776ea]">
                   <mlPerformance.accuracy.icon size={28} />
                 </div>
-                <h3 className="text-2xl font-black text-slate-900">{mlPerformance.accuracy.title}</h3>
+                <h3 className="text-h3 font-black text-slate-900">{mlPerformance.accuracy.title}</h3>
               </div>
-              
+
               <div className="space-y-8">
                 {mlPerformance.accuracy.items.map((item, index) => (
                   <div key={index} className="relative pl-6 border-l-4 border-[#2776ea]">
@@ -50,11 +50,11 @@ export default function ManufacturingMlRoi() {
             <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[3rem] p-10">
               <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/10">
                 <mlPerformance.outputs.icon className="text-[#76ea27]" size={28} />
-                <h3 className="text-xl font-bold text-white tracking-wider">
+                <h3 className="text-h3 font-bold text-white tracking-wider">
                   {mlPerformance.outputs.title}
                 </h3>
               </div>
-              
+
               <ul className="space-y-4">
                 {mlPerformance.outputs.items.map((item, index) => (
                   <li key={index} className="flex items-start gap-4 text-blue-50">
@@ -69,10 +69,10 @@ export default function ManufacturingMlRoi() {
       </div>
 
       {/* --- PART 2: ROI ANALYSIS (Clean Light) --- */}
-      <div className="bg-slate-50 py-24 lg:py-32">
-        <div className="container mx-auto px-6 max-w-7xl">
-          
-          <SectionHeader 
+      <div className="bg-slate-50 py-24 lg:py-32 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+
+          <SectionHeader
             badge="Financial Impact"
             title={roi.title}
             highlight={roi.subTitle}
@@ -85,7 +85,7 @@ export default function ManufacturingMlRoi() {
             <div className="lg:col-span-4 bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm">
               <div className="flex items-center gap-3 mb-8 pb-4 border-b border-slate-100">
                 <roi.costs.icon className="text-slate-400" size={28} />
-                <h3 className="text-2xl font-black text-slate-900">{roi.costs.title}</h3>
+                <h3 className="text-h3 font-black text-slate-900">{roi.costs.title}</h3>
               </div>
               <div className="space-y-6">
                 {roi.costs.items.map((c, index) => (
@@ -108,16 +108,16 @@ export default function ManufacturingMlRoi() {
                 const isBlue = cat.color === "blue";
                 const accentColor = isBlue ? "text-[#2776ea]" : "text-[#76ea27]";
                 const bgIcon = isBlue ? "bg-[#2776ea]/10" : "bg-[#76ea27]/10";
-                
+
                 return (
                   <div key={index} className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-md hover:shadow-xl transition-all">
                     <div className="flex items-center gap-4 mb-6">
                       <div className={`p-3 rounded-2xl ${bgIcon} ${accentColor}`}>
                         <cat.icon size={24} />
                       </div>
-                      <h4 className="font-bold text-lg text-slate-900 leading-tight">
+                      <h3 className="text-h3 font-bold text-slate-900 leading-tight">
                         {cat.title}
-                      </h4>
+                      </h3>
                     </div>
                     <ul className="space-y-3">
                       {cat.items.map((item, i) => (
@@ -139,7 +139,7 @@ export default function ManufacturingMlRoi() {
               <div className="p-3 rounded-2xl bg-[#2776ea]/10 text-[#2776ea]">
                 <roi.payback.icon size={32} />
               </div>
-              <h3 className="text-3xl font-black text-slate-900">{roi.payback.title}</h3>
+              <h3 className="text-h3 font-black text-slate-900">{roi.payback.title}</h3>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">

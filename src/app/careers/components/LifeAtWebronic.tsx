@@ -9,17 +9,17 @@ export default function LifeAtWebronic() {
 
   return (
     <div className="font-sora overflow-hidden">
-      
+
       {/* --- STORIES SECTION (Light) --- */}
-      <section className="bg-slate-50 py-20 relative">
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          
-          <SectionHeader 
-             badge={lifeAtWebronic.header.badge}
-             title={lifeAtWebronic.header.title}
-             description={lifeAtWebronic.header.description}
-             centered={true}
-             className="max-w-3xl mx-auto mb-16"
+      <section className="bg-slate-50 container-pd py-20 relative">
+        <div className="mx-auto px-6 max-w-7xl relative z-10">
+
+          <SectionHeader
+            badge={lifeAtWebronic.header.badge}
+            title={lifeAtWebronic.header.title}
+            description={lifeAtWebronic.header.description}
+            centered={true}
+            className="max-w-3xl mx-auto mb-16"
           />
 
           {/* Stories Grid */}
@@ -91,13 +91,13 @@ export default function LifeAtWebronic() {
       </section>
 
       {/* --- TESTIMONIALS STRIP (Primary Blue Mode) --- */}
-      <section className="bg-[#2776ea] py-20 text-white relative overflow-hidden">
-        
+      <section className="bg-[#2776ea] py-20 container-pd text-white relative overflow-hidden">
+
         {/* Background Decor */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#76ea27]/20 rounded-full blur-[120px] pointer-events-none -translate-x-1/3 translate-y-1/3" />
-        
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+
+        <div className="container-pd mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid md:grid-cols-2 gap-10  divide-y md:divide-y-0 md:divide-x divide-white/10">
             {lifeAtWebronic.testimonials.map((item, index) => (
               <div

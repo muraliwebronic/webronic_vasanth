@@ -9,10 +9,10 @@ export default function HospitalityContactlessRms() {
 
   return (
     <section className="font-sora">
-      
+
       {/* --- PART 1: CONTACTLESS (Light Theme) --- */}
-      <div className="bg-slate-50 py-24">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="bg-slate-50 py-24 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader title={contactless.title} centered={true} className="mb-16" />
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
@@ -71,8 +71,8 @@ export default function HospitalityContactlessRms() {
       </div>
 
       {/* --- PART 2: RMS (Primary Blue) --- */}
-      <div className="bg-[#2776ea] py-24 text-white relative overflow-hidden">
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="bg-[#2776ea] py-24 text-white relative overflow-hidden container-pd">
+        <div className="mx-auto px-6 max-w-7xl relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-h1 font-black mb-4">{rms.title}</h2>
             <p className="text-white/80 font-bold text-h3">{rms.pricing.title}</p>
@@ -86,7 +86,7 @@ export default function HospitalityContactlessRms() {
                 <h3 className="text-h2 font-bold">{rms.pricing.forecasting.title}</h3>
               </div>
               <p className="text-body text-blue-50 mb-6">{rms.pricing.forecasting.description}</p>
-              
+
               <div className="mb-6">
                 <h4 className="font-bold text-white mb-3 text-caption uppercase">{rms.pricing.forecasting.inputs.title}</h4>
                 <ul className="grid sm:grid-cols-2 gap-2">
@@ -165,8 +165,8 @@ export default function HospitalityContactlessRms() {
       </div>
 
       {/* --- PART 3: RESTAURANT & F&B --- */}
-      <div className="bg-white py-24">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="bg-white py-24 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader title={restaurant.title} centered={true} className="mb-16" />
           <div className="grid lg:grid-cols-3 gap-8">
             {/* POS */}
@@ -231,8 +231,8 @@ export default function HospitalityContactlessRms() {
       </div>
 
       {/* --- PART 4: TRAVEL PLATFORMS --- */}
-      <div className="bg-slate-50 py-24">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="bg-slate-50 py-24 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-h1 font-black text-slate-900 mb-6">{travel.title}</h2>
             <p className="text-h3 text-[#2776ea] font-bold">{travel.ota.title}</p>

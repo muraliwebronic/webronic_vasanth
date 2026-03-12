@@ -116,19 +116,16 @@ export const ABOUT_PAGE_DATA = {
     india: [
       { city: "Chennai (Reg. Office)", address: "New #33, Old #17, 2nd St, Mylapore, Chennai - 600004", phone: "+91 72000 88500" },
       { city: "Chennai (Digital Hub)", address: "A1-20, Sakthi Apartments, Cenotoph Road, Teynampet, Chennai - 600004", desc: "Primary development center with 100+ engineers" },
-      { city: "Madurai", address: "JS Tower, Alanganallur Main Road, Sikkandar Savadi, Madurai - 625018", phone: "+91 63833 26928", desc: "Specialized in mobile and web development" },
-      { city: "Salem", address: "1-718, Sannasi Muniyappan Kovil, Surappalli, Salem - 636501", desc: "Focus on IoT and embedded systems" }
+      { city: "Madurai", address: "2nd Floor, 3/92B JS TOWER, Alanganallur Main Road, Sikkandar Savadi, Madurai, Tamil Nadu 625018", phone: "+91 63833 26928", desc: "Specialized in mobile and web development" },
+      { city: "Salem", address: "1-718, Sannasi Muniyappan Kovil, Surappalli (PO), Mettur (TK), Jalakandapuram, Salem - 636501", desc: "Focus on IoT and embedded systems" }
     ],
     europe: {
       partner: "Thingsatweb Sweden AB",
       desc: "Serving Nordic and European markets with local presence, support, and compliance with EU regulations including GDPR"
     },
     regions: [
-      "North America: USA, Canada",
-      "Europe: Sweden, Norway, Denmark, Germany, UK, France",
-      "Asia-Pacific: India, Singapore, Australia, Japan",
-      "Middle East: UAE, Saudi Arabia, Qatar",
-      "Africa: South Africa, Kenya, Nigeria"
+      "Europe: Sweden, Norway",
+      "Asia-Pacific: India",
     ]
   },
   metrics: {
@@ -136,7 +133,7 @@ export const ABOUT_PAGE_DATA = {
     stats: [
       { value: "15+", label: "Years Excellence" },
       { value: "500+", label: "Clients Global" },
-      { value: "50+", label: "Countries" },
+      { value: "3+", label: "Countries" },
       { value: "200+", label: "Team Members" },
       { value: "99.9%", label: "Client Satisfaction" },
       { value: "1000+", label: "Projects Delivered" },
@@ -223,31 +220,31 @@ export const ABOUT_PAGE_DATA = {
   contact: {
     title: "Contact Us",
     general: { email: "contact@webronic.com", phone: "+91 72000 88500", hours: "Mon-Fri, 9 AM - 6 PM IST" },
-    sales: "sales@webronic.com",
-    careers: "careers@webronic.com",
-    media: "media@webronic.com",
+    sales: "contact@webronic.com",
+    careers: "contact@webronic.com",
+    media: "contact@webronic.com",
     social: [
-  {
-    platform: "Facebook",
-    link: "https://www.facebook.com/thingsatweb",
-    icon: Facebook,
-  },
-  {
-    platform: "Instagram",
-    link: "https://www.instagram.com/thingsatweb/",
-    icon: Instagram,
-  },
-  {
-    platform: "YouTube",
-    link: "https://www.youtube.com/channel/UCp53pdpbd7qL-JNoAkAW0Ag",
-    icon: Youtube,
-  },
-  {
-    platform: "LinkedIn",
-    link: "https://www.linkedin.com/company/thingsatweb/",
-    icon: Linkedin,
-  },
-],
+      {
+        platform: "Facebook",
+        link: "https://www.facebook.com/webronic/",
+        icon: Facebook,
+      },
+      {
+        platform: "Instagram",
+        link: "https://www.instagram.com/webronic_/",
+        icon: Instagram,
+      },
+      {
+        platform: "YouTube",
+        link: "https://www.youtube.com/@WEBRONIC/",
+        icon: Youtube,
+      },
+      {
+        platform: "LinkedIn",
+        link: "https://www.linkedin.com/company/webronic/",
+        icon: Linkedin,
+      },
+    ],
 
     newsletter: "Subscribe for monthly insights on technology trends, case studies, and company updates"
   }

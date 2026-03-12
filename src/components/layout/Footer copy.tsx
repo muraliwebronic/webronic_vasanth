@@ -99,10 +99,10 @@ export default function Footer() {
   };
 
   const socialIcons = [
-    { src: "/assets/icons/facebook.png", href: "https://www.facebook.com/thingsatweb" },
-    { src: "/assets/icons/instagram.png", href: "https://www.instagram.com/thingsatweb/" },
-    { src: "/assets/icons/youtube.png", href: "https://www.youtube.com/channel/UCp53pdpbd7qL-JNoAkAW0Ag" },
-    { src: "/assets/icons/linkedin.png", href: "https://www.linkedin.com/company/thingsatweb/" },
+    { src: "/assets/icons/facebook.png", href: "https://www.facebook.com/webronic/" },
+    { src: "/assets/icons/instagram.png", href: "https://www.instagram.com/webronic_/" },
+    { src: "/assets/icons/youtube.png", href: "https://www.youtube.com/@WEBRONIC/" },
+    { src: "/assets/icons/linkedin.png", href: "https://www.linkedin.com/company/webronic/" },
   ];
 
   const policyLinks = [
@@ -194,8 +194,8 @@ export default function Footer() {
                     <item.icon
                       size={13}
                       className={`mr-2 transition-colors shrink-0 ${item.name === "StoreTech"
-                          ? "text-[#2776ea]"
-                          : "text-slate-400 group-hover:text-[#2776ea]"
+                        ? "text-[#2776ea]"
+                        : "text-slate-400 group-hover:text-[#2776ea]"
                         }`}
                     />
                     <span className={item.name === "StoreTech" ? "font-bold text-[#2776ea]" : ""}>
@@ -204,18 +204,7 @@ export default function Footer() {
                   </button>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/about#team"
-                  className="text-submenu text-slate-500 hover:text-[#2776ea] transition-all flex items-center group"
-                >
-                  <Users
-                    size={13}
-                    className="mr-2 text-slate-400 group-hover:text-[#2776ea] transition-colors shrink-0"
-                  />
-                  Team
-                </Link>
-              </li>
+             
             </ul>
           </div>
 

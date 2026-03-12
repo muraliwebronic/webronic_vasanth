@@ -10,8 +10,8 @@ export default function UniversalUseCases({ data }: { data: UseCasesData }) {
     if (!data) return null;
 
     return (
-        <section className="bg-white py-24 font-sora overflow-hidden">
-            <div className="container mx-auto px-6 max-w-7xl">
+        <section className="bg-white py-24 container-pd font-sora overflow-hidden">
+            <div className=" mx-auto px-6 max-w-7xl">
                 <SectionHeader
                     badge={data.badge}
                     title={data.heading}
@@ -67,18 +67,18 @@ export default function UniversalUseCases({ data }: { data: UseCasesData }) {
                                         <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                                         {useCase.economics.title}
                                     </h4>
-                                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  {useCase.economics.items.map((item, i) => (
-    <div key={i}>
-      <div className="text-xs text-slate-400 font-medium mb-1">
-        {item.label}
-      </div>
-      <div className="text-lg font-bold text-slate-900">
-        {item.value}
-      </div>
-    </div>
-  ))}
-</div>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        {useCase.economics.items.map((item, i) => (
+                                            <div key={i}>
+                                                <div className="text-xs text-slate-400 font-medium mb-1">
+                                                    {item.label}
+                                                </div>
+                                                <div className="text-lg font-bold text-slate-900">
+                                                    {item.value}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             )}
                         </motion.div>

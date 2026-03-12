@@ -9,11 +9,11 @@ export default function MediaCmsStreaming() {
 
   return (
     <section className="font-sora">
-      
+
       {/* --- PART 1: CMS (Light Theme) --- */}
-      <div className="bg-white py-24 lg:py-32">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <SectionHeader 
+      <div className="bg-white py-24 lg:py-32 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+          <SectionHeader
             badge={cms.subTitle}
             title={cms.title}
             centered={true}
@@ -22,7 +22,7 @@ export default function MediaCmsStreaming() {
 
           {/* DAM Features */}
           <div className="bg-slate-50 rounded-[3rem] p-10 md:p-14 border border-slate-100 mb-16">
-            <h3 className="text-2xl font-black text-slate-900 mb-4 text-center">{cms.damFeatures.title}</h3>
+            <h3 className="text-h3 font-black text-slate-900 mb-4 text-center">{cms.damFeatures.title}</h3>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-12">{cms.damFeatures.description}</p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -78,13 +78,13 @@ export default function MediaCmsStreaming() {
       </div>
 
       {/* --- PART 2: LIVE STREAMING (Clean Split) --- */}
-      <div className="bg-slate-50 py-24 lg:py-32">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="bg-slate-50 py-24 lg:py-32 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader title={live.title} centered={true} className="mb-20" />
 
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
-              <h3 className="text-2xl font-black text-[#2776ea] mb-8">{live.infrastructure.title}</h3>
+              <h3 className="text-h3 font-black text-[#2776ea] mb-8">{live.infrastructure.title}</h3>
               <div className="space-y-6">
                 {live.infrastructure.categories.map((cat, index) => (
                   <div key={index} className="bg-white p-6 rounded-[2rem] border border-slate-200">
@@ -106,7 +106,7 @@ export default function MediaCmsStreaming() {
             </div>
 
             <div>
-              <h3 className="text-2xl font-black text-[#76ea27] mb-8">{live.useCases.title}</h3>
+              <h3 className="text-h3 font-black text-[#76ea27] mb-8">{live.useCases.title}</h3>
               <div className="grid gap-6">
                 {live.useCases.cases.map((useCase, index) => (
                   <div key={index} className="bg-white p-6 rounded-[2rem] border border-slate-200 flex items-center gap-4 hover:shadow-md transition-shadow">
@@ -132,8 +132,8 @@ export default function MediaCmsStreaming() {
       </div>
 
       {/* --- PART 3: MUSIC STREAMING (Primary Blue) --- */}
-      <div className="bg-[#2776ea] py-24 lg:py-32 text-white">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="bg-[#2776ea] py-24 lg:py-32 text-white container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader isWhite title={music.title} centered={true} className="mb-20" />
 
           {/* Platform Development */}
@@ -162,7 +162,7 @@ export default function MediaCmsStreaming() {
           <div className="bg-white/10 backdrop-blur-md border border-white/20 p-10 md:p-16 rounded-[3rem]">
             <div className="flex flex-col lg:flex-row gap-12">
               <div className="lg:w-1/2">
-                <h3 className="text-2xl font-black mb-4">{music.distribution.title}</h3>
+                <h3 className="text-h3 font-black mb-4">{music.distribution.title}</h3>
                 <p className="text-lg font-bold text-[#76ea27] mb-6">{music.distribution.subTitle}</p>
                 <div className="space-y-4">
                   {music.distribution.platforms.map((plat, i) => (
@@ -192,8 +192,8 @@ export default function MediaCmsStreaming() {
       </div>
 
       {/* --- PART 4: TECH STACK --- */}
-      <div className="bg-white py-24">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="bg-white py-24 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader title={stack.title} centered={true} className="mb-16" />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {stack.categories.map((cat, index) => (

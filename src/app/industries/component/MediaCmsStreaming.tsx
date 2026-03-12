@@ -8,11 +8,11 @@ export default function MediaCmsStreaming() {
 
   return (
     <section className="font-sora">
-      
+
       {/* --- PART 1: CONTENT MANAGEMENT SYSTEMS (CMS/DAM) --- */}
-      <div className="bg-slate-50 py-24">
-        <div className="container mx-auto px-6 max-w-7xl">
-          
+      <div className="bg-slate-50 py-24 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
               {cms.title}
@@ -25,14 +25,14 @@ export default function MediaCmsStreaming() {
           {/* DAM Features Grid */}
           <div className="bg-white rounded-[3rem] p-8 md:p-12 border border-slate-200 shadow-sm mb-12">
             <div className="mb-10 text-center">
-              <h3 className="text-2xl font-black text-slate-900 mb-2">{cms.damFeatures.title}</h3>
+              <h3 className="text-h3 font-black text-slate-900 mb-2">{cms.damFeatures.title}</h3>
               <p className="text-slate-600">{cms.damFeatures.description}</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {cms.damFeatures.sections.map((section, index) => {
                 const isMetadata = section.title.includes("Metadata");
-                
+
                 return (
                   <div key={index} className="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-[#2776ea]/30 transition-colors">
                     <div className="flex items-center gap-3 mb-4">
@@ -44,7 +44,7 @@ export default function MediaCmsStreaming() {
                     {/* Trigger Image for Metadata context */}
                     {isMetadata && (
                       <div className="mb-4 text-xs text-slate-400 italic">
-                        
+
                       </div>
                     )}
                     <ul className="space-y-2">
@@ -93,12 +93,12 @@ export default function MediaCmsStreaming() {
       </div>
 
       {/* --- PART 2: LIVE STREAMING (Split Layout) --- */}
-      <div className="bg-white py-24 border-y border-slate-100">
-        <div className="container mx-auto px-6 max-w-7xl">
-          
+      <div className="bg-white py-24 border-y border-slate-100 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6">
-              {live.title} 
+              {live.title}
 
 
             </h2>
@@ -107,7 +107,7 @@ export default function MediaCmsStreaming() {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Left: Infrastructure */}
             <div>
-              <h3 className="text-2xl font-black text-[#2776ea] mb-8">
+              <h3 className="text-h3 font-black text-[#2776ea] mb-8">
                 {live.infrastructure.title}
               </h3>
               <div className="space-y-8">
@@ -132,7 +132,7 @@ export default function MediaCmsStreaming() {
 
             {/* Right: Use Cases */}
             <div>
-              <h3 className="text-2xl font-black text-[#76ea27] mb-8">
+              <h3 className="text-h3 font-black text-[#76ea27] mb-8">
                 {live.useCases.title}
               </h3>
               <div className="grid gap-6">
@@ -163,9 +163,9 @@ export default function MediaCmsStreaming() {
       </div>
 
       {/* --- PART 3: MUSIC STREAMING (Dark Theme) --- */}
-      <div className="bg-primary py-24 text-white relative overflow-hidden">
-        
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="bg-primary py-24 text-white relative overflow-hidden container-pd">
+
+        <div className="mx-auto px-6 max-w-7xl relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black mb-4">
               {music.title}
@@ -174,13 +174,13 @@ export default function MediaCmsStreaming() {
 
           {/* Platform Development */}
           <div className="mb-20">
-            <h3 className="text-2xl font-black mb-10 text-center text-blue-200">
+            <h3 className="text-h3 font-black mb-10 text-center text-blue-200">
               {music.platform.title}
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
               {music.platform.features.map((feat, index) => {
-                 const isRecommendation = feat.title.includes("Recommendation");
-                 return (
+                const isRecommendation = feat.title.includes("Recommendation");
+                return (
                   <div key={index} className="bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 transition-colors">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="p-3 rounded-xl bg-[#2776ea]/20 text-white">
@@ -188,11 +188,11 @@ export default function MediaCmsStreaming() {
                       </div>
                       <h4 className="font-bold text-xl">{feat.title}</h4>
                     </div>
-                    
+
                     {/* Trigger for Recommendation Algo Image */}
                     {isRecommendation && (
                       <div className="mb-4 text-xs text-blue-300 italic opacity-80">
-                        
+
                       </div>
                     )}
 
@@ -205,7 +205,7 @@ export default function MediaCmsStreaming() {
                       ))}
                     </ul>
                   </div>
-                 );
+                );
               })}
             </div>
           </div>
@@ -214,7 +214,7 @@ export default function MediaCmsStreaming() {
           <div className="bg-gradient-to-r from-[#2776ea]/20 to-[#76ea27]/20 p-10 md:p-16 rounded-[3rem] border border-white/10">
             <div className="flex flex-col lg:flex-row gap-12">
               <div className="lg:w-1/2">
-                <h3 className="text-2xl font-black mb-4">{music.distribution.title}</h3>
+                <h3 className="text-h3 font-black mb-4">{music.distribution.title}</h3>
                 <p className="text-lg font-bold text-[#76ea27] mb-6">
                   {music.distribution.subTitle}
                 </p>
@@ -248,12 +248,12 @@ export default function MediaCmsStreaming() {
       </div>
 
       {/* --- PART 4: TECHNOLOGY STACK (Clean Grid) --- */}
-      <div className="bg-white py-24">
-        <div className="container mx-auto px-6 max-w-7xl">
-          
+      <div className="bg-white py-24 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
+
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-              {stack.title} 
+              {stack.title}
             </h2>
           </div>
 

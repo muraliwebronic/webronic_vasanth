@@ -19,13 +19,13 @@ export default function LatestInsights() {
   );
 
   return (
-    <section className="relative py-20 lg:px-20 bg-white overflow-hidden font-sora">
+    <section className="relative container-pd py-20 lg:px-20 bg-white overflow-hidden font-sora">
       {/* Background Grid */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f8fafc_1px,transparent_1px),linear-gradient(to_bottom,#f8fafc_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6">
+      <div className="container-pd relative z-10 mx-auto px-6">
         {/* HEADER */}
         <SectionHeader
           badge="Blogs"
@@ -79,7 +79,7 @@ export default function LatestInsights() {
           </div>
 
           {/* --- RECENT POSTS --- */}
-          <div className="lg:col-span-5 flex flex-col h-full justify-between gap-6">
+          <div className="lg:col-span-5 flex flex-col h-full gap-6">
             <h4 className="text-menu font-black uppercase tracking-widest text-slate-400 mb-2 border-b border-slate-100 pb-4">
               Recent Updates
             </h4>

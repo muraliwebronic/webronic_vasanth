@@ -28,8 +28,8 @@ export default function WhyWebronic() {
 
   return (
     <>
-      <section className="bg-slate-50 py-24 font-sora">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <section className="bg-slate-50 container-pd py-24 font-sora">
+        <div className=" mx-auto px-6 max-w-7xl">
 
           <SectionHeader
             badge={whyWebronic.header.badge}

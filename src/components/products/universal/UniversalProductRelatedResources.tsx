@@ -22,8 +22,8 @@ export default function UniversalProductRelatedResources({ data }: { data: Servi
     const hasCustomServices = data?.services && data.services.length > 0;
 
     return (
-        <section className="bg-slate-50 py-24 font-sora relative overflow-hidden border-t border-slate-200">
-            <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <section className="bg-slate-50 container-pd py-24 font-sora relative overflow-hidden border-t border-slate-200">
+            <div className=" mx-auto px-6 max-w-7xl relative z-10">
 
                 {/* --- SECTION 1: RELATED PRODUCTS --- */}
                 <div className="mb-12">

@@ -9,10 +9,10 @@ export default function HospitalityStackCasesPricing() {
 
   return (
     <section className="font-sora">
-      
+
       {/* --- PART 1: TECHNOLOGY STACK (Primary Blue) --- */}
-      <div className="bg-[#2776ea] py-24 lg:py-32 text-white relative overflow-hidden">
-        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="bg-[#2776ea] py-24 lg:py-32 text-white relative overflow-hidden container-pd">
+        <div className="mx-auto px-6 max-w-7xl relative z-10">
           <SectionHeader isWhite title={stack.title} centered={true} className="mb-20" />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -39,14 +39,14 @@ export default function HospitalityStackCasesPricing() {
       </div>
 
       {/* --- PART 2: CASE STUDIES (Light Theme) --- */}
-      <div id="case-studies" className="bg-slate-50 py-24">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div id="case-studies" className="bg-slate-50 py-24 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader title={caseStudies.title} centered={true} className="mb-24" />
 
           <div className="space-y-20">
             {caseStudies.cases.map((study, index) => (
               <div key={index} className="bg-white rounded-[3rem] border border-slate-200 shadow-xl overflow-hidden hover:border-[#2776ea]/30 transition-colors">
-                
+
                 {/* Header (Clean Slate-50) */}
                 <div className="bg-slate-100 p-8 md:p-12 border-b border-slate-200">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -55,8 +55,8 @@ export default function HospitalityStackCasesPricing() {
                         <study.icon size={32} />
                       </div>
                       <div>
-                         <h3 className="text-h2 font-black text-slate-900">{study.title}</h3>
-                         <p className="text-submenu font-bold text-slate-500 mt-1">Client: {study.client}</p>
+                        <h3 className="text-h2 font-black text-slate-900">{study.title}</h3>
+                        <p className="text-submenu font-bold text-slate-500 mt-1">Client: {study.client}</p>
                       </div>
                     </div>
                   </div>
@@ -86,10 +86,10 @@ export default function HospitalityStackCasesPricing() {
                       <ul className="space-y-3">
                         {/*@ts-ignore*/}
                         {(study.solution.items || []).map((item, j) => (
-                           <li key={j} className="flex items-start gap-2 text-submenu text-slate-700 font-medium">
-                             <CheckCircle2 size={14} className="text-[#2776ea] shrink-0 mt-0.5" />
-                             <span className="leading-snug">{typeof item === 'string' ? item : ""}</span>
-                           </li>
+                          <li key={j} className="flex items-start gap-2 text-submenu text-slate-700 font-medium">
+                            <CheckCircle2 size={14} className="text-[#2776ea] shrink-0 mt-0.5" />
+                            <span className="leading-snug">{typeof item === 'string' ? item : ""}</span>
+                          </li>
                         ))}
                       </ul>
                     </div>
@@ -105,7 +105,7 @@ export default function HospitalityStackCasesPricing() {
                       {(study.results.items || []).map((item, i) => (
                         <div key={i} className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
                           <p className="text-submenu text-slate-600 font-medium">
-                             {typeof item === 'string' ? item : ""}
+                            {typeof item === 'string' ? item : ""}
                           </p>
                         </div>
                       ))}
@@ -119,8 +119,8 @@ export default function HospitalityStackCasesPricing() {
       </div>
 
       {/* --- PART 3: PRICING (Clean Grid) --- */}
-      <div className="bg-white py-24">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="bg-white py-24 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader title={pricing.title} centered={true} className="mb-20" />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pricing.categories.map((cat, index) => (

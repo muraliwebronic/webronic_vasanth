@@ -13,16 +13,16 @@ interface ServiceGridProps {
 export default function ServiceGrid({ services }: ServiceGridProps) {
   return (
     <section className="relative py-24 bg-white font-sora">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        
+      <div className="container-pd mx-auto px-6 md:px-12 lg:px-24">
+
         <div className="max-w-3xl mb-16">
-          <SectionHeader 
+          <SectionHeader
             badge="Specialized Capabilities"
             title="Extended"
             highlight="Service Suite"
             description="Beyond our core platforms, we offer specialized engineering and consulting services tailored to enterprise needs"
             centered={false}
-            className="mb-0" 
+            className="mb-0"
           />
         </div>
 

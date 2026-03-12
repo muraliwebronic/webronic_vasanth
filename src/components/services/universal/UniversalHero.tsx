@@ -9,9 +9,9 @@ export default function UniversalHero({ data }: { data: ServicePageData['hero'] 
    if (!data) return null;
 
    return (
-      <section className="relative w-full bg-white pt-24 pb-20 lg:pt-32 lg:pb-16 font-sora overflow-hidden border-b border-slate-100">
+      <section className="relative w-full bg-white pt-24 pb-20 container-pd lg:pt-32 lg:pb-16 font-sora overflow-hidden border-b border-slate-100">
 
-         <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+         <div className=" mx-auto px-6 md:px-12 lg:px-24 relative z-10">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
                {/* --- LEFT: COMPACT TEXT --- */}
@@ -31,11 +31,13 @@ export default function UniversalHero({ data }: { data: ServicePageData['hero'] 
                      <Link href="/contact" className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#2776ea] text-white text-menu font-bold uppercase tracking-wider hover:bg-[#1a5bbd] transition-all shadow-md active:scale-95">
                         {data.ctaPrimary}
                      </Link>
-                     {data.ctaSecondary && (
+
+                     {/* will show this after altre the content  */}
+                     {/* {data.ctaSecondary && (
                         <Link href="#case-studies" className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-slate-50 border border-slate-100 text-slate-600 text-menu font-bold uppercase tracking-wider hover:bg-white hover:border-[#2776ea]/30 hover:text-[#2776ea] transition-all active:scale-95">
                            {data.ctaSecondary}
                         </Link>
-                     )}
+                     )} */}
                   </div>
                </div>
 
@@ -45,9 +47,8 @@ export default function UniversalHero({ data }: { data: ServicePageData['hero'] 
                   {/* 1. Engineering Grid Background (Subtle Tech Feel) */}
                   <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] z-0 opacity-50" />
 
-                  {/* 2. Main Module Card */}
-                  <div className="relative z-10 w-full max-w-md bg-white rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden mx-auto lg:mr-0">
-
+                  {/* 2. Main Module Card (UPDATED to max-w-sm and protected from global CSS) */}
+<div className="relative z-10 w-full max-w-sm lg:max-w-none lg:w-[clamp(384px,35vw,500px)] lg:flex-none bg-white rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden mx-auto lg:mr-0">
                      {/* Top Status Bar */}
                      <div className="bg-slate-50/50 px-5 py-3 border-b border-slate-100 flex justify-between items-center">
                         <div className="flex gap-1.5">
@@ -98,7 +99,7 @@ export default function UniversalHero({ data }: { data: ServicePageData['hero'] 
                   </div>
 
                   {/* Floating Badge (Accent) - Responsive Positioning */}
-                  <div className="relative mt-6 lg:absolute lg:mt-0 lg:-bottom-6 lg:-left-12 lg:translate-x-0 bg-white p-4 rounded-2xl border border-slate-100 shadow-xl z-20 flex items-center gap-4 animate-[float_4s_ease-in-out_infinite] max-w-xs mx-auto lg:mx-0">
+                  <div className="relative mt-6 lg:absolute lg:mt-0 lg:-bottom-18 lg:-left-12 lg:translate-x-0 bg-white p-4 rounded-2xl border border-slate-100 shadow-xl z-20 flex items-center gap-4 animate-[float_4s_ease-in-out_infinite] max-w-xs mx-auto lg:mx-0">
                      <div className="bg-[#76ea27]/10 p-2 rounded-xl text-[#6cd623] shrink-0">
                         <Activity size={20} />
                      </div>

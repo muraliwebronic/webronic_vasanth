@@ -171,7 +171,7 @@ export const CAREERS_DATA: CareersPageData = {
     stats: [
       { value: "200+", label: "Team Members", icon: Users },
       { value: "15+", label: "Years Innovation", icon: Briefcase },
-      { value: "50+", label: "Countries", icon: Globe },
+      { value: "3+", label: "Countries", icon: Globe },
       { value: "4.8/5", label: "Glassdoor", icon: Star },
     ],
   },
@@ -1192,7 +1192,7 @@ benefits: {
       icon: UserCheck,
       description: "Final alignment meeting",
       details: [
-        "For senior/leadership roles: meet with VP/CTO",
+        "For senior/leadership roles: meet with Head of Technology and Project Operations",
         "For all roles: opportunity to meet potential teammates",
         "Ask any remaining questions",
       ],

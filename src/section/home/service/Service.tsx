@@ -100,7 +100,7 @@ export default function ServiceHorizontal() {
     <section
       ref={targetRef}
       id="services"
-      className="relative h-[300vh] font-sora bg-[#2776ea]" // Updated to Primary Blue
+      className="relative h-[300vh] font-sora  bg-[#2776ea]" // Updated to Primary Blue
     >
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         {/* --- BACKGROUND (Primary Blue Mode) --- */}
@@ -170,14 +170,14 @@ export default function ServiceHorizontal() {
                 description={service.description}
                 image={service.image}
                 path={service.path}
-                className="w-[85vw] md:w-[360px] h-[420px] shrink-0"
+                className="w-[85vw] md:w-[clamp(320px,22vw,480px)] h-[clamp(400px,28vw,560px)] shrink-0"
               />
             ))}
 
           {/* VIEW ALL CARD */}
           <Link
             href="/service"
-            className="group relative flex flex-col justify-end h-[420px] w-[85vw] md:w-[320px] shrink-0 font-sora"
+            className="group relative flex flex-col justify-end h-[clamp(400px,28vw,560px)] w-[85vw] md:w-[clamp(320px,22vw,480px)] shrink-0 font-sora"
           >
             <div className="absolute top-0 left-0 right-0 z-20 flex justify-center pointer-events-none">
               <div className="relative w-[180px] h-[180px] flex items-center justify-center transition-transform duration-500 cubic-bezier(0.25, 0.46, 0.45, 0.94) group-hover:-translate-y-6 group-hover:scale-110 group-hover:rotate-6">

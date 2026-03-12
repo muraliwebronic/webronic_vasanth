@@ -134,7 +134,7 @@ export const DEVOPS_DATA: ServicePageData = {
               { term: "Terraform", description: "Multi-Cloud Infrastructure. Cloud-agnostic, Declarative syntax, State management." },
               { term: "AWS CloudFormation", description: "AWS-Native IaC. Deep integration, Stack management, Drift detection." },
               { term: "Ansible", description: "Configuration Management. Agentless, Simple YAML syntax, Idempotent operations." },
-              { term: "Kubernetes Manifests", description: "Container Infrastructure as YAML (Deployments, Services, ConfigMaps)." }
+              { term: "Kubernetes Manifests", description: "container  Infrastructure as YAML (Deployments, Services, ConfigMaps)." }
             ]
           }
         ]
@@ -157,7 +157,7 @@ export const DEVOPS_DATA: ServicePageData = {
             heading: "Kubernetes (K8s)",
             items: [
               { term: "Features", description: "Automated scheduling, Self-healing, Auto-scaling, Load balancing, Rolling updates." },
-              { term: "Architecture", description: "Control Plane (API Server, etcd, Scheduler), Worker Nodes (Kubelet, Container runtime)." },
+              { term: "Architecture", description: "Control Plane (API Server, etcd, Scheduler), Worker Nodes (Kubelet, container  runtime)." },
               { term: "Managed Kubernetes", description: "Amazon EKS, Azure AKS, Google GKE. Managed control plane, Automated updates." }
             ]
           },
@@ -538,7 +538,7 @@ export const DEVOPS_DATA: ServicePageData = {
         icon: "Mail",
         theme: "dark",
         list: [
-          "Email: devops@webronic.com",
+          "Email: contact@webronic.com",
           "Phone: +91 72000 88500"
         ],
         cta: { text: "Contact Us", link: "#contact" }
@@ -548,7 +548,7 @@ export const DEVOPS_DATA: ServicePageData = {
       title: "Contact DevOps Team",
       subtitle: "Direct access to engineers",
       methods: [
-        { label: "Email Us", value: "devops@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
+        { label: "Email Us", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
         { label: "Call Us", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }

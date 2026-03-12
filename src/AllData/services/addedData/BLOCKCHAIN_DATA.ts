@@ -102,7 +102,7 @@ export const BLOCKCHAIN_DATA: ServicePageData = {
     cards: [
       { id: "consult", title: "Blockchain Consult", description: "Evaluate feasibility", icon: "MessageSquare", theme: "light", list: ["Tech selection", "Architecture"], cta: { text: "Book Consult", link: "#" } }
     ],
-    contact: { title: "Contact Blockchain Team", subtitle: "Web3 Developers", methods: [{ label: "Email", value: "blockchain@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
+    contact: { title: "Contact Blockchain Team", subtitle: "Web3 Developers", methods: [{ label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" }] }
   },
   relatedResources: { services: [], columns: [] }
 };

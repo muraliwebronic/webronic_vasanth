@@ -45,7 +45,7 @@ function DescriptionRenderer({ text, className = "" }: { text: string; className
 export default function UniversalProductFeatures({ data }: { data: ProductFeaturesData }) {
     const [selectedFeature, setSelectedFeature] = useState<typeof data.features[0] | null>(null);
     const [activeTab, setActiveTab] = useState<string>("");
-    
+
     // OPTIMIZATION 2: Ready state to defer heavy DOM rendering
     const [isModalReady, setIsModalReady] = useState(false);
 
@@ -60,7 +60,7 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
             const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
             document.body.style.overflow = "hidden";
             document.body.style.paddingRight = `${scrollbarWidth}px`;
-            
+
             // Give Framer Motion 50ms to start the slide-up before blocking the main thread
             const timer = setTimeout(() => setIsModalReady(true), 50);
             return () => clearTimeout(timer);
@@ -69,10 +69,10 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
             document.body.style.paddingRight = "0px";
             setIsModalReady(false);
         }
-        
+
         // Safety cleanup on unmount
-        return () => { 
-            document.body.style.overflow = "unset"; 
+        return () => {
+            document.body.style.overflow = "unset";
             document.body.style.paddingRight = "0px";
         };
     }, [selectedFeature]);
@@ -80,11 +80,11 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
     // OPTIMIZATION 1: Unified scroll checker with useCallback and requestAnimationFrame
     const checkScroll = useCallback(() => {
         if (!mobileScrollRef.current) return;
-        
+
         window.requestAnimationFrame(() => {
             const { scrollTop, scrollHeight, clientHeight } = mobileScrollRef.current!;
             const shouldShow = scrollHeight > clientHeight && scrollTop + clientHeight < scrollHeight - 20;
-            
+
             // Only trigger a re-render if the boolean value actually changes
             setShowContentScrollHint(prev => prev !== shouldShow ? shouldShow : prev);
         });
@@ -105,8 +105,8 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
     if (!data) return null;
 
     return (
-        <section className="relative bg-slate-50 py-24 font-sora overflow-hidden border-b border-slate-200/60">
-            <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <section className="relative container-pd bg-slate-50 py-24 font-sora overflow-hidden border-b border-slate-200/60">
+            <div className=" mx-auto px-6 max-w-7xl relative z-10">
 
                 <SectionHeader
                     badge={data.badge}
@@ -118,7 +118,7 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
                 />
 
                 {/* FEATURES GRID */}
-                <div className="grid lg:grid-cols-3 gap-8">
+                <div className="grid lg:grid-cols-2 gap-8">
                     {data.features.map((feature, index) => {
                         const totalItems = feature.tabs?.reduce((sum, tab) => {
                             const c = tab.content;
@@ -199,24 +199,27 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
 
             </div>
 
-            {/* FULL-PAGE MODAL */}
+            {/* FULL-PAGE MODAL (GPU OPTIMIZED) */}
             <AnimatePresence>
                 {selectedFeature && (
-                    <div className="fixed inset-0 z-200 flex items-end lg:items-stretch justify-center">
+                    <div className="fixed inset-0 z-[200] flex items-end lg:items-stretch justify-center">
+                        
+                        {/* 1. OPTIMIZED BACKDROP: No blur, slightly darker, faster transition */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+                            transition={{ duration: 0.2 }}
+                            className="absolute inset-0 bg-slate-900/80"
                             onClick={() => setSelectedFeature(null)}
                         />
 
                         <motion.div
-                            initial={{ y: "100%", opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: "100%", opacity: 0 }}
-                            transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                            className="relative w-full h-[100dvh] bg-white shadow-2xl overflow-hidden flex flex-col"
+                            initial={{ y: "100%" }}
+                            animate={{ y: 0 }}
+                            exit={{ y: "100%" }}
+                            transition={{ type: "tween", ease: [0.25, 1, 0.5, 1], duration: 0.4 }}
+                            className="relative w-full h-[100dvh] bg-white shadow-2xl overflow-hidden flex flex-col will-change-transform"
                         >
 
                             {/* TOP BAR */}
@@ -244,7 +247,7 @@ export default function UniversalProductFeatures({ data }: { data: ProductFeatur
                                     <>
                                         {/* SIDEBAR TABS — Desktop only */}
                                         {selectedFeature.tabs && selectedFeature.tabs.length > 0 && (
-                                            <div className="hidden lg:flex flex-col w-64 xl:w-72 shrink-0 border-r border-slate-100 bg-slate-50/50 overflow-y-auto">
+                                            <div className="hidden lg:flex flex-col w-64 lg:w-100 shrink-0 border-r border-slate-100 bg-slate-50/50 overflow-y-auto">
                                                 <div className="p-5 space-y-1">
                                                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 px-3">Sections</p>
                                                     {selectedFeature.tabs.map((tab) => {

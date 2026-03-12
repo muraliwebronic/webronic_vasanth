@@ -16,7 +16,7 @@ export default function CareersHero() {
 
   return (
     <section className="relative w-full bg-white pt-24 pb-12 lg:pt-32 lg:pb-16 font-sora overflow-hidden border-b border-slate-100">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+      <div className="container-pd mx-auto px-6 md:px-12 lg:px-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* --- LEFT COLUMN --- */}
           <div className="max-w-2xl">

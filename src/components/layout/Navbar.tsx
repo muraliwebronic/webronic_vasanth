@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import {
   ChevronDown,
@@ -23,6 +23,7 @@ import {
   Store,
   LayoutGrid,
   Users, // Added for CRM
+  MapPin,
 } from "lucide-react";
 import { products } from "@/AllData/products/PRODUCT_DATA";
 
@@ -51,7 +52,7 @@ const serviceItems = [
     icon: Cloud,
   },
   {
-    name: "Digital Trans",
+    name: "DIGITAL TRANSFORMATION",
     href: "/services?category=digital-transformation",
     icon: Zap,
   },
@@ -99,8 +100,17 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState<string>("hero");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
   const router = useRouter();
   const path = usePathname();
+
+  // Track compact breakpoint (below 1348px)
+  useEffect(() => {
+    const checkWidth = () => setIsCompact(window.innerWidth < 1348);
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -178,22 +188,22 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-[100] transition-all duration-500 ${scrolled || open ? "py-3" : "py-6"
+        className={`fixed inset-x-0 top-0 z-[100] transition-all lg:px-10 duration-500 ${scrolled || open ? "py-3" : "py-6"
           }`}
       >
         <nav
-          className={`relative mx-auto flex max-w-[95%] lg:max-w-7xl items-center justify-between px-5 py-2.5 rounded-2xl transition-all duration-500 ${scrolled || open
+          className={`relative mx-auto flex max-w-[95%] lg:max-w-none items-center justify-between px-5 py-2.5 ${isCompact ? 'lg:px-5' : 'lg:px-[4vw]'} rounded-2xl transition-all duration-500 ${scrolled || open
             ? "bg-white/75 backdrop-blur-xl border border-slate-200/40 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)]"
             : "bg-transparent border-transparent"
             }`}
         >
           {/* --- LEFT: LOGO --- */}
-          <Link href="/#hero" className="relative z-[101] flex items-center shrink-0">
+          <Link href="/" className="relative z-[101] flex items-center shrink-0">
             <Image
               src="/assets/webonic2.png"
               alt="Logo"
               width={130}
-              height={30}
+              height={60}
               priority
               className="w-28 lg:w-32"
             />
@@ -230,28 +240,21 @@ export default function Navbar() {
                   />
                 </button>
 
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-3 group-hover:translate-y-0">
-                  <div className="bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl p-2 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] flex flex-col gap-1 max-h-[80vh] overflow-y-auto">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[clamp(288px,20vw,400px)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-3 group-hover:translate-y-0">
+                  <div className="bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl p-[clamp(8px,0.6vw,14px)] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] flex flex-col  max-h-[80vh] overflow-y-auto">
                     {serviceItems.map((item, index) => (
                       <button
                         key={item.name}
                         onClick={() => handleNavClick(item)}
-                        className={`flex items-center gap-3 w-full p-2.5 rounded-xl text-left transition-all hover:bg-slate-50 group/item ${index === 0
-                          ? "bg-slate-50/80 border-b border-slate-100 mb-1"
-                          : ""
-                          }`}
+                        className={`flex items-center gap-[clamp(12px,0.9vw,18px)] w-full p-[clamp(10px,0.7vw,16px)] rounded-xl text-left transition-all hover:bg-slate-50 group/item `}
                       >
                         <div
-                          className={`h-8 w-8 rounded-lg flex items-center justify-center transition-colors ${index === 0
-                            ? "bg-[#2776ea] text-white"
-                            : "bg-slate-50 text-slate-500 group-hover/item:text-[#2776ea] group-hover/item:bg-[#2776ea]/10"
-                            }`}
+                          className={`h-[clamp(32px,2.2vw,44px)] w-[clamp(32px,2.2vw,44px)] rounded-lg flex items-center justify-center transition-colors bg-slate-50 text-slate-500 group-hover/item:text-[#2776ea] group-hover/item:bg-[#2776ea]/10`}
                         >
                           <item.icon size={16} />
                         </div>
                         <span
-                          className={`text-submenu font-bold uppercase ${index === 0 ? "text-[#2776ea]" : "text-slate-700"
-                            }`}
+                          className={`text-submenu font-bold uppercase text-slate-700`}
                         >
                           {item.name}
                         </span>
@@ -276,28 +279,21 @@ export default function Navbar() {
                   />
                 </button>
 
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-3 group-hover:translate-y-0">
-                  <div className="bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl p-2 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] flex flex-col gap-1">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[clamp(256px,18vw,380px)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-3 group-hover:translate-y-0">
+                  <div className="bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl p-[clamp(8px,0.6vw,14px)] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] flex flex-col gap-1">
                     {productItems.map((item, index) => (
                       <button
                         key={item.name}
                         onClick={() => handleNavClick(item)}
-                        className={`flex items-center gap-3 w-full p-2.5 rounded-xl text-left transition-all hover:bg-slate-50 group/item ${index === 0
-                          ? "bg-slate-50/80 border-b border-slate-100 mb-1"
-                          : ""
-                          }`}
+                        className={`flex items-center gap-[clamp(12px,0.9vw,18px)] w-full p-[clamp(10px,0.7vw,16px)] rounded-xl text-left transition-all hover:bg-slate-50 group/item`}
                       >
                         <div
-                          className={`h-8 w-8 rounded-lg flex items-center justify-center transition-colors ${index === 0
-                            ? "bg-[#2776ea] text-white"
-                            : "bg-slate-50 text-slate-500 group-hover/item:text-[#2776ea] group-hover/item:bg-[#2776ea]/10"
-                            }`}
+                          className={`h-[clamp(32px,2.2vw,44px)] w-[clamp(32px,2.2vw,44px)] rounded-lg flex items-center justify-center transition-colors bg-slate-50 text-slate-500 group-hover/item:text-[#2776ea] group-hover/item:bg-[#2776ea]/10`}
                         >
                           <item.icon size={16} />
                         </div>
                         <span
-                          className={`text-submenu font-bold uppercase ${index === 0 ? "text-[#2776ea]" : "text-slate-700"
-                            }`}
+                          className={`text-submenu font-bold uppercase text-slate-700`}
                         >
                           {item.name}
                         </span>
@@ -307,8 +303,9 @@ export default function Navbar() {
                 </div>
               </li>
 
-              {/* 4. REST OF NAV LINKS */}
+              {/* 4. REST OF NAV LINKS (skip Branches when compact) */}
               {navLinks.slice(1).map((item) => {
+                if (item.name === "Branches" && isCompact) return null;
                 const active = isLinkActive(item);
                 return (
                   <li key={item.name}>
@@ -335,19 +332,33 @@ export default function Navbar() {
                   />
                 </button>
 
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-3 group-hover:translate-y-0">
-                  <div className="bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl p-2 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[clamp(240px,17vw,360px)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-3 group-hover:translate-y-0">
+                  <div className="bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl p-[clamp(8px,0.6vw,14px)] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+                    {/* Branches injected into Company dropdown when compact */}
+                    {isCompact && (
+                      <button
+                        onClick={() => handleNavClick({ name: "Branches", type: "page", href: "/branches" })}
+                        className={`flex items-center gap-[clamp(12px,0.9vw,18px)] w-full p-[clamp(10px,0.7vw,16px)] rounded-xl text-left transition-all group/item ${path === "/branches" ? "bg-slate-50" : "hover:bg-slate-50"}`}
+                      >
+                        <div className={`h-[clamp(32px,2.2vw,44px)] w-[clamp(32px,2.2vw,44px)] rounded-lg flex items-center justify-center transition-colors ${path === "/branches" ? "bg-[#2776ea] text-white" : "bg-slate-50 text-slate-500 group-hover/item:text-[#2776ea] group-hover/item:bg-[#2776ea]/10"}`}>
+                          <MapPin size={16} />
+                        </div>
+                        <span className={`text-submenu font-bold uppercase ${path === "/branches" ? "text-[#2776ea]" : "text-slate-700"}`}>
+                          Branches
+                        </span>
+                      </button>
+                    )}
                     {companyItems.map((item) => (
                       <button
                         key={item.name}
                         onClick={() => handleNavClick(item)}
-                        className={`flex items-center gap-3 w-full p-2.5 rounded-xl text-left transition-all group/item ${activeSection === item.id && path === "/"
+                        className={`flex items-center gap-[clamp(12px,0.9vw,18px)] w-full p-[clamp(10px,0.7vw,16px)] rounded-xl text-left transition-all group/item ${activeSection === item.id && path === "/"
                           ? "bg-slate-50"
                           : "hover:bg-slate-50"
                           }`}
                       >
                         <div
-                          className={`h-8 w-8 rounded-lg flex items-center justify-center transition-colors ${activeSection === item.id && path === "/"
+                          className={`h-[clamp(32px,2.2vw,44px)] w-[clamp(32px,2.2vw,44px)] rounded-lg flex items-center justify-center transition-colors ${activeSection === item.id && path === "/"
                             ? "bg-[#2776ea] text-white"
                             : "bg-slate-50 text-slate-500 group-hover/item:text-[#2776ea] group-hover/item:bg-[#2776ea]/10"
                             }`}
@@ -428,18 +439,14 @@ export default function Navbar() {
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item)}
-                className={`p-3 bg-slate-50 rounded-xl flex flex-col gap-3 border border-slate-100/50 hover:bg-white hover:border-[#2776ea]/30 transition-all text-left ${index === 0
-                  ? "col-span-2 bg-[#2776ea]/5 border-[#2776ea]/20"
-                  : ""
-                  }`}
+                className="p-3 bg-slate-50 rounded-xl flex flex-col gap-3 border border-slate-100/50 hover:bg-white hover:border-[#2776ea]/30 transition-all text-left"
               >
                 <item.icon
                   size={20}
-                  className={index === 0 ? "text-[#2776ea]" : "text-slate-500"}
+                  className="text-slate-500"
                 />
                 <span
-                  className={`text-caption font-bold uppercase tracking-wider leading-tight ${index === 0 ? "text-[#2776ea]" : "text-slate-700"
-                    }`}
+                  className="text-caption font-bold uppercase tracking-wider leading-tight text-slate-700"
                 >
                   {item.name}
                 </span>
@@ -456,18 +463,14 @@ export default function Navbar() {
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item)}
-                className={`p-3 bg-slate-50 rounded-xl flex flex-col gap-3 border border-slate-100/50 hover:bg-white hover:border-[#2776ea]/30 transition-all text-left ${index === 0
-                  ? "col-span-2 bg-[#2776ea]/5 border-[#2776ea]/20"
-                  : ""
-                  }`}
+                className="p-3 bg-slate-50 rounded-xl flex flex-col gap-3 border border-slate-100/50 hover:bg-white hover:border-[#2776ea]/30 transition-all text-left"
               >
                 <item.icon
                   size={20}
-                  className={index === 0 ? "text-[#2776ea]" : "text-slate-500"}
+                  className="text-slate-500"
                 />
                 <span
-                  className={`text-caption font-bold uppercase tracking-wider leading-tight ${index === 0 ? "text-[#2776ea]" : "text-slate-700"
-                    }`}
+                  className="text-caption font-bold uppercase tracking-wider leading-tight text-slate-700"
                 >
                   {item.name}
                 </span>
@@ -492,6 +495,16 @@ export default function Navbar() {
                 </span>
               </button>
             ))}
+          </div>
+
+          <div className="mt-8 mb-4">
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-center w-full bg-[#2776ea] text-white px-7 py-4 rounded-xl text-submenu font-bold uppercase tracking-widest hover:bg-[#1e5ebf] active:scale-[0.98] transition-all shadow-lg shadow-[#2776ea]/20"
+            >
+              Start Project
+            </Link>
           </div>
         </div>
       </div>

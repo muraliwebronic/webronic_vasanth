@@ -67,8 +67,8 @@ export default function UniversalIndustries({ data }: { data: ServicePageData['i
   const theme = themeConfig[currentIndustry.theme] || themeConfig.blue;
 
   return (
-    <section className="bg-slate-50 py-24 lg:py-32 font-sora relative overflow-hidden">
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+    <section className="bg-slate-50 container-pd py-24 lg:py-32 font-sora relative overflow-hidden">
+      <div className=" mx-auto px-6 max-w-7xl relative z-10">
 
         <SectionHeader
           badge="Impact"
@@ -90,7 +90,7 @@ export default function UniversalIndustries({ data }: { data: ServicePageData['i
                 <span className="text-caption font-black uppercase tracking-[0.2em]">Industries</span>
               </div>
 
-              {/* TAB CONTAINER */}
+              {/* TAB container  */}
               <div
                 ref={scrollRef}
                 className="flex flex-row lg:flex-col gap-2 overflow-x-auto pb-4 lg:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden p-1"
@@ -144,7 +144,7 @@ export default function UniversalIndustries({ data }: { data: ServicePageData['i
           </div>
 
           {/* --- RIGHT: CONTENT AREA --- */}
-          <div className="lg:w-3/4 min-h-[500px]">
+          <div className="lg:w-3/4 ">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -192,8 +192,9 @@ export default function UniversalIndustries({ data }: { data: ServicePageData['i
                       <p className="text-sm text-slate-500 leading-relaxed mb-6 grow">
                         {feature.desc}
                       </p>
-
-                      {feature.caseStudy && (
+                      
+                      {/* --------------- add this Success Story later ------------- */}
+                      {/* {feature.caseStudy && (
                         <div className="mt-auto pt-4 border-t border-slate-50">
                           <div className="flex items-center gap-2 mb-2">
                             <Zap size={12} className={theme.zap} />
@@ -210,7 +211,7 @@ export default function UniversalIndustries({ data }: { data: ServicePageData['i
                             </p>
                           </div>
                         </div>
-                      )}
+                      )} */}
                     </div>
                   ))}
                 </div>

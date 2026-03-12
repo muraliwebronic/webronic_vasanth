@@ -585,7 +585,7 @@ export const SOFTWARE_DATA: ServicePageData = {
       title: "Contact Dev Team",
       subtitle: "Direct access to engineers",
       methods: [
-        { label: "Email", value: "development@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
+        { label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
         { label: "Phone", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }
@@ -593,7 +593,7 @@ export const SOFTWARE_DATA: ServicePageData = {
 
   relatedResources: {
     services: [
-      { title: "Mobile Apps", id: "mobile-app-development", icon: "Smartphone", color: "text-green-500", bg: "bg-green-50" },
+      { title: "Mobile Apps", id: "mobile-development", icon: "Smartphone", color: "text-green-500", bg: "bg-green-50" },
       { title: "Cloud Services", id: "cloud-services", icon: "Cloud", color: "text-sky-500", bg: "bg-sky-50" },
       { title: "DevOps", id: "devops", icon: "Infinity", color: "text-purple-500", bg: "bg-purple-50" }
     ],

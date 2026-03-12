@@ -17,7 +17,7 @@ export default function OpenPositions() {
 
   return (
     <section id="open-positions" className="bg-slate-50 py-24 font-sora">
-      <div className="container mx-auto px-6 max-w-5xl">
+      <div className="container-pd mx-auto px-6 max-w-5xl">
         <SectionHeader
           badge={openPositions.header.badge}
           title={openPositions.header.title}
@@ -44,11 +44,10 @@ export default function OpenPositions() {
           {filtered.map((job) => (
             <div
               key={job.id}
-              className={`bg-white rounded-3xl border transition-all duration-300 overflow-hidden ${
-                expanded === job.id
-                  ? "border-[#2776ea] shadow-xl shadow-blue-900/10"
-                  : "border-slate-100 hover:border-[#2776ea]/30"
-              }`}
+              className={`bg-white rounded-3xl border transition-all duration-300 overflow-hidden ${expanded === job.id
+                ? "border-[#2776ea] shadow-xl shadow-blue-900/10"
+                : "border-slate-100 hover:border-[#2776ea]/30"
+                }`}
             >
               <button
                 onClick={() => setExpanded(expanded === job.id ? null : job.id)}
@@ -71,11 +70,10 @@ export default function OpenPositions() {
                   </div>
                 </div>
                 <div
-                  className={`h-10 w-10 rounded-full flex items-center justify-center transition-all ${
-                    expanded === job.id
-                      ? "bg-[#2776ea] text-white rotate-180"
-                      : "bg-slate-50 text-slate-400"
-                  }`}
+                  className={`h-10 w-10 rounded-full flex items-center justify-center transition-all ${expanded === job.id
+                    ? "bg-[#2776ea] text-white rotate-180"
+                    : "bg-slate-50 text-slate-400"
+                    }`}
                 >
                   <ChevronDown size={20} />
                 </div>

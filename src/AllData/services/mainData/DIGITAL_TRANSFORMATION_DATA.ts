@@ -617,15 +617,43 @@ export const DIGITAL_TRANSFORMATION_DATA: ServicePageData = {
     items: [
       {
         question: "How long does digital transformation take?",
-        answer: "Timelines vary, but we use phased approaches to deliver value early. Typically: Strategy (1-2 months), Pilot (3-6 months), Scale (12-24 months)."
+        answer: "Transformation timelines vary based on scope and organizational readiness. We use phased approaches delivering value throughout the journey, not just at the end."
       },
       {
         question: "What does digital transformation cost?",
-        answer: "Investment depends on organization size and scope. We provide detailed cost estimates after the initial assessment."
+        answer: "Investment depends on organization size and scope. We provide detailed cost estimates after initial assessment."
       },
       {
         question: "Do we need to replace all our systems?",
-        answer: "Not necessarily. We assess utilizing 'Rehost, Replatform, Refactor, Rebuild, Replace' strategies to maximize value from existing investments where possible."
+        answer: "Not necessarily. Our approach is to keep systems providing value, integrate legacy systems via APIs, replace only when necessary, and use gradual migration instead of 'rip and replace'."
+      },
+      {
+        question: "How do you ensure employee adoption?",
+        answer: "Change management is embedded throughout with early stakeholder involvement, comprehensive training programs, a super-user network, continuous support, while celebrating wins and recognizing adopters."
+      },
+      {
+        question: "Can we transform incrementally?",
+        answer: "Yes. We recommend phased transformation: start with high-value, lower-risk initiatives, build momentum with quick wins, gradually expand scope, and learn and adjust as you go."
+      },
+      {
+        question: "What if we don't know where to start?",
+        answer: "Our Digital Strategy Workshop spanning 3-5 days provides a current state assessment, vision development, prioritized roadmap, and a clear starting point."
+      },
+      {
+        question: "How do you measure transformation success?",
+        answer: "We track metrics across Business (revenue growth, cost savings), Customer (satisfaction, retention), Operational (productivity, quality, cycle time), and Financial (ROI, payback period, NPV)."
+      },
+      {
+        question: "What's your role vs our team's role?",
+        answer: "It's a partnership model. We provide strategy, expertise, implementation, and best practices. You provide business knowledge, decision-making, and resources. Together we execute transformation, manage change, and achieve outcomes."
+      },
+      {
+        question: "Can transformation work with our legacy constraints?",
+        answer: "Yes. We specialize in transforming organizations with legacy systems over 20 years old, manual production tracking, regulatory constraints, budget limitations, and risk-averse cultures. Our methodology accommodates real-world constraints."
+      },
+      {
+        question: "What happens after transformation completes?",
+        answer: "Transformation is continuous, involving ongoing optimization, an innovation pipeline, emerging technology adoption, and building a continuous improvement culture. We offer ongoing partnership or transition to your team."
       }
     ]
   },
@@ -666,7 +694,7 @@ export const DIGITAL_TRANSFORMATION_DATA: ServicePageData = {
       title: "Contact Transformation Team",
       subtitle: "Direct access to strategists",
       methods: [
-        { label: "Email Us", value: "transform@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
+        { label: "Email Us", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
         { label: "Call Us", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }

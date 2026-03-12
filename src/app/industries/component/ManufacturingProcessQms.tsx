@@ -9,10 +9,10 @@ export default function ManufacturingProcessQms() {
 
   return (
     <section className="font-sora">
-      
+
       {/* --- PART 1: PROCESS CAPABILITY (Primary Blue) --- */}
-      <div className="bg-[#2776ea] py-24 lg:py-32 text-white">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="bg-[#2776ea] py-24 lg:py-32 text-white container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader isWhite title={capability.title} centered={true} className="mb-20" />
 
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
@@ -22,7 +22,7 @@ export default function ManufacturingProcessQms() {
                   <div className="p-3 rounded-xl bg-white text-[#2776ea]">
                     <Calculator size={28} />
                   </div>
-                  <h3 className="text-2xl font-bold">{index.title}</h3>
+                  <h3 className="text-h3 font-bold">{index.title}</h3>
                 </div>
                 <div className="bg-white/20 p-4 rounded-xl border border-white/10 mb-6 font-mono text-white text-center font-bold">
                   {index.formula}
@@ -41,7 +41,7 @@ export default function ManufacturingProcessQms() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-8 rounded-[2.5rem] text-slate-900 shadow-xl">
-              <h3 className="text-xl font-black mb-6 flex items-center gap-2">
+              <h3 className="text-h3 font-black mb-6 flex items-center gap-2">
                 <CheckCircle2 className="text-[#2776ea]" /> {capability.interpretation.title}
               </h3>
               <div className="space-y-4">
@@ -61,7 +61,7 @@ export default function ManufacturingProcessQms() {
             </div>
 
             <div className="bg-white/10 border border-white/20 p-8 rounded-[2.5rem] text-white">
-              <h3 className="text-xl font-black mb-2 flex items-center gap-2">
+              <h3 className="text-h3 font-black mb-2 flex items-center gap-2">
                 <Sigma className="text-[#76ea27]" /> {capability.sixSigma.title}
               </h3>
               <p className="font-mono text-xs text-blue-200 mb-6">{capability.sixSigma.formula}</p>
@@ -79,10 +79,10 @@ export default function ManufacturingProcessQms() {
       </div>
 
       {/* --- PART 2: QMS INTEGRATION --- */}
-      <div className="bg-slate-50 py-24">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="bg-slate-50 py-24 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader badge="Quality Management" title={qms.title} highlight={qms.subTitle} description={qms.description} centered={true} className="mb-20" />
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             {qms.functions.map((func, index) => (
               <div key={index} className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-lg transition-all">
@@ -90,7 +90,7 @@ export default function ManufacturingProcessQms() {
                   <div className="p-3 rounded-xl bg-[#2776ea]/10 text-[#2776ea]">
                     <func.icon size={28} strokeWidth={1.5} />
                   </div>
-                  <h4 className="text-lg font-bold text-slate-900">{func.title}</h4>
+                  <h3 className="text-h3 font-bold text-slate-900">{func.title}</h3>
                 </div>
                 <ul className="space-y-3">
                   {func.items.map((item, i) => (

@@ -11,15 +11,15 @@ export default function LogisticsHeroTms() {
 
   return (
     <section className="font-sora bg-white overflow-hidden">
-      
+
       {/* --- HERO SECTION --- */}
-      <div className="relative w-full bg-white pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28 overflow-hidden border-b border-slate-100">
-        <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+      <div className="relative w-full bg-white pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28 overflow-hidden border-b border-slate-100 container-pd">
+        <div className="mx-auto px-6 md:px-12 lg:px-24 relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            
+
             {/* --- LEFT: TEXT --- */}
             <div className="max-w-2xl">
-              <SectionHeader 
+              <SectionHeader
                 badge="Supply Chain Optimization"
                 title="Logistics &"
                 highlight="Smart TMS"
@@ -33,63 +33,63 @@ export default function LogisticsHeroTms() {
                   Optimize Now
                 </Link> */}
                 <ScrollLink
-  href="#case-studies"
-  offset={96}
-  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-menu font-bold uppercase tracking-wider hover:bg-white hover:border-[#2776ea]/30 hover:text-[#2776ea] transition-all active:scale-95"
->
-  View Solutions <ArrowRight size={16} />
-</ScrollLink>
+                  href="#case-studies"
+                  offset={96}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-menu font-bold uppercase tracking-wider hover:bg-white hover:border-[#2776ea]/30 hover:text-[#2776ea] transition-all active:scale-95"
+                >
+                  View Solutions <ArrowRight size={16} />
+                </ScrollLink>
 
               </div>
             </div>
 
             {/* --- RIGHT: LOGISTICS UI CARD --- */}
             <div className="relative hidden lg:flex justify-end items-center">
-              
+
               <div className="relative z-10 w-full max-w-[340px] bg-white rounded-3xl border border-slate-100 shadow-[0_20px_50px_rgb(0,0,0,0.08)] overflow-hidden">
                 {/* Map Header */}
                 <div className="h-32 bg-slate-100 relative overflow-hidden">
-                   {/* Abstract Map Pattern */}
-                   <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle, #cbd5e1 1px, transparent 1px)] [background-size:10px_10px]"></div>
-                   
-                   {/* Route Line Simulation */}
-                   <svg className="absolute inset-0 w-full h-full pointer-events-none">
-                      <path d="M 40 80 Q 150 20 280 60" fill="none" stroke="#2776ea" strokeWidth="3" strokeDasharray="6 4" className="opacity-80" />
-                   </svg>
-                   
-                   {/* Map Markers */}
-                   <div className="absolute left-8 top-16 h-3 w-3 bg-slate-400 rounded-full ring-4 ring-white shadow-sm" />
-                   <div className="absolute right-12 top-12 h-4 w-4 bg-[#2776ea] rounded-full ring-4 ring-white shadow-lg animate-pulse" />
+                  {/* Abstract Map Pattern */}
+                  <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle, #cbd5e1 1px, transparent 1px)] [background-size:10px_10px]"></div>
+
+                  {/* Route Line Simulation */}
+                  <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                    <path d="M 40 80 Q 150 20 280 60" fill="none" stroke="#2776ea" strokeWidth="3" strokeDasharray="6 4" className="opacity-80" />
+                  </svg>
+
+                  {/* Map Markers */}
+                  <div className="absolute left-8 top-16 h-3 w-3 bg-slate-400 rounded-full ring-4 ring-white shadow-sm" />
+                  <div className="absolute right-12 top-12 h-4 w-4 bg-[#2776ea] rounded-full ring-4 ring-white shadow-lg animate-pulse" />
                 </div>
 
                 {/* Tracking Details */}
                 <div className="p-6">
-                   <div className="flex items-start gap-4 mb-6">
-                      <div className="h-12 w-12 rounded-2xl bg-[#2776ea] flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
-                         <Truck size={24} />
-                      </div>
-                      <div>
-                         <span className="text-caption font-bold text-slate-400 uppercase tracking-widest block mb-1">Shipment ID</span>
-                         <p className="text-h3 font-black text-slate-900 leading-none">#TRK-89204</p>
-                      </div>
-                   </div>
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="h-12 w-12 rounded-2xl bg-[#2776ea] flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                      <Truck size={24} />
+                    </div>
+                    <div>
+                      <span className="text-caption font-bold text-slate-400 uppercase tracking-widest block mb-1">Shipment ID</span>
+                      <p className="text-h3 font-black text-slate-900 leading-none">#TRK-89204</p>
+                    </div>
+                  </div>
 
-                   <div className="space-y-3">
-                      <div className="flex justify-between items-center p-3 rounded-xl bg-slate-50 border border-slate-100">
-                         <div className="flex items-center gap-3">
-                            <Package size={16} className="text-slate-400" />
-                            <span className="text-caption font-bold text-slate-700">Status</span>
-                         </div>
-                         <span className="text-caption font-bold text-[#76ea27] bg-[#76ea27]/10 px-2 py-1 rounded-md">In Transit</span>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center p-3 rounded-xl bg-slate-50 border border-slate-100">
+                      <div className="flex items-center gap-3">
+                        <Package size={16} className="text-slate-400" />
+                        <span className="text-caption font-bold text-slate-700">Status</span>
                       </div>
-                      <div className="flex justify-between items-center p-3 rounded-xl bg-slate-50 border border-slate-100">
-                         <div className="flex items-center gap-3">
-                            <Navigation size={16} className="text-slate-400" />
-                            <span className="text-caption font-bold text-slate-700">ETA</span>
-                         </div>
-                         <span className="text-caption font-bold text-slate-900">2h 15m</span>
+                      <span className="text-caption font-bold text-[#76ea27] bg-[#76ea27]/10 px-2 py-1 rounded-md">In Transit</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 rounded-xl bg-slate-50 border border-slate-100">
+                      <div className="flex items-center gap-3">
+                        <Navigation size={16} className="text-slate-400" />
+                        <span className="text-caption font-bold text-slate-700">ETA</span>
                       </div>
-                   </div>
+                      <span className="text-caption font-bold text-slate-900">2h 15m</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -110,8 +110,8 @@ export default function LogisticsHeroTms() {
       </div>
 
       {/* --- OVERVIEW --- */}
-      <div className="py-24 bg-white border-t border-slate-100">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="py-24 bg-white border-t border-slate-100 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <div className="flex flex-col lg:flex-row gap-16 mb-20">
             <div className="lg:w-1/3">
               <SectionHeader title={overview.title} centered={false} />
@@ -167,8 +167,8 @@ export default function LogisticsHeroTms() {
       </div>
 
       {/* --- TMS SOLUTIONS --- */}
-      <div className="py-24 bg-slate-50">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="py-24 bg-slate-50 container-pd">
+        <div className="mx-auto px-6 max-w-7xl">
           <SectionHeader badge="Core Logistics" title={tms.title} centered={true} className="mb-20" />
           <div className="space-y-20">
             {/* Freight */}
@@ -194,7 +194,7 @@ export default function LogisticsHeroTms() {
                 ))}
               </div>
             </div>
-            
+
             {/* Analytics */}
             <div>
               <div className="flex items-center gap-4 mb-8">

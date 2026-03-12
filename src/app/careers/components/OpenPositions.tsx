@@ -16,7 +16,7 @@ export default function OpenPositions() {
 
   const [activeCat, setActiveCat] = useState("All");
   const [expanded, setExpanded] = useState<string | null>(null);
-  
+
   // State for the Apply Modal
   const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
 
@@ -26,14 +26,14 @@ export default function OpenPositions() {
       : openPositions.jobs.filter((j) => j.category === activeCat);
 
   return (
-    <section className="bg-slate-50 py-24 font-sora">
+    <section className="bg-slate-50 container-pd py-24 font-sora">
       {/* --- MOUNT THE MODAL --- */}
-      <ApplyModal 
-        open={isApplyModalOpen} 
-        onClose={() => setIsApplyModalOpen(false)} 
+      <ApplyModal
+        open={isApplyModalOpen}
+        onClose={() => setIsApplyModalOpen(false)}
       />
 
-      <div className="container mx-auto px-6 max-w-6xl">
+      <div className=" mx-auto px-6 max-w-6xl">
 
         <SectionHeader
           badge={openPositions.header.badge}
@@ -50,10 +50,9 @@ export default function OpenPositions() {
               key={cat}
               onClick={() => setActiveCat(cat)}
               className={`px-4 py-2 rounded-full text-sm font-semibold transition
-                ${
-                  activeCat === cat
-                    ? "bg-[#2776ea] text-white shadow"
-                    : "bg-white border border-slate-200 text-slate-600 hover:border-[#2776ea]"
+                ${activeCat === cat
+                  ? "bg-[#2776ea] text-white shadow"
+                  : "bg-white border border-slate-200 text-slate-600 hover:border-[#2776ea]"
                 }`}
             >
               {cat}
@@ -70,10 +69,9 @@ export default function OpenPositions() {
               <div
                 key={job.id}
                 className={`rounded-2xl bg-white border transition-all
-                  ${
-                    isOpen
-                      ? "border-[#2776ea] shadow-lg"
-                      : "border-slate-100 hover:border-slate-200"
+                  ${isOpen
+                    ? "border-[#2776ea] shadow-lg"
+                    : "border-slate-100 hover:border-slate-200"
                   }`}
               >
                 {/* Card Header */}
@@ -107,9 +105,8 @@ export default function OpenPositions() {
 
                   <ChevronDown
                     size={20}
-                    className={`mt-1 transition ${
-                      isOpen ? "rotate-180 text-[#2776ea]" : "text-slate-400"
-                    }`}
+                    className={`mt-1 transition ${isOpen ? "rotate-180 text-[#2776ea]" : "text-slate-400"
+                      }`}
                   />
                 </button>
 
@@ -212,7 +209,7 @@ export default function OpenPositions() {
                     )}
 
                     {/* CTA - Now opens the Modal */}
-                    <button 
+                    <button
                       onClick={() => setIsApplyModalOpen(true)}
                       className="mt-4 px-6 py-3 bg-[#2776ea] text-white rounded-xl font-bold text-sm hover:shadow-lg hover:bg-blue-600 transition"
                     >

@@ -23,7 +23,7 @@ export default function OpenPositions() {
 
   return (
     <section className="bg-slate-50 py-24 font-sora">
-      <div className="container mx-auto px-6 max-w-6xl">
+      <div className="container-pd mx-auto px-6 max-w-6xl">
 
         <SectionHeader
           badge={openPositions.header.badge}
@@ -40,10 +40,9 @@ export default function OpenPositions() {
               key={cat}
               onClick={() => setActiveCat(cat)}
               className={`px-4 py-2 rounded-full text-sm font-semibold transition
-                ${
-                  activeCat === cat
-                    ? "bg-[#2776ea] text-white shadow"
-                    : "bg-white border border-slate-200 text-slate-600 hover:border-[#2776ea]"
+                ${activeCat === cat
+                  ? "bg-[#2776ea] text-white shadow"
+                  : "bg-white border border-slate-200 text-slate-600 hover:border-[#2776ea]"
                 }`}
             >
               {cat}
@@ -60,10 +59,9 @@ export default function OpenPositions() {
               <div
                 key={job.id}
                 className={`rounded-2xl bg-white border transition-all
-                  ${
-                    isOpen
-                      ? "border-[#2776ea] shadow-lg"
-                      : "border-slate-100 hover:border-slate-200"
+                  ${isOpen
+                    ? "border-[#2776ea] shadow-lg"
+                    : "border-slate-100 hover:border-slate-200"
                   }`}
               >
                 {/* Card Header */}
@@ -97,9 +95,8 @@ export default function OpenPositions() {
 
                   <ChevronDown
                     size={20}
-                    className={`mt-1 transition ${
-                      isOpen ? "rotate-180 text-[#2776ea]" : "text-slate-400"
-                    }`}
+                    className={`mt-1 transition ${isOpen ? "rotate-180 text-[#2776ea]" : "text-slate-400"
+                      }`}
                   />
                 </button>
 
