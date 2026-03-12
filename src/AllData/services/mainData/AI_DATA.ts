@@ -9,7 +9,7 @@ export const AI_DATA: ServicePageData = {
     title: "AI & Machine Learning",
     tagline: "Enterprise Intelligence",
     description: "Transform your business with intelligent solutions. We architect, build, and deploy custom AI systems that drive measurable value and competitive advantage",
-    image: "/assets/images/Service Images/AI & Machine Learning.png",
+    image: "/assets/images/Service Images/AI-Machine Learning - Webronic Industires Private Limited.png",
     icon: "Brain",
     points: [
       "Custom LLM Integration",
