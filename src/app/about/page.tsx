@@ -458,7 +458,7 @@ export default function AboutPageContent() {
               <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-2 gap-4">
                 <div>
                   <p className="text-h2 font-black text-white">
-                    {metrics.stats[7].value}
+                    {metrics.stats[6].value}
                   </p>
                   <p className="text-caption text-blue-100 uppercase tracking-widest mt-1">
                     Transactions
@@ -466,7 +466,7 @@ export default function AboutPageContent() {
                 </div>
                 <div>
                   <p className="text-h2 font-black text-white">
-                    {metrics.stats[8].value}
+                    {metrics.stats[7].value}
                   </p>
                   <p className="text-caption text-blue-100 uppercase tracking-widest mt-1">
                     Cloud Managed

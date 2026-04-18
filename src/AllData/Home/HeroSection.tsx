@@ -80,7 +80,7 @@ export const CAROUSEL_DATA = [
 ];
 
 export const TRUST_INDICATORS = [
-  { target: 500, suffix: "+", label: "Clients", icon: Users },
+  { target: 200, suffix: "+", label: "Clients", icon: Users },
   { target: 15, suffix: "+", label: "Years", icon: Layers },
   { target: 3, suffix: "+", label: "Countries", icon: Globe },
   { target: 99.9, suffix: "%", label: "Success", icon: CheckCircle2 },

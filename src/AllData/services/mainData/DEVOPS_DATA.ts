@@ -10,7 +10,7 @@ export const DEVOPS_DATA: ServicePageData = {
     description: "DevOps consulting and implementation: CI/CD pipelines, infrastructure as code, Kubernetes, Docker, automated testing, monitoring. Accelerate deployment, improve reliability",
     image: "/assets/images/Service Images/DevOps.png",
     icon: "Infinity",
-    localIcon: "/assets/images/Icons/DevOps & SRE.svg",
+    localIcon: "/assets/images/Icons/DevOps-SRE.svg",
     points: [
       "Automated CI/CD Pipelines",
       "Infrastructure as Code",

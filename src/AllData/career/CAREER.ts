@@ -159,7 +159,7 @@ export const CAREERS_DATA: CareersPageData = {
     badge: "Build Your Career",
     titleLines: ["Shape the Future of", "Technology"],
     subHeadline:
-      "Join a team of 200+ innovators delivering cutting-edge solutions to 500+ clients across 50+ countries. Work on real-world problems using AI, Cloud, IoT, and emerging technologies",
+      "Join a team of 200+ innovators delivering cutting-edge solutions to 200+ clients across 50+ countries. Work on real-world problems using AI, Cloud, IoT, and emerging technologies",
     ctas: [
       { label: "View Open Positions", href: "#open-positions", primary: true },
       {
@@ -169,7 +169,7 @@ export const CAREERS_DATA: CareersPageData = {
       },
     ],
     stats: [
-      { value: "200+", label: "Team Members", icon: Users },
+
       { value: "15+", label: "Years Innovation", icon: Briefcase },
       { value: "3+", label: "Countries", icon: Globe },
       { value: "4.8/5", label: "Glassdoor", icon: Star },
@@ -842,7 +842,7 @@ benefits: {
         certifications:
           "AWS Solutions Architect Professional, Azure Solutions Architect Expert, or Google Cloud Professional Architect",
         projects:
-          "Cloud transformation for Fortune 500 clients, multi-cloud strategies, large-scale migrations",
+          "Cloud transformation for Fortune 200 clients, multi-cloud strategies, large-scale migrations",
       },
     },
 

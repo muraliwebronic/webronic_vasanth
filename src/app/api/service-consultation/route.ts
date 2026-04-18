@@ -1,17 +1,40 @@
 import { NextResponse } from 'next/server';
-import { sendEmail, DESTINATION_EMAIL } from '@/lib/nodemailer';
+import { sendEmail, verifySMTP, DESTINATION_EMAIL } from '@/lib/nodemailer';
 
 export async function POST(req: Request) {
+  const routeStart = performance.now();
+  const routeName = '/api/service-consultation';
+  console.log(`\n🟢 [${routeName}] ──── REQUEST START ────`);
+
   try {
+    // ── Step 1: Parse form data ──
+    const parseStart = performance.now();
     const formData = await req.formData();
     const email = formData.get('email') as string;
     const projectDetails = formData.get('projectDetails') as string;
     const serviceTitle = formData.get('serviceTitle') as string;
+    console.log(`⏱️  [${routeName}] Form parse: ${Math.round(performance.now() - parseStart)}ms`);
+    console.log(`📋 [${routeName}] Fields: email="${email}", serviceTitle="${serviceTitle}"`);
 
     if (!email || !projectDetails) {
+      console.log(`⚠️  [${routeName}] Missing required fields → 400`);
       return NextResponse.json({ success: false, message: "Missing required fields" }, { status: 400 });
     }
 
+    // ── Step 2: Verify SMTP connection ──
+    console.log(`🔌 [${routeName}] Verifying SMTP connection...`);
+    const smtpCheck = await verifySMTP();
+    if (!smtpCheck.ok) {
+      console.error(`❌ [${routeName}] SMTP verification failed after ${smtpCheck.durationMs}ms: ${smtpCheck.error}`);
+      return NextResponse.json({
+        success: false,
+        message: "SMTP connection failed",
+        debug: { smtpError: smtpCheck.error, smtpVerifyMs: smtpCheck.durationMs }
+      }, { status: 503 });
+    }
+    console.log(`✅ [${routeName}] SMTP verified in ${smtpCheck.durationMs}ms`);
+
+    // ── Step 3: Build HTML ──
     const htmlContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px;">
         <div style="background-color: #0d47a1; padding: 25px; text-align: center;">
@@ -41,6 +64,8 @@ export async function POST(req: Request) {
       </div>
     `;
 
+    // ── Step 4: Send email ──
+    console.log(`📧 [${routeName}] Sending email...`);
     const result = await sendEmail({
       to: DESTINATION_EMAIL,
       replyTo: email,
@@ -48,21 +73,32 @@ export async function POST(req: Request) {
       htmlContent,
     });
 
+    const totalMs = Math.round(performance.now() - routeStart);
+
     if (!result.success) {
+      console.error(`❌ [${routeName}] Email send failed. Total time: ${totalMs}ms`);
       return NextResponse.json({
         success: false,
         message: "Failed to send email",
-        debug: result.error
+        debug: { ...result, totalRouteMs: totalMs, smtpVerifyMs: smtpCheck.durationMs }
       }, { status: 500 });
     }
+
+    console.log(`✅ [${routeName}] Email sent successfully. Total time: ${totalMs}ms`);
+    console.log(`🔴 [${routeName}] ──── REQUEST END ────\n`);
 
     return NextResponse.json({
       success: true,
       message: "Email sent successfully",
-      debug: result.info
+      debug: { ...result.info, totalRouteMs: totalMs, smtpVerifyMs: smtpCheck.durationMs }
     });
   } catch (error: any) {
-    console.error("Error in /api/service-consultation:", error);
-    return NextResponse.json({ success: false, message: "Server error: " + error.message, debug: error.message }, { status: 500 });
+    const totalMs = Math.round(performance.now() - routeStart);
+    console.error(`💥 [${routeName}] Unhandled error after ${totalMs}ms:`, error);
+    return NextResponse.json({
+      success: false,
+      message: "Server error: " + error.message,
+      debug: { error: error.message, code: error.code, totalRouteMs: totalMs }
+    }, { status: 500 });
   }
 }

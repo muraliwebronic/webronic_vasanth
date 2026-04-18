@@ -31,7 +31,7 @@ export const ABOUT_PAGE_DATA = {
   overview: {
     title: "Company Overview",
     content: [
-      "Webronic Industries Private Limited is a global technology services company specializing in AI-driven digital transformation, cloud computing, and enterprise software development. Founded in 2010, we've grown from a small software development team in Chennai to a global organization serving over 500 clients across 50+ countries",
+      "Webronic Industries Private Limited is a global technology services company specializing in AI-driven digital transformation, cloud computing, and enterprise software development. Founded in 2010, we've grown from a small software development team in Chennai to a global organization serving over 200+ clients across 3+ countries",
       "Our mission is simple yet powerful: Transform businesses through intelligent technology solutions that drive measurable results. We achieve this by combining deep technical expertise with industry knowledge, delivering solutions that don't just meet requirements but exceed expectations and create competitive advantages"
     ],
     differentiators: {
@@ -132,14 +132,13 @@ export const ABOUT_PAGE_DATA = {
     title: "By The Numbers",
     stats: [
       { value: "15+", label: "Years Excellence" },
-      { value: "500+", label: "Clients Global" },
+      { value: "200+", label: "Clients Global" },
       { value: "3+", label: "Countries" },
-      { value: "200+", label: "Team Members" },
       { value: "99.9%", label: "Client Satisfaction" },
       { value: "1000+", label: "Projects Delivered" },
       { value: "150+", label: "Platform Users" },
       { value: "50M+", label: "StoreTech Transactions" },
-      { value: "$500M+", label: "Cloud Infra Managed" }
+      { value: "$500M+", label: "Cloud Infra Managed" },
     ],
     awards: [
       "2023: Top 100 IT Services Companies in India - SME Business Awards",

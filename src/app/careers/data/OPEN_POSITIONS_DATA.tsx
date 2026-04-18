@@ -147,7 +147,7 @@ export const OPEN_POSITIONS_DATA =
       experience: "7-12 years",
       salary: "₹25-40 LPA",
       skills: ["Multi-cloud Architecture", "Microservices", "High Availability", "Security"],
-      description: "Design enterprise cloud architectures and lead migration projects for Fortune 500 clients",
+      description: "Design enterprise cloud architectures and lead migration projects for Fortune 200 clients",
       details: {
         whatYouWillDo: [
           "Design enterprise cloud architectures",
@@ -157,7 +157,7 @@ export const OPEN_POSITIONS_DATA =
           "Engage with clients as trusted technical advisor"
         ],
         certifications: "AWS Solutions Architect Professional, Azure Solutions Architect Expert, or Google Cloud Professional Architect",
-        projects: "Cloud transformation for Fortune 500 clients, multi-cloud strategies"
+        projects: "Cloud transformation for Fortune 200 clients, multi-cloud strategies"
       }
     },
     {

@@ -235,38 +235,52 @@ export default function Footer() {
             Our Centers
           </h4>
 
-          <div className="grid gap-8 grid-cols-1 md:grid-cols-3 mb-12">
-            {branches.map((hub, idx) => (
-              <div
-                key={idx}
-                // 1. Added: flex, flex-col, and h-full
-                className="flex flex-col h-full group transition-all text-center md:text-left hover:bg-slate-50/50 p-4 rounded-xl border border-transparent hover:border-slate-100"
-              >
-                {/* TOP: Title stays exactly as it was */}
-                <p className="text-caption font-black uppercase tracking-widest text-slate-400 mb-2 group-hover:text-[#2776ea] transition-colors">
-                  {hub.city} : {hub.type}
-                </p>
+         <div className="grid gap-8 grid-cols-1 md:grid-cols-3 mb-12">
+  {/* --- 1. DYNAMIC ADDRESSES --- */}
+  {branches.map((hub, idx) => (
+    <div
+      key={idx}
+      className="flex flex-col h-full group transition-all text-center md:text-left hover:bg-slate-50/50 p-4 rounded-xl border border-transparent hover:border-slate-100"
+    >
+      <p className="text-caption font-black uppercase tracking-widest text-slate-400 mb-2 group-hover:text-[#2776ea] transition-colors">
+        {hub.city} : {hub.type}
+      </p>
+      <a
+        href={hub.mapUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs text-slate-500 leading-relaxed hover:text-[#2776ea] transition-colors"
+      >
+        {hub.address}
+      </a>
+      <p className="mt-auto pt-4 text-sm text-[#2776ea] font-bold">
+        <a href={`tel:${hub.contact}`} className="hover:underline">
+          {hub.contact}
+        </a>
+      </p>
+    </div>
+  ))}
 
-                {/* MIDDLE: Address link */}
-                <a
-                  href={hub.mapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-slate-500 leading-relaxed hover:text-[#2776ea] transition-colors"
-                >
-                  {hub.address}
-                </a>
-
-                {/* BOTTOM: Pinned to the bottom using mt-auto */}
-                {/* 2. Added: mt-auto (margin-top: auto) to push it down */}
-                <p className="mt-auto pt-4 text-sm text-[#2776ea] font-bold">
-                  <a href={`tel:${hub.contact}`} className="hover:underline">
-                    {hub.contact}
-                  </a>
-                </p>
-              </div>
-            ))}
-          </div>
+  {/* --- 2. STATIC REGISTERED OFFICE --- */}
+  <div className="flex flex-col h-full group transition-all text-center md:text-left hover:bg-slate-50/50 p-4 rounded-xl border border-transparent hover:border-slate-100">
+    <p className="text-caption font-black uppercase tracking-widest text-slate-400 mb-2 group-hover:text-[#2776ea] transition-colors">
+      Chennai : Registered Office
+    </p>
+    <a
+      href="https://maps.app.goo.gl/QLzqNbRZsVd4RuF17"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-xs text-slate-500 leading-relaxed hover:text-[#2776ea] transition-colors"
+    >
+      New #33, Old #17, 2nd St, Mylapore, Chennai - 600004
+    </a>
+    <p className="mt-auto pt-4 text-sm text-[#2776ea] font-bold">
+      <a href="tel:+917200088500" className="hover:underline">
+        +91 72000 88500
+      </a>
+    </p>
+  </div>
+</div>
 
           {/* COPYRIGHT */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 text-center md:text-left border-t border-slate-100 pt-8">

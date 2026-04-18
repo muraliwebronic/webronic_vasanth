@@ -59,7 +59,7 @@ const jsonLd = {
 // --- Next.js 16 Metadata API ---
 export const metadata: Metadata = {
   title: "About Webronic Industries | Global IT Services & Technology Innovation",
-  description: "Leading IT services company delivering AI/ML solutions, cloud services, and digital transformation. 15+ years of excellence serving 500+ clients across 50+ countries.",
+  description: "Leading IT services company delivering AI/ML solutions, cloud services, and digital transformation. 15+ years of excellence serving 200+ clients across 50+ countries.",
   keywords: [
     "about webronic",
     "IT services company",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "About Webronic Industries | Innovation & Excellence",
-    description: "15+ years of delivering AI/ML solutions and digital transformation to 500+ clients globally.",
+    description: "15+ years of delivering AI/ML solutions and digital transformation to 200+ clients globally.",
     url: "https://webronic.com/about",
     siteName: "Webronic Industries",
     images: [
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "About Webronic Industries",
-    description: "Global IT Services & Technology Innovation. Serving 500+ clients worldwide.",
+    description: "Global IT Services & Technology Innovation. Serving 200+ clients worldwide.",
     images: ["https://webronic.com/og-about.jpg"],
     creator: "@webronic",
     site: "@webronic"

@@ -8,7 +8,7 @@ export const SOFTWARE_DATA: ServicePageData = {
     title: "Custom Software Development",
     tagline: "Build Your Vision",
     description: "Custom software development for web, mobile, and desktop. Full stack development, API first integration, legacy modernization. Agile methodology, quality-focused delivery.",
-    image: "/assets/images/Service Images/QA & Testing- Webronic Industires Private Limited.png",
+    image: "/assets/images/Service Images/QA-Testing- Webronic Industires Private Limited.png",
     icon: "Code",
     points: [
       "Custom Web & Mobile Apps",

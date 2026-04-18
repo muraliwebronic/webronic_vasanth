@@ -22,7 +22,7 @@ export const FEATURES = [
     id: 3,
     title: "Proven Track Record",
     description:
-      "Over 15 years of delivering successful projects across 50+ countries, serving clients from startups to Fortune 500 enterprises with consistent 99.9% satisfaction ratings",
+      "Over 15 years of delivering successful projects across 3+ countries, serving clients from startups to Fortune 200 enterprises with consistent 99.9% satisfaction ratings",
     icon: Trophy,
     color: "#2776ea",
   },
