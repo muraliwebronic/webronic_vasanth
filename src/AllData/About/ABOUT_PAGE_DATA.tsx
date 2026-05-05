@@ -25,13 +25,13 @@ import {
 
 export const ABOUT_PAGE_DATA = {
   hero: {
-    h1: "Architecting Digital Excellence Since 2010",
+    h1: "Architecting Digital Excellence Since 2012",
     subHeadline: "Global Enterprise Technology Partner | Digital Transformation • AI/ML Innovation • Cloud Excellence"
   },
   overview: {
     title: "Company Overview",
     content: [
-      "Webronic Industries Private Limited is a global technology services company specializing in AI-driven digital transformation, cloud computing, and enterprise software development. Founded in 2010, we've grown from a small software development team in Chennai to a global organization serving over 200+ clients across 3+ countries",
+      "Webronic Industries Private Limited is a global technology services company specializing in AI-driven digital transformation, cloud computing, and enterprise software development. Founded in 2012, we've grown from a small software development team in Chennai to a global organization serving over 100+ clients across 3+ countries",
       "Our mission is simple yet powerful: Transform businesses through intelligent technology solutions that drive measurable results. We achieve this by combining deep technical expertise with industry knowledge, delivering solutions that don't just meet requirements but exceed expectations and create competitive advantages"
     ],
     differentiators: {
@@ -74,7 +74,7 @@ export const ABOUT_PAGE_DATA = {
     title: "Our Story",
     subtitle: "The Journey from Startup to Global Enterprise",
     timeline: [
-      { year: "2010", title: "The Beginning", desc: "Webronic Industries was founded in Chennai by a team of software engineers passionate about using technology to solve real business problems. Our first project was a custom inventory management system for a local manufacturer" },
+      { year: "2012", title: "The Beginning", desc: "Webronic Industries was founded in Chennai by a team of software engineers passionate about using technology to solve real business problems. Our first project was a custom inventory management system for a local manufacturer" },
       { year: "2012-2014", title: "Building Expertise", desc: "We expanded our service offerings into web development, mobile applications, and ERP systems. Early projects in manufacturing automation gave us deep expertise in Industry 4.0 technologies" },
       { year: "2015", title: "International Expansion", desc: "Secured our first international client and established operations in Madurai and Salem. This geographic expansion allowed us to tap into diverse talent pools across Tamil Nadu" },
       { year: "2016-2017", title: "Product Innovation", desc: "Launched Value Charts, our business intelligence platform, marking our evolution from pure services to a product and services model. The platform gained traction with SMBs seeking affordable BI solutions" },
@@ -114,9 +114,9 @@ export const ABOUT_PAGE_DATA = {
   presence: {
     title: "Global Presence",
     india: [
-      { city: "Chennai (Reg. Office)", address: "New #33, Old #17, 2nd St, Mylapore, Chennai - 600004", phone: "+91 72000 88500" },
+      { city: "Chennai (Reg. Office)", address: "New #33, Old #17, 2nd St, Mylapore, Chennai - 600004", phone: "+917200088500" },
       { city: "Chennai (Digital Hub)", address: "A1-20, Sakthi Apartments, Cenotoph Road, Teynampet, Chennai - 600004", desc: "Primary development center with 100+ engineers" },
-      { city: "Madurai", address: "2nd Floor, 3/92B JS TOWER, Alanganallur Main Road, Sikkandar Savadi, Madurai, Tamil Nadu 625018", phone: "+91 63833 26928", desc: "Specialized in mobile and web development" },
+      { city: "Madurai", address: "2nd Floor, 3/92B JS TOWER, Alanganallur Main Road, Sikkandar Savadi, Madurai, Tamil Nadu 625018", phone: "+916383326928", desc: "Specialized in mobile and web development" },
       { city: "Salem", address: "1-718, Sannasi Muniyappan Kovil, Surappalli (PO), Mettur (TK), Jalakandapuram, Salem - 636501", desc: "Focus on IoT and embedded systems" }
     ],
     europe: {
@@ -131,11 +131,11 @@ export const ABOUT_PAGE_DATA = {
   metrics: {
     title: "By The Numbers",
     stats: [
-      { value: "15+", label: "Years Excellence" },
-      { value: "200+", label: "Clients Global" },
+      { value: "13+", label: "Years Excellence" },
+      { value: "100+", label: "Clients Global" },
       { value: "3+", label: "Countries" },
       { value: "99.9%", label: "Client Satisfaction" },
-      { value: "1000+", label: "Projects Delivered" },
+      { value: "100+", label: "Projects Delivered" },
       { value: "150+", label: "Platform Users" },
       { value: "50M+", label: "StoreTech Transactions" },
       { value: "$500M+", label: "Cloud Infra Managed" },
@@ -193,7 +193,7 @@ export const ABOUT_PAGE_DATA = {
   whyChoose: {
     title: "Why Choose Webronic",
     points: [
-      { title: "1. Proven Track Record", desc: "15+ years delivering successful projects across industries and geographies" },
+      { title: "1. Proven Track Record", desc: "13+ years delivering successful projects across industries and geographies" },
       { title: "2. Technical Excellence", desc: "Deep expertise in AI/ML, cloud, IoT. 100+ professional certifications" },
       { title: "3. Industry Knowledge", desc: "Specialized in manufacturing, retail, finance, and healthcare" },
       { title: "4. End-to-End Services", desc: "Strategy, consulting, development, deployment, and support" },
@@ -218,7 +218,7 @@ export const ABOUT_PAGE_DATA = {
   },
   contact: {
     title: "Contact Us",
-    general: { email: "contact@webronic.com", phone: "+91 72000 88500", hours: "Mon-Fri, 9 AM - 6 PM IST" },
+    general: { email: "contact@webronic.com", phone: "+917200088500", hours: "Mon-Fri, 9 AM - 6 PM IST" },
     sales: "contact@webronic.com",
     careers: "contact@webronic.com",
     media: "contact@webronic.com",
@@ -230,7 +230,7 @@ export const ABOUT_PAGE_DATA = {
       },
       {
         platform: "Instagram",
-        link: "https://www.instagram.com/webronic_/",
+        link: "https://www.instagram.com/webronic.official/",
         icon: Instagram,
       },
       {

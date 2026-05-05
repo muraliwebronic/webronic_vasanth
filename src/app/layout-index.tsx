@@ -12,12 +12,12 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://webronic.com/#organization",
+      "@id": "https://www.webronic.com/#organization",
       "name": "Webronic Industries",
-      "url": "https://webronic.com",
+      "url": "https://www.webronic.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://webronic.com/assets/webonic2.png",
+        "url": "https://www.webronic.com/assets/webonic2.png",
         "width": 112,
         "height": 112
       },
@@ -25,7 +25,7 @@ const jsonLd = {
         "https://twitter.com/webronic",
         "https://www.linkedin.com/company/webronic/",
         "https://www.facebook.com/webronic/",
-        "https://www.instagram.com/webronic_/",
+        "https://www.instagram.com/webronic.official/",
         "https://www.youtube.com/@WEBRONIC/"
       ],
       "contactPoint": {
@@ -38,22 +38,22 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://webronic.com/#website",
-      "url": "https://webronic.com",
+      "@id": "https://www.webronic.com/#website",
+      "url": "https://www.webronic.com",
       "name": "Webronic Industries",
       "description": "Global IT Services, AI Solutions & Digital Transformation",
       "publisher": {
-        "@id": "https://webronic.com/#organization"
+        "@id": "https://www.webronic.com/#organization"
       },
       "inLanguage": "en-US"
     },
     {
       "@type": "ProfessionalService",
-      "@id": "https://webronic.com/#service",
-      "url": "https://webronic.com",
+      "@id": "https://www.webronic.com/#service",
+      "url": "https://www.webronic.com",
       "name": "Webronic AI & IT Solutions",
       "description": "Enterprise technology partner delivering AI/ML solutions and digital transformation.",
-      "image": "https://webronic.com/og-image.jpg",
+      "image": "https://www.webronic.com/og-image.jpg",
       "priceRange": "$$$",
       "address": {
         "@type": "PostalAddress",
@@ -68,10 +68,10 @@ export const metadata: Metadata = {
   description: "Leading IT services company delivering AI/ML solutions, cloud services, and digital transformation across India and Europe. Enterprise technology partner for global success.",
   keywords: ["IT services company", "AI solutions", "cloud services", "digital transformation", "enterprise software", "technology consulting"],
   applicationName: "Webronic Industries",
-  authors: [{ name: "Webronic Industries", url: "https://webronic.com" }],
+  authors: [{ name: "Webronic Industries", url: "https://www.webronic.com" }],
   creator: "Webronic Industries",
   publisher: "Webronic Industries",
-  metadataBase: new URL("https://webronic.com"),
+  metadataBase: new URL("https://www.webronic.com"),
   manifest: "/manifest.webmanifest",
   alternates: {
     canonical: "/",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Webronic Industries | Global IT Services & AI Solutions",
     description: "Leading IT services company delivering AI/ML solutions, cloud services, and digital transformation across India and Europe.",
-    url: "https://webronic.com",
+    url: "https://www.webronic.com",
     siteName: "Webronic Industries",
     images: [
       {

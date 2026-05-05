@@ -2,7 +2,7 @@
 
 import { ArrowRight, CheckCircle2, Globe, Mail, Phone } from "lucide-react";
 import { DynamicIcon } from "@/components/common/DynamicIcon";
-import { ServicePageData } from "@/app/service/data/types";
+import { ServicePageData } from "@/app/services/data/types";
 import SectionHeader from "@/components/common/SectionHeader";
 import Link from "next/link";
 
@@ -120,8 +120,7 @@ export default function UniversalGetStarted({ data }: { data: ServicePageData['g
                     Phone (India)
                   </div>
                   <div className="text-sm font-bold text-slate-700 group-hover:text-[#2776ea] transition-colors truncate">
-                    +91 72000 88500
-                  </div>
+                    +917200088500</div>
                 </a>
               </div>
 

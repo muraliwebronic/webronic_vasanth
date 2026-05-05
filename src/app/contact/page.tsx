@@ -28,7 +28,7 @@ export default function Contact() {
     },
     {
       src: "/assets/icons/instagram.png",
-      href: "https://www.instagram.com/webronic_/",
+      href: "https://www.instagram.com/webronic.official/",
       alt: "Instagram",
     },
     {
@@ -70,6 +70,7 @@ export default function Contact() {
                 description="Whether you have a technical challenge or a digital vision, our engineers are ready to deploy solutions that scale."
                 centered={false}
                 className="max-w-2xl"
+                isH1={true}
               />
             </div>
 

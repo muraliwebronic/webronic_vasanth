@@ -6,18 +6,22 @@ import Footer from "@/components/layout/Footer";
 import { Toaster } from "react-hot-toast";
 import GlobalContactDetector from "@/components/UI/GlobalContactDetector";
 
+const buildDate = new Date().toISOString().split('T')[0];
+
 // --- AI SEO & Structured Data (JSON-LD) ---
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://webronic.com/#organization",
+      "@id": "https://www.webronic.com/#organization",
       "name": "Webronic Industries",
-      "url": "https://webronic.com",
+      "url": "https://www.webronic.com",
+      "datePublished": "2024-01-01",
+      "dateModified": buildDate,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://webronic.com/assets/webonic2.png",
+        "url": "https://www.webronic.com/assets/webonic2.png",
         "width": 112,
         "height": 112
       },
@@ -25,7 +29,7 @@ const jsonLd = {
         "https://twitter.com/webronic",
         "https://www.linkedin.com/company/webronic/",
         "https://www.facebook.com/webronic/",
-        "https://www.instagram.com/webronic_/",
+        "https://www.instagram.com/webronic.official/",
         "https://www.youtube.com/@WEBRONIC/"
       ],
       "contactPoint": {
@@ -38,22 +42,26 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://webronic.com/#website",
-      "url": "https://webronic.com",
+      "@id": "https://www.webronic.com/#website",
+      "url": "https://www.webronic.com",
       "name": "Webronic Industries",
       "description": "Global IT Services, AI Solutions & Digital Transformation",
+      "datePublished": "2024-01-01",
+      "dateModified": buildDate,
       "publisher": {
-        "@id": "https://webronic.com/#organization"
+        "@id": "https://www.webronic.com/#organization"
       },
       "inLanguage": "en-US"
     },
     {
       "@type": "ProfessionalService",
-      "@id": "https://webronic.com/#service",
-      "url": "https://webronic.com",
+      "@id": "https://www.webronic.com/#service",
+      "url": "https://www.webronic.com",
       "name": "Webronic AI & IT Solutions",
       "description": "Enterprise technology partner delivering AI/ML solutions and digital transformation.",
-      "image": "https://webronic.com/og-image.jpg",
+      "image": "https://www.webronic.com/og-image.jpg",
+      "datePublished": "2024-01-01",
+      "dateModified": buildDate,
       "priceRange": "$$$",
       "address": {
         "@type": "PostalAddress",
@@ -68,18 +76,21 @@ export const metadata: Metadata = {
   description: "Leading IT services company delivering AI/ML solutions, cloud services, and digital transformation across India and Europe. Enterprise technology partner for global success.",
   keywords: ["IT services company", "AI solutions", "cloud services", "digital transformation", "enterprise software", "technology consulting"],
   applicationName: "Webronic Industries",
-  authors: [{ name: "Webronic Industries", url: "https://webronic.com" }],
+  authors: [{ name: "Webronic Industries", url: "https://www.webronic.com" }],
   creator: "Webronic Industries",
   publisher: "Webronic Industries",
-  metadataBase: new URL("https://webronic.com"),
+  metadataBase: new URL("https://www.webronic.com"),
   manifest: "/manifest.webmanifest",
   alternates: {
     canonical: "/",
+    types: {
+      "application/rss+xml": "https://www.webronic.com/feed.xml",
+    },
   },
   openGraph: {
     title: "Webronic Industries | Global IT Services & AI Solutions",
     description: "Leading IT services company delivering AI/ML solutions, cloud services, and digital transformation across India and Europe.",
-    url: "https://webronic.com",
+    url: "https://www.webronic.com",
     siteName: "Webronic Industries",
     images: [
       {
@@ -120,6 +131,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Hreflang — International targeting */}
+        <link rel="alternate" hrefLang="en" href="https://webronic.com" />
+        <link rel="alternate" hrefLang="en-SE" href="https://webronic.com" />
+        <link rel="alternate" hrefLang="en-NO" href="https://webronic.com" />
+        <link rel="alternate" hrefLang="en-IN" href="https://webronic.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://webronic.com" />
+        <link rel="alternate" type="application/rss+xml" title="Webronic RSS Feed" href="https://webronic.com/feed.xml" />
+
+        {/* Preconnect & DNS Prefetch — Performance hints */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
         {/* Google Tag Manager - HEAD */}
         <script
           dangerouslySetInnerHTML={{
@@ -135,6 +160,13 @@ export default function RootLayout({
       </head>
 
       <body className="font-sora antialiased bg-white text-slate-900 flex flex-col min-h-screen">
+        {/* Skip-to-content link — first focusable element for screen readers */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-[#2776ea] focus:text-white focus:px-6 focus:py-3 focus:rounded-xl focus:text-sm focus:font-bold focus:uppercase focus:tracking-wider focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
         {/* Google Tag Manager (noscript) - IMMEDIATELY AFTER BODY */}
         <noscript>
           <iframe
@@ -157,7 +189,7 @@ export default function RootLayout({
           <Navbar />
         </header>
 
-        <main className="flex-1">
+        <main id="main-content" className="flex-1">
           <Providers>{children}</Providers>
         </main>
 

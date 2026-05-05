@@ -11,6 +11,7 @@ type SectionHeaderProps = {
   className?: string;
   size?: "sm" | "default" | "hero";
   isWhite?: boolean; // New Prop
+  isH1?: boolean; // SEO: Render as <h1> instead of <h2>
 };
 
 export default function SectionHeader({
@@ -22,6 +23,7 @@ export default function SectionHeader({
   className = "",
   size = "default",
   isWhite = false, // Default to false
+  isH1 = false, // Default to false
 }: SectionHeaderProps) {
 
   // Size Configuration (Using Global Typography Utilities)
@@ -60,6 +62,9 @@ export default function SectionHeader({
     ? "from-[#76ea27] to-emerald-300" // Secondary Green gradient for Dark Backgrounds
     : "from-[#2776ea] to-cyan-500";   // Primary Blue gradient for Light Backgrounds
 
+  // SEO: Use h1 when isH1 is true, otherwise h2. Visual size stays the same via CSS classes.
+  const HeadingTag = isH1 ? "h1" : "h2";
+
   return (
     <div
       className={`relative z-10 ${centered ? "text-center mx-auto" : "text-left"} ${className}`}
@@ -83,14 +88,14 @@ export default function SectionHeader({
       )}
 
       {/* --- MAIN TITLE --- */}
-      <h2 className={`font-black leading-[1.1] font-sora ${titleColor} ${currentStyle.title}`}>
+      <HeadingTag className={`font-black leading-[1.1] font-sora ${titleColor} ${currentStyle.title}`}>
         {title} <br />
         {highlight && (
           <span className={`${currentStyle.title} text-transparent bg-clip-text bg-gradient-to-r ${highlightGradient}`}>
             {highlight}
           </span>
         )}
-      </h2>
+      </HeadingTag>
 
       {/* --- DESCRIPTION --- */}
       {description && (

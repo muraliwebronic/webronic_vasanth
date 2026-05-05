@@ -31,7 +31,7 @@ export default function ServiceGrid({ services }: ServiceGridProps) {
           {services.map((service) => (
             <Link
               key={service.id}
-              href={`/services?category=${service.id}`}
+              href={`/service?category=${service.id}`}
               className="group relative h-full bg-slate-50 rounded-[2rem] border border-slate-100 p-8 overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-900/10 hover:bg-white hover:border-[#2776ea]/20 flex flex-col"
             >
               {/* Hover Gradient Background */}

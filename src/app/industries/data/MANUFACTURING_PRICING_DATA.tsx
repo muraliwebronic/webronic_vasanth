@@ -108,7 +108,7 @@ export const MANUFACTURING_PRICING_DATA = {
       title: "Contact Manufacturing Team",
       details: [
         { label: "Email", value: "contact@webronic.com", icon: Mail },
-        { label: "Phone", value: "+91 72000 88500", icon: Phone },
+        { label: "Phone", value: "+917200088500", icon: Phone },
         { label: "Hours", value: "Monday-Friday, 9 AM - 6 PM IST", icon: Clock }
       ]
     },

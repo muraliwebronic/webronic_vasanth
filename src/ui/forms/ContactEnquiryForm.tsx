@@ -1,16 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, Send, ArrowRight } from "lucide-react";
 import toast from "react-hot-toast";
-import { servicesRegistry } from "@/app/service/data/servicesRegistry";
+import { servicesRegistry } from "@/app/services/data/servicesRegistry";
 
 const API_BASE = "";
 
 // Derive dropdown options from the services registry
-const serviceOptions = Object.values(servicesRegistry).map(
+const serviceOptions = Array.from(new Set(Object.values(servicesRegistry).map(
     (s) => s.preview.title
-);
+)));
 
 interface ContactEnquiryFormProps {
     isOpen: boolean;
@@ -22,6 +22,17 @@ export default function ContactEnquiryForm({
     onClose,
 }: ContactEnquiryFormProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isOpen]);
 
     if (!isOpen) return null;
 

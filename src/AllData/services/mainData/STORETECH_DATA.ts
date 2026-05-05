@@ -490,7 +490,7 @@ export const STORETECH_DATA: ServicePageData = {
       subtitle: "Global sales team",
       methods: [
         { label: "Email Us", value: "sales@store-tech.se", icon: "Mail", iconColor: "text-blue-600" },
-        { label: "Call Us", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
+        { label: "Call Us", value: "+917200088500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }
   },

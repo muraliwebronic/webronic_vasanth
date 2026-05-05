@@ -35,41 +35,41 @@ const navLinks = [
 
 // 2. Services Group
 const serviceItems = [
-  { name: "All Services", href: "/service", icon: LayoutGrid },
+  { name: "All Services", href: "/services", icon: LayoutGrid },
   {
     name: "Web Development",
-    href: "/services?category=web-development",
+    href: "/service?category=web-development",
     icon: Code2,
   },
   {
     name: "AI & ML",
-    href: "/services?category=ai-machine-learning",
+    href: "/service?category=ai-machine-learning",
     icon: Bot,
   },
   {
     name: "Cloud Services",
-    href: "/services?category=cloud-services",
+    href: "/service?category=cloud-services",
     icon: Cloud,
   },
   {
     name: "DIGITAL TRANSFORMATION",
-    href: "/services?category=digital-transformation",
+    href: "/service?category=digital-transformation",
     icon: Zap,
   },
   {
     name: "Software Development",
-    href: "/services?category=software-development",
+    href: "/service?category=software-development",
     icon: Code2,
   },
-  { name: "DevOps", href: "/services?category=devops", icon: Terminal },
+  { name: "DevOps", href: "/service?category=devops", icon: Terminal },
   {
     name: "IoT Solutions",
-    href: "/services?category=iot-solutions",
+    href: "/service?category=iot-solutions",
     icon: Wifi,
   },
   {
     name: "Data Analytics",
-    href: "/services?category=data-analytics",
+    href: "/service?category=data-analytics",
     icon: BarChart3,
   },
 ];
@@ -180,9 +180,67 @@ export default function Navbar() {
   };
 
   const isLinkActive = (item: any) => {
-    if (item.href) return path === item.href;
+    if (item.href) return path === item.href || path.startsWith(item.href + "/");
+    if (item.type === "page" && item.id) return path === item.id || path.startsWith(item.id + "/");
     if (item.type === "section" && path === "/") return activeSection === item.id;
     return false;
+  };
+
+  // Check if any Company dropdown item is active
+  const isCompanyActive = companyItems.some((item) => {
+    if (item.type === "page" && item.id) return path === item.id || path.startsWith(item.id + "/");
+    return false;
+  });
+
+  // Resolve href safely — always returns a string, never undefined
+  const getHref = (item: { href?: string; id?: string; type?: string }): string => {
+    if (item.href) return item.href;
+    if (item.type === "section" && item.id) return `/#${item.id}`;
+    return item.id || "/";
+  };
+
+  // Scroll to top if already on the target page
+  const scrollTopIfSamePage = (e: React.MouseEvent<HTMLAnchorElement>, targetHref: string) => {
+    // 1. Handle Section Hash Links (e.g., /#client)
+    const hashIndex = targetHref.indexOf("#");
+    if (hashIndex !== -1 && targetHref.length > hashIndex + 1) {
+      const hash = targetHref.slice(hashIndex + 1);
+      const targetPath = targetHref.slice(0, hashIndex) || "/";
+      
+      // If we are already on the page where the hash is targeted
+      if (path === targetPath || (targetPath === "" && path === "/")) {
+        const el = document.getElementById(hash);
+        if (el) {
+          e.preventDefault();
+          window.scrollTo({
+            top: el.offsetTop - 90, // Account for sticky navbar
+            behavior: "smooth",
+          });
+        }
+        return; 
+      }
+      return; // Let Next.js route to the new page natively
+    }
+
+    // 2. Handle Scroll to Top for identical page clicks
+    const currentUrl = window.location.pathname + window.location.search + window.location.hash;
+    const targetUrl = targetHref.startsWith("http") ? targetHref : (targetHref.startsWith("/") ? targetHref : `/${targetHref}`);
+    
+    if (currentUrl === targetUrl || currentUrl.replace(/\/$/, "") === targetUrl.replace(/\/$/, "")) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    // 3. Handle Scroll to Top for query parameter changes on the same page
+    const cleanTargetPath = targetHref.split("?")[0].split("#")[0].replace(/\/$/, "") || "/";
+    const cleanCurrentPath = path.replace(/\/$/, "") || "/";
+
+    if (cleanCurrentPath === cleanTargetPath) {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 150);
+    }
   };
 
   return (
@@ -201,7 +259,7 @@ export default function Navbar() {
           <Link href="/" className="relative z-[101] flex items-center shrink-0">
             <Image
               src="/assets/webonic2.png"
-              alt="Logo"
+              alt="Webronic Industries"
               width={130}
               height={60}
               priority
@@ -214,21 +272,24 @@ export default function Navbar() {
             <ul className="flex items-center gap-1">
               {/* 1. HOME */}
               <li>
-                <button
-                  onClick={() => handleNavClick(navLinks[0])}
+                <Link
+                  href="/"
+                  onClick={(e) => scrollTopIfSamePage(e, "/")}
                   className={`text-menu font-bold uppercase tracking-wider px-4 py-2 rounded-xl transition-all duration-300 ${isLinkActive(navLinks[0])
-                    ? "text-[#2776ea] bg-[#2776ea]/8"
+                    ? "text-[#2776ea] "
                     : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                     }`}
                 >
                   {navLinks[0].name}
-                </button>
+                </Link>
               </li>
 
               {/* 2. SERVICES DROPDOWN */}
               <li className="relative group">
                 <button
-                  className={`flex items-center gap-1 text-menu font-bold uppercase tracking-wider px-4 py-2 transition-all ${path.includes("/services") || path.includes("/service")
+                  aria-haspopup="true"
+                  aria-expanded={false}
+                  className={`flex items-center gap-1 text-menu font-bold uppercase tracking-wider px-4 py-2 transition-all ${path.includes("/service")
                     ? "text-[#2776ea]"
                     : "text-slate-600 group-hover:text-slate-900"
                     }`}
@@ -243,9 +304,10 @@ export default function Navbar() {
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[clamp(288px,20vw,400px)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-3 group-hover:translate-y-0">
                   <div className="bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl p-[clamp(8px,0.6vw,14px)] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] flex flex-col  max-h-[80vh] overflow-y-auto">
                     {serviceItems.map((item, index) => (
-                      <button
+                      <Link
                         key={item.name}
-                        onClick={() => handleNavClick(item)}
+                        href={item.href}
+                        onClick={(e) => scrollTopIfSamePage(e, item.href)}
                         className={`flex items-center gap-[clamp(12px,0.9vw,18px)] w-full p-[clamp(10px,0.7vw,16px)] rounded-xl text-left transition-all hover:bg-slate-50 group/item `}
                       >
                         <div
@@ -258,7 +320,7 @@ export default function Navbar() {
                         >
                           {item.name}
                         </span>
-                      </button>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -267,6 +329,8 @@ export default function Navbar() {
               {/* 3. PRODUCTS DROPDOWN */}
               <li className="relative group">
                 <button
+                  aria-haspopup="true"
+                  aria-expanded={false}
                   className={`flex items-center gap-1 text-menu font-bold uppercase tracking-wider px-4 py-2 transition-all ${path.includes("/product")
                     ? "text-[#2776ea]"
                     : "text-slate-600 group-hover:text-slate-900"
@@ -282,9 +346,10 @@ export default function Navbar() {
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[clamp(256px,18vw,380px)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-3 group-hover:translate-y-0">
                   <div className="bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl p-[clamp(8px,0.6vw,14px)] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] flex flex-col gap-1">
                     {productItems.map((item, index) => (
-                      <button
+                      <Link
                         key={item.name}
-                        onClick={() => handleNavClick(item)}
+                        href={item.href}
+                        onClick={(e) => scrollTopIfSamePage(e, item.href)}
                         className={`flex items-center gap-[clamp(12px,0.9vw,18px)] w-full p-[clamp(10px,0.7vw,16px)] rounded-xl text-left transition-all hover:bg-slate-50 group/item`}
                       >
                         <div
@@ -297,7 +362,7 @@ export default function Navbar() {
                         >
                           {item.name}
                         </span>
-                      </button>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -309,22 +374,30 @@ export default function Navbar() {
                 const active = isLinkActive(item);
                 return (
                   <li key={item.name}>
-                    <button
-                      onClick={() => handleNavClick(item)}
+                    <Link
+                      href={getHref(item)}
+                      onClick={(e) => scrollTopIfSamePage(e, getHref(item))}
                       className={`text-menu font-bold uppercase tracking-wider px-4 py-2 rounded-xl transition-all duration-300 ${active
-                        ? "text-[#2776ea] bg-[#2776ea]/8"
+                        ? "text-[#2776ea]"
                         : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                         }`}
                     >
                       {item.name}
-                    </button>
+                    </Link>
                   </li>
                 );
               })}
 
               {/* 5. COMPANY DROPDOWN */}
               <li className="relative group">
-                <button className="flex items-center gap-1 text-menu font-bold uppercase tracking-wider px-4 py-2 text-slate-600 group-hover:text-slate-900 transition-all">
+                <button
+                  aria-haspopup="true"
+                  aria-expanded={false}
+                  className={`flex items-center gap-1 text-menu font-bold uppercase tracking-wider px-4 py-2 transition-all ${isCompanyActive
+                  ? "text-[#2776ea]"
+                  : "text-slate-600 group-hover:text-slate-900"
+                  }`}
+                >
                   Company{" "}
                   <ChevronDown
                     size={14}
@@ -336,8 +409,9 @@ export default function Navbar() {
                   <div className="bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl p-[clamp(8px,0.6vw,14px)] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
                     {/* Branches injected into Company dropdown when compact */}
                     {isCompact && (
-                      <button
-                        onClick={() => handleNavClick({ name: "Branches", type: "page", href: "/branches" })}
+                      <Link
+                        href="/branches"
+                        onClick={(e) => scrollTopIfSamePage(e, "/branches")}
                         className={`flex items-center gap-[clamp(12px,0.9vw,18px)] w-full p-[clamp(10px,0.7vw,16px)] rounded-xl text-left transition-all group/item ${path === "/branches" ? "bg-slate-50" : "hover:bg-slate-50"}`}
                       >
                         <div className={`h-[clamp(32px,2.2vw,44px)] w-[clamp(32px,2.2vw,44px)] rounded-lg flex items-center justify-center transition-colors ${path === "/branches" ? "bg-[#2776ea] text-white" : "bg-slate-50 text-slate-500 group-hover/item:text-[#2776ea] group-hover/item:bg-[#2776ea]/10"}`}>
@@ -346,12 +420,13 @@ export default function Navbar() {
                         <span className={`text-submenu font-bold uppercase ${path === "/branches" ? "text-[#2776ea]" : "text-slate-700"}`}>
                           Branches
                         </span>
-                      </button>
+                      </Link>
                     )}
                     {companyItems.map((item) => (
-                      <button
+                      <Link
                         key={item.name}
-                        onClick={() => handleNavClick(item)}
+                        href={getHref(item)}
+                        onClick={(e) => scrollTopIfSamePage(e, getHref(item))}
                         className={`flex items-center gap-[clamp(12px,0.9vw,18px)] w-full p-[clamp(10px,0.7vw,16px)] rounded-xl text-left transition-all group/item ${activeSection === item.id && path === "/"
                           ? "bg-slate-50"
                           : "hover:bg-slate-50"
@@ -373,7 +448,7 @@ export default function Navbar() {
                         >
                           {item.name}
                         </span>
-                      </button>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -393,6 +468,7 @@ export default function Navbar() {
             <button
               onClick={() => setOpen(!open)}
               className="lg:hidden p-2 text-slate-900 relative z-[101]"
+              aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             >
               {open ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -409,9 +485,10 @@ export default function Navbar() {
           {/* Main Links */}
           <div className="space-y-1 mb-8">
             {navLinks.map((item) => (
-              <button
+              <Link
                 key={item.name}
-                onClick={() => handleNavClick(item)}
+                href={getHref(item)}
+                onClick={(e) => { setOpen(false); scrollTopIfSamePage(e, getHref(item)); }}
                 className="flex items-center justify-between w-full py-4 text-left border-b border-slate-50"
               >
                 <span
@@ -426,7 +503,7 @@ export default function Navbar() {
                     isLinkActive(item) ? "text-[#2776ea]" : "text-slate-300"
                   }
                 />
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -436,9 +513,10 @@ export default function Navbar() {
           </p>
           <div className="grid grid-cols-2 gap-3 mb-8">
             {serviceItems.map((item, index) => (
-              <button
+              <Link
                 key={item.name}
-                onClick={() => handleNavClick(item)}
+                href={item.href}
+                onClick={(e) => { setOpen(false); scrollTopIfSamePage(e, item.href); }}
                 className="p-3 bg-slate-50 rounded-xl flex flex-col gap-3 border border-slate-100/50 hover:bg-white hover:border-[#2776ea]/30 transition-all text-left"
               >
                 <item.icon
@@ -450,7 +528,7 @@ export default function Navbar() {
                 >
                   {item.name}
                 </span>
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -460,9 +538,10 @@ export default function Navbar() {
           </p>
           <div className="grid grid-cols-2 gap-3 mb-8">
             {productItems.map((item, index) => (
-              <button
+              <Link
                 key={item.name}
-                onClick={() => handleNavClick(item)}
+                href={item.href}
+                onClick={(e) => { setOpen(false); scrollTopIfSamePage(e, item.href); }}
                 className="p-3 bg-slate-50 rounded-xl flex flex-col gap-3 border border-slate-100/50 hover:bg-white hover:border-[#2776ea]/30 transition-all text-left"
               >
                 <item.icon
@@ -474,7 +553,7 @@ export default function Navbar() {
                 >
                   {item.name}
                 </span>
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -484,16 +563,17 @@ export default function Navbar() {
           </p>
           <div className="grid grid-cols-2 gap-3">
             {companyItems.map((item) => (
-              <button
+              <Link
                 key={item.name}
-                onClick={() => handleNavClick(item)}
+                href={getHref(item)}
+                onClick={(e) => { setOpen(false); scrollTopIfSamePage(e, getHref(item)); }}
                 className="p-3 bg-slate-50 rounded-xl flex flex-col gap-3 border border-slate-100/50 hover:bg-white hover:border-[#2776ea]/30 transition-all text-left"
               >
                 <item.icon size={20} className="text-[#2776ea]" />
                 <span className="text-caption font-bold uppercase text-slate-700 tracking-wider">
                   {item.name}
                 </span>
-              </button>
+              </Link>
             ))}
           </div>
 

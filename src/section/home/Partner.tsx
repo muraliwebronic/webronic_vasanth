@@ -151,7 +151,7 @@ function Card({
         <div className="relative w-48 h-48 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
           <Image
             src={item.image}
-            alt={item.name}
+            alt={`${item.name} logo`}
             fill
             className="object-contain"
           />
@@ -167,6 +167,7 @@ function Card({
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`Visit ${item.name} website`}
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-slate-50 text-slate-900 font-semibold text-sm transition-all duration-300 hover:bg-[#2776ea] hover:text-white"
           >
             Visit Website

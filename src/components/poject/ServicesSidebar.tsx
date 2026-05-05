@@ -116,7 +116,7 @@ export default function ServicesSidebar({ services }: ServicesSidebarProps) {
 
                 {/* EXPLORE LINK */}
                 <Link
-                  href={`/services?category=${activeContent.id}`}
+                  href={`/service?category=${activeContent.id}`}
                   className="hidden md:flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2776ea]/10 border border-[#2776ea]/20 text-[#2776ea] text-[10px] font-black uppercase tracking-widest whitespace-nowrap hover:bg-[#2776ea] hover:text-white transition-all"
                 >
                   Explore Service <ArrowUpRight size={14} />

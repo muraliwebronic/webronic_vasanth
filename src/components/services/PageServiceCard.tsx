@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Check, X, Layers, MessageSquare, ArrowUpRight } from "lucide-react";
@@ -34,9 +34,20 @@ export const PageServiceCard = ({
   reversed = false,
 }: PageServiceCardProps) => {
   const [showStack, setShowStack] = useState(false);
+  const pedestalRef = useRef<HTMLDivElement>(null);
+
+  // On mobile, scroll to the pedestal box when stack view opens
+  useEffect(() => {
+    if (showStack && pedestalRef.current && typeof window !== "undefined" && window.innerWidth < 1024) {
+      const timer = setTimeout(() => {
+        pedestalRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [showStack]);
 
   // Dynamic URL using query param
-  const serviceUrl = `/services?category=${service.id}`;
+  const serviceUrl = `/service?category=${service.id}`;
 
   return (
     <div
@@ -117,7 +128,7 @@ export const PageServiceCard = ({
               </div>
             </Link>
 
-            {/* 3. The Toggle Pill */}
+            {/* 3. The Toggle Pill — DESKTOP ONLY */}
             <div
               onClick={() => setShowStack(!showStack)}
               className="flex items-center gap-3 pl-2 pr-5 py-1.5 rounded-full border border-slate-200 bg-white cursor-pointer hover:border-[#2776ea] hover:shadow-md transition-all group/toggle ml-0 sm:ml-2"
@@ -150,8 +161,8 @@ export const PageServiceCard = ({
           </div>
         </div>
 
-        {/* --- RIGHT COLUMN: PEDESTAL --- */}
         <div
+          ref={pedestalRef}
           className={`lg:col-span-5 h-full min-h-[420px] perspective-1000 order-1 ${reversed ? "lg:order-1" : "lg:order-2"}`}
         >
           <div className="relative w-full h-full bg-slate-50/50 rounded-[3rem] border border-slate-100 overflow-hidden flex items-center justify-center transition-all duration-700 hover:shadow-xl hover:shadow-slate-200">

@@ -58,6 +58,7 @@ export default function AboutPageContent() {
                 centered={false}
                 size="default"
                 className="mb-6"
+                isH1={true}
               />
 
               {/* Small CTAs */}
@@ -151,7 +152,7 @@ export default function AboutPageContent() {
                     Growth
                   </span>
                   <span className="block text-caption font-bold text-slate-900">
-                    15+ Years
+                    13+ Years
                   </span>
                 </div>
               </div>

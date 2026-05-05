@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Award, ChevronDown, ChevronUp } from "lucide-react";
 import { DynamicIcon } from "@/components/common/DynamicIcon";
-import { ServicePageData } from "@/app/service/data/types";
+import { ServicePageData } from "@/app/services/data/types";
 import SectionHeader from "@/components/common/SectionHeader";
 
 export default function UniversalOverview({ data }: { data: ServicePageData['overview'] }) {

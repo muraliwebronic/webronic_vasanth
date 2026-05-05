@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Settings, Layers } from "lucide-react";
 import SectionHeader from "@/components/common/SectionHeader";
 import ServiceCard from "@/components/services/ServiceCard";
-import { servicesRegistry } from "@/app/service/data/servicesRegistry";
+import { servicesRegistry } from "@/app/services/data/servicesRegistry";
 
 export default function ServiceHorizontal() {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -29,7 +29,7 @@ export default function ServiceHorizontal() {
       if (!data || !data.preview) return null;
       return {
         id: slug,
-        path: `/services/?category=${slug}`,
+        path: `/service/?category=${slug}`,
         title: data.preview.title,
         description: data.preview.description,
         image: data.preview.image,
@@ -106,13 +106,13 @@ export default function ServiceHorizontal() {
         {/* --- BACKGROUND (Primary Blue Mode) --- */}
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden select-none">
           {/* 1. NEW: White/Green Blobs (From your snippet) */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#76ea27]/20 rounded-full blur-[120px] -translate-x-1/3 translate-y-1/3" />
+          <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-white/10 rounded-full blur-[60px] md:blur-[120px] translate-x-1/3 -translate-y-1/3" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-[#76ea27]/20 rounded-full blur-[60px] md:blur-[120px] -translate-x-1/3 translate-y-1/3" />
 
           {/* 2. Parallax Icons (Updated to White/Transparent for contrast) */}
           <motion.div
             style={{ y: bgParallax }}
-            className="absolute -top-[10%] -right-[5%] opacity-[0.1] text-white flex items-center justify-center"
+            className="absolute -top-[10%] -right-[5%] opacity-[0.1] text-white hidden md:flex items-center justify-center"
           >
             <motion.div style={{ rotate: rotateCW }} className="relative z-10">
               <Settings
@@ -136,7 +136,7 @@ export default function ServiceHorizontal() {
         <motion.div
           ref={contentRef}
           style={{ x }}
-          className="relative z-10 flex gap-6 pl-6 pr-6 lg:gap-16 lg:pl-20 lg:pr-20 items-center"
+          className="relative z-10 flex gap-6 pl-6 pr-6 lg:gap-16 lg:pl-20 lg:pr-20 items-center will-change-transform"
         >
           {/* SECTION HEADER (White Text Mode) */}
           <div className="w-[85vw] md:w-[500px] shrink-0 pr-4 md:pr-8 text-white">
@@ -176,7 +176,7 @@ export default function ServiceHorizontal() {
 
           {/* VIEW ALL CARD */}
           <Link
-            href="/service"
+            href="/services"
             className="group relative flex flex-col justify-end h-[clamp(400px,28vw,560px)] w-[85vw] md:w-[clamp(320px,22vw,480px)] shrink-0 font-sora"
           >
             <div className="absolute top-0 left-0 right-0 z-20 flex justify-center pointer-events-none">

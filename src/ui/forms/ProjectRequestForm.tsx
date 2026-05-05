@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, User, Mail, Phone, MessageSquare, ArrowRight } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -18,6 +18,17 @@ export default function ProjectRequestForm({
     serviceTitle,
 }: ProjectRequestFormProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isOpen]);
 
     if (!isOpen) return null;
 

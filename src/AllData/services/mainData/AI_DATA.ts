@@ -839,7 +839,7 @@ export const AI_DATA: ServicePageData = {
       subtitle: "Direct access to experts",
       methods: [
         { label: "Email Us", value: "contact@webronic.com", icon: "Mail", iconColor: "text-[#2776ea]" },
-        { label: "Call Us", value: "+91 72000 88500", icon: "Phone", iconColor: "text-[#76ea27]" }
+        { label: "Call Us", value: "+917200088500", icon: "Phone", iconColor: "text-[#76ea27]" }
       ]
     }
   },

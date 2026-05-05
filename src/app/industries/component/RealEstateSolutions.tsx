@@ -27,6 +27,7 @@ export default function RealEstateSolutions() {
                 centered={false}
                 size="default"
                 className="mb-8"
+                isH1={true}
               />
               <div className="flex flex-wrap gap-3">
                 {/* <Link href="#solutions" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#2776ea] text-white text-menu font-bold uppercase tracking-wider hover:bg-[#1a5bbd] transition-all shadow-lg shadow-blue-500/20 active:scale-95">

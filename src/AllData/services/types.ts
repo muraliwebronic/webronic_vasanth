@@ -15,6 +15,12 @@ export interface RichSection {
 
 export interface ServicePageData {
   id: string;
+  areaServed?: string;
+  serviceType?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  localClientNote?: string;
+  internalLinks?: { label: string; href: string }[];
 
   preview: {
     title: string;

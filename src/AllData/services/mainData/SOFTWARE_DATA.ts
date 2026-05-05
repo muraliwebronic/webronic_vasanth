@@ -33,7 +33,7 @@ export const SOFTWARE_DATA: ServicePageData = {
     features: [
       "Full-stack development expertise (web, mobile, desktop)",
       "Agile methodology with 2-week sprint cycles",
-      "98% on-time delivery across 1000+ projects",
+      "98% on-time delivery across 100+ projects",
       "Dedicated teams with domain expertise"
     ],
     ctaPrimary: "Discuss Your Project",
@@ -46,7 +46,7 @@ export const SOFTWARE_DATA: ServicePageData = {
     highlight: "Advantage",
     content: [
       "Every business has unique requirements that off-the-shelf software cannot fully address. Custom software development allows you to build applications precisely matching your business processes, competitive differentiators, and strategic objectives.",
-      "Webronic Industries specializes in developing enterprise-grade custom applications that solve complex business challenges. With 15+ years of experience and 1000+ successful projects delivered, we've built applications serving millions of users across industries."
+      "Webronic Industries specializes in developing enterprise-grade custom applications that solve complex business challenges. With 13+ years of experience and 100+ successful projects delivered, we've built applications serving millions of users across industries."
     ],
     differentiators: [
       {
@@ -586,7 +586,7 @@ export const SOFTWARE_DATA: ServicePageData = {
       subtitle: "Direct access to engineers",
       methods: [
         { label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
-        { label: "Phone", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
+        { label: "Phone", value: "+917200088500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }
   },

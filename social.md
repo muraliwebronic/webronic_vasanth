@@ -23,7 +23,7 @@ This document outlines all the social media links currently found across the pro
 - `src/app/careers/components/ApplySection.tsx`
 - `src/AllData/About/ABOUT_PAGE_DATA.tsx`
 
-**`https://www.instagram.com/webronic_tech`**
+**`https://www.instagram.com/webronic.official`**
 - `src/app/about/layout.tsx`
 
 ## LinkedIn

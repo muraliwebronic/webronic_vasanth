@@ -34,6 +34,7 @@ const LocationCard = ({
   <div
     role="button"
     tabIndex={0}
+    aria-label={`View ${title} on map`}
     onClick={() => mapUrl && window.open(mapUrl, "_blank")}
     onKeyDown={(e) => {
       if ((e.key === "Enter" || e.key === " ") && mapUrl) {

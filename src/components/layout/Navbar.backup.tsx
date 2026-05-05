@@ -191,7 +191,7 @@ export default function Navbar() {
           <Link href="/" className="relative z-[101] flex items-center shrink-0">
             <Image
               src="/assets/webonic2.png"
-              alt="Logo"
+              alt="Webronic Industries logo"
               width={130}
               height={30}
               priority

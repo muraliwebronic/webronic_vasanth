@@ -22,6 +22,7 @@ import {
   Inbox,
   Award,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function ShippingAndExchange() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -370,12 +371,12 @@ export default function ShippingAndExchange() {
                     Digital services are exchangeable via tier adjustments or
                     technology switches within the project scope.
                   </p>
-                  <button
-                    onClick={() => setIsModalOpen(true)}
+                  <Link
+                    href={"/contact"}
                     className="mt-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#76ea27]"
                   >
                     Initiate Request <ArrowRight size={14} />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -525,9 +526,7 @@ export default function ShippingAndExchange() {
                     contact@webronic.com
                   </div>
                   <div className="flex items-center gap-4 text-sm font-bold text-slate-900">
-                    <Phone size={18} className="text-[#2776ea] shrink-0" /> +91
-                    72000 88500
-                  </div>
+                    <Phone size={18} className="text-[#2776ea] shrink-0" /> +917200088500</div>
                 </div>
               </div>
 

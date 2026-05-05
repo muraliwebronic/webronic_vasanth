@@ -11,33 +11,33 @@ const jsonLd = {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://webronic.com"
+          "item": "https://www.webronic.com"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Contact Us",
-          "item": "https://webronic.com/branches"
+          "item": "https://www.webronic.com/branches"
         }
       ]
     },
     {
       "@type": "ContactPage",
-      "@id": "https://webronic.com/branches/#webpage",
-      "url": "https://webronic.com/branches",
+      "@id": "https://www.webronic.com/branches/#webpage",
+      "url": "https://www.webronic.com/branches",
       "name": "Contact Webronic | Get in Touch",
       "description": "Contact our offices in Salem, Madurai, and Chennai. Expert IT consulting and support.",
       "mainEntity": {
-        "@id": "https://webronic.com/#organization"
+        "@id": "https://www.webronic.com/#organization"
       }
     },
     // --- Local Business Schema: Salem (HQ) ---
     {
       "@type": "ProfessionalService",
-      "@id": "https://webronic.com/branches/#salem",
+      "@id": "https://www.webronic.com/branches/#salem",
       "name": "Webronic Industries - Salem HQ",
-      "parentOrganization": { "@id": "https://webronic.com/#organization" },
-      "image": "https://webronic.com/og-contact.jpg",
+      "parentOrganization": { "@id": "https://www.webronic.com/#organization" },
+      "image": "https://www.webronic.com/og-contact.jpg",
       "telephone": "+91-720-008-8500",
       "address": {
         "@type": "PostalAddress",
@@ -55,9 +55,9 @@ const jsonLd = {
     // --- Local Business Schema: Madurai ---
     {
       "@type": "ProfessionalService",
-      "@id": "https://webronic.com/branches/#madurai",
+      "@id": "https://www.webronic.com/branches/#madurai",
       "name": "Webronic Industries - Madurai",
-      "parentOrganization": { "@id": "https://webronic.com/#organization" },
+      "parentOrganization": { "@id": "https://www.webronic.com/#organization" },
       "telephone": "+91-638-332-6928",
       "address": {
         "@type": "PostalAddress",
@@ -70,9 +70,9 @@ const jsonLd = {
     // --- Local Business Schema: Chennai ---
     {
       "@type": "ProfessionalService",
-      "@id": "https://webronic.com/branches/#chennai",
+      "@id": "https://www.webronic.com/branches/#chennai",
       "name": "Webronic Industries - Chennai Hub",
-      "parentOrganization": { "@id": "https://webronic.com/#organization" },
+      "parentOrganization": { "@id": "https://www.webronic.com/#organization" },
       "telephone": "+91-720-008-8500",
       "address": {
         "@type": "PostalAddress",
@@ -99,16 +99,16 @@ export const metadata: Metadata = {
     "webronic phone number"
   ],
   alternates: {
-    canonical: "https://webronic.com/branches",
+    canonical: "https://www.webronic.com/branches",
   },
   openGraph: {
     title: "Contact Webronic Industries | Let's Build Something Great",
     description: "Connect with our teams in Salem, Madurai, and Chennai. We are ready to scale your business.",
-    url: "https://webronic.com/branches",
+    url: "https://www.webronic.com/branches",
     siteName: "Webronic Industries",
     images: [
       {
-        url: "https://webronic.com/og-contact.jpg", // Suggested: Use an image of a map or office front
+        url: "https://www.webronic.com/og-contact.jpg", // Suggested: Use an image of a map or office front
         width: 1200,
         height: 630,
         alt: "Contact Webronic Locations",
@@ -121,7 +121,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact Webronic Industries",
     description: "Offices in Salem, Madurai, and Chennai. Reach out today.",
-    images: ["https://webronic.com/og-contact.jpg"],
+    images: ["https://www.webronic.com/og-contact.jpg"],
   },
 };
 

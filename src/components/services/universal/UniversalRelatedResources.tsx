@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { DynamicIcon } from "@/components/common/DynamicIcon";
 import { ServicePageData } from "@/AllData/services/types";
 import SectionHeader from "@/components/common/SectionHeader";
-import { servicesRegistry } from "@/app/service/data/servicesRegistry";
+import { servicesRegistry } from "@/app/services/data/servicesRegistry";
 
 // Convert servicesRegistry to an array format for easy mapping
 const allServices = Object.keys(servicesRegistry).map(key => {
@@ -13,7 +13,7 @@ const allServices = Object.keys(servicesRegistry).map(key => {
   return {
     id: key,
     name: service.preview.title,
-    href: `/services?category=${key}`,
+    href: `/service?category=${key}`,
     icon: service.preview.icon,
     desc: service.preview.tagline,
   };
@@ -44,7 +44,7 @@ export default function UniversalRelatedResources({ data }: { data: ServicePageD
                 // Find matching service from allServices to use its exact base href if available
                 const matchedService = allServices.find(item => item.id === service.id);
 
-                const finalHref = matchedService ? matchedService.href : `/services?category=${service.id}`;
+                const finalHref = matchedService ? matchedService.href : `/service?category=${service.id}`;
 
                 return (
                   <Link

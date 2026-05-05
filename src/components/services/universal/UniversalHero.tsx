@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, Check, Activity, Layers } from "lucide-react";
-import { ServicePageData } from "@/app/service/data/types";
+import { ServicePageData } from "@/app/services/data/types";
 import SectionHeader from "@/components/common/SectionHeader";
 
 export default function UniversalHero({ data }: { data: ServicePageData['hero'] }) {
@@ -24,6 +24,7 @@ export default function UniversalHero({ data }: { data: ServicePageData['hero'] 
                      centered={false}
                      size="default" // Using standard size, not "hero"
                      className="mb-6"
+                     isH1={true}
                   />
 
                   {/* Small CTAs */}

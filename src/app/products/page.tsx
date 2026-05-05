@@ -221,6 +221,7 @@ export default function ProductSection() {
               description="Scalable software solutions meticulously engineered to bridge the gap between complex data and operational excellence"
               centered={false}
               className="max-w-3xl"
+              isH1={true}
             />
           </div>
           <div className="flex flex-col">

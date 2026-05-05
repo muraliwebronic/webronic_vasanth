@@ -539,7 +539,7 @@ export const DEVOPS_DATA: ServicePageData = {
         theme: "dark",
         list: [
           "Email: contact@webronic.com",
-          "Phone: +91 72000 88500"
+          "Phone: +917200088500"
         ],
         cta: { text: "Contact Us", link: "#contact" }
       }
@@ -549,7 +549,7 @@ export const DEVOPS_DATA: ServicePageData = {
       subtitle: "Direct access to engineers",
       methods: [
         { label: "Email Us", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
-        { label: "Call Us", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
+        { label: "Call Us", value: "+917200088500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }
   },

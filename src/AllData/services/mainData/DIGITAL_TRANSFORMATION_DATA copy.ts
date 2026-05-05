@@ -48,7 +48,7 @@ export const DIGITAL_TRANSFORMATION_DATA: ServicePageData = {
       "Digital transformation is a fundamental business imperative for modern organizations. Organizations that successfully transform achieve faster growth, higher profitability, greater customer satisfaction, and improved employee engagement compared to their less-digital competitors.",
       "However, digital transformation is complex. It's not just about implementing new technology. It requires reimagining business processes, transforming customer experiences, evolving operating models, and fundamentally changing how organizations create and deliver value.",
       "Most digital transformations fail. Research shows that 70% of transformation initiatives don't achieve their objectives due to lack of clear vision, technology-first approaches, insufficient change management, and poor execution.",
-      "Our digital transformation methodology is built on 15+ years of experience guiding organizations through successful transformations. We've learned what works and what doesn't across industries, company sizes, and transformation types."
+      "Our digital transformation methodology is built on 13+ years of experience guiding organizations through successful transformations. We've learned what works and what doesn't across industries, company sizes, and transformation types."
     ],
     differentiators: [
       {
@@ -667,7 +667,7 @@ export const DIGITAL_TRANSFORMATION_DATA: ServicePageData = {
       subtitle: "Direct access to strategists",
       methods: [
         { label: "Email Us", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
-        { label: "Call Us", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
+        { label: "Call Us", value: "+917200088500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }
   },

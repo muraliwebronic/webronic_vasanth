@@ -102,7 +102,7 @@ export const Carousel3D = ({
               <div className="w-[clamp(50px,4vw,70px)] h-[clamp(50px,4vw,70px)] relative">
                 <Image
                   src={data.img}
-                  alt={data.title}
+                  alt={`${data.title} — Webronic service illustration`}
                   fill
                   className="object-contain"
                 />
@@ -166,6 +166,7 @@ export const Carousel3D = ({
               e.stopPropagation();
               onPrev();
             }}
+            aria-label="Previous slide"
             className="p-2 rounded-full bg-white/90 backdrop-blur-md border border-[#2776ea]/15 text-slate-700 hover:bg-[#2776ea] hover:text-white transition-all"
           >
             <ChevronLeft size={20} />
@@ -177,6 +178,7 @@ export const Carousel3D = ({
               e.stopPropagation();
               onNext();
             }}
+            aria-label="Next slide"
             className="p-2 rounded-full bg-white/90 backdrop-blur-md border border-[#2776ea]/15 text-slate-700 hover:bg-[#76ea27] hover:text-white transition-all"
           >
             <ChevronRight size={20} />
@@ -191,6 +193,7 @@ export const Carousel3D = ({
             e.stopPropagation();
             onPrev();
           }}
+          aria-label="Previous slide"
           className="p-3 rounded-full bg-white/90 backdrop-blur-md border border-[#2776ea]/15 text-slate-700 hover:bg-[#2776ea] hover:text-white transition-all shadow-sm"
         >
           <ChevronLeft size={22} />
@@ -200,6 +203,7 @@ export const Carousel3D = ({
             e.stopPropagation();
             onNext();
           }}
+          aria-label="Next slide"
           className="p-3 rounded-full bg-white/90 backdrop-blur-md border border-[#2776ea]/15 text-slate-700 hover:bg-[#76ea27] hover:text-white transition-all shadow-sm"
         >
           <ChevronRight size={22} />
@@ -209,7 +213,6 @@ export const Carousel3D = ({
   );
 };
 
-// --- COUNT UP ---
 function CountUp({
   target,
   suffix,
@@ -219,21 +222,39 @@ function CountUp({
   suffix: string;
   duration?: number;
 }) {
-  const [count, setCount] = useState(0);
+  // Start from target so SSR/crawlers see real values, not "0"
+  const [count, setCount] = useState(target);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const isWholeNumber = Number.isInteger(target);
+
   useEffect(() => {
+    // Reset to 0 and animate up on client mount
+    if (hasAnimated) return;
+    setCount(0);
+    setHasAnimated(true);
+
     let startTime: number | null = null;
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
       const easeOut = 1 - Math.pow(1 - progress, 3);
-      setCount(progress === 1 ? target : Number((easeOut * target).toFixed(1)));
+      const value = easeOut * target;
+
+      if (progress === 1) {
+        setCount(target);
+      } else {
+        // Use Math.floor for whole number targets to avoid decimals
+        setCount(isWholeNumber ? Math.floor(value) : Math.round(value * 10) / 10);
+      }
+
       if (progress < 1) requestAnimationFrame(animate);
     };
     requestAnimationFrame(animate);
-  }, [target, duration]);
+  }, [target, duration, hasAnimated, isWholeNumber]);
+
   return (
     <>
-      {count}
+      {isWholeNumber ? count : count.toFixed(1)}
       {suffix}
     </>
   );

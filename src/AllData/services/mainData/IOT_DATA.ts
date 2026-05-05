@@ -674,7 +674,7 @@ export const IOT_DATA: ServicePageData = {
       subtitle: "Talk to our experts",
       methods: [
         { label: "Email", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
-        { label: "Phone", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
+        { label: "Phone", value: "+917200088500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }
   },

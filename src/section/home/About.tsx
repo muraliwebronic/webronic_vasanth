@@ -107,7 +107,7 @@ export default function About() {
         {/* --- 3. ACTIONS --- */}
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link
-            href="/service"
+            href="/services"
             className="inline-flex justify-center items-center bg-[#2776ea] text-white text-sm font-bold px-8 py-3.5 rounded-xl hover:bg-[#2776ea]/95 transition-all shadow-lg shadow-blue-500/20 hover:-translate-y-0.5"
           >
             Our Solutions

@@ -55,7 +55,7 @@ export default function HiringProcess() {
                                     {/* --- LEFT: STEP INDICATOR --- */}
                                     <div className="flex flex-row md:flex-col items-center gap-4 md:w-20 shrink-0">
                                         {/* Number */}
-                                        <span className="text-h1 font-black text-slate-200 group-hover:text-[#2776ea]/20 transition-colors">
+                                        <span className="text-h2 font-black text-slate-200 group-hover:text-[#2776ea]/20 transition-colors">
                                             {step.step}
                                         </span>
 

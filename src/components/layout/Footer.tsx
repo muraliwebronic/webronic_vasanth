@@ -35,29 +35,29 @@ import { branches } from "@/AllData/branches/branches";
 const serviceItems = [
   {
     name: "Web Development",
-    href: "/services?category=web-development",
+    href: "/service?category=web-development",
     icon: Code2,
   },
-  { name: "AI & ML", href: "/services?category=ai-machine-learning", icon: Bot },
+  { name: "AI & ML", href: "/service?category=ai-machine-learning", icon: Bot },
   {
     name: "Cloud Services",
-    href: "/services?category=cloud-services",
+    href: "/service?category=cloud-services",
     icon: Cloud,
   },
   {
-    name: "Digital Trans",
-    href: "/services?category=digital-transformation",
+    name: "Digital Transformation",
+    href: "/service?category=digital-transformation",
     icon: Zap,
   },
-  { name: "DevOps", href: "/services?category=devops", icon: Terminal },
+  { name: "DevOps", href: "/service?category=devops", icon: Terminal },
   {
     name: "IoT Solutions",
-    href: "/services?category=iot-solutions",
+    href: "/service?category=iot-solutions",
     icon: Wifi,
   },
   {
     name: "Data Analytics",
-    href: "/services?category=data-analytics",
+    href: "/service?category=data-analytics",
     icon: BarChart3,
   },
 ];
@@ -70,39 +70,61 @@ const quickLinks = [
   { name: "About Us", type: "page", href: "/about", icon: Info },
   { name: "Partners", type: "section", id: "Partners", icon: Handshake },
   { name: "Clients", type: "section", id: "client", icon: Globe },
-  { name: "Careers", type: "section", id: "career", icon: Briefcase },
+  { name: "Careers", type: "page", href: "/careers", icon: Briefcase },
 ];
 
 export default function Footer() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleNavClick = (item: any) => {
-    if (item.type === "page" || item.href) {
-      router.push(item.href || item.id);
-      return;
-    }
-
-    if (item.type === "section") {
-      if (pathname === "/") {
-        const el = document.getElementById(item.id);
+  const scrollTopIfSamePage = (e: React.MouseEvent<HTMLAnchorElement>, targetHref: string) => {
+    // 1. Handle Section Hash Links (e.g., /#client)
+    const hashIndex = targetHref.indexOf("#");
+    if (hashIndex !== -1 && targetHref.length > hashIndex + 1) {
+      const hash = targetHref.slice(hashIndex + 1);
+      const targetPath = targetHref.slice(0, hashIndex) || "/";
+      
+      // If we are already on the page where the hash is targeted
+      if (pathname === targetPath || (targetPath === "" && pathname === "/")) {
+        const el = document.getElementById(hash);
         if (el) {
+          e.preventDefault();
           window.scrollTo({
-            top: el.offsetTop - 90,
+            top: el.offsetTop - 90, // Account for sticky navbar
             behavior: "smooth",
           });
         }
-      } else {
-        window.location.href = `/#${item.id}`;
+        return; 
       }
+      return; // Let Next.js route to the new page natively
+    }
+
+    // 2. Handle Scroll to Top for identical page clicks
+    const currentUrl = window.location.pathname + window.location.search + window.location.hash;
+    const targetUrl = targetHref.startsWith("http") ? targetHref : (targetHref.startsWith("/") ? targetHref : `/${targetHref}`);
+    
+    if (currentUrl === targetUrl || currentUrl.replace(/\/$/, '') === targetUrl.replace(/\/$/, '')) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    // 3. Handle Scroll to Top for query parameter changes on the same page
+    const cleanTargetPath = targetHref.split("?")[0].split("#")[0].replace(/\/$/, "") || "/";
+    const cleanCurrentPath = pathname.replace(/\/$/, "") || "/";
+
+    if (cleanCurrentPath === cleanTargetPath) {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 150);
     }
   };
 
   const socialIcons = [
-    { src: "/assets/icons/facebook.png", href: "https://www.facebook.com/webronic/" },
-    { src: "/assets/icons/instagram.png", href: "https://www.instagram.com/webronic_/" },
-    { src: "/assets/icons/youtube.png", href: "https://www.youtube.com/@WEBRONIC/" },
-    { src: "/assets/icons/linkedin.png", href: "https://www.linkedin.com/company/webronic/" },
+    { name: "Facebook", src: "/assets/icons/facebook.png", href: "https://www.facebook.com/webronic/" },
+    { name: "Instagram", src: "/assets/icons/instagram.png", href: "https://www.instagram.com/webronic.official/" },
+    { name: "YouTube", src: "/assets/icons/youtube.png", href: "https://www.youtube.com/@WEBRONIC/" },
+    { name: "LinkedIn", src: "/assets/icons/linkedin.png", href: "https://www.linkedin.com/company/webronic/" },
   ];
 
   const policyLinks = [
@@ -130,7 +152,7 @@ export default function Footer() {
               <Link href="/">
                 <Image
                   src="/assets/webonic2.png"
-                  alt="WEBRONIC"
+                  alt="Webronic Industries logo"
                   width={140}
                   height={40}
                   className="object-contain transition-opacity hover:opacity-80"
@@ -148,9 +170,10 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Webronic on ${social.name}`}
                   className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-50 border border-slate-100 transition-all hover:bg-[#2776ea]/10 hover:border-[#2776ea]/20 hover:-translate-y-1"
                 >
-                  <Image src={social.src} alt="Social" width={20} height={20} />
+                  <Image src={social.src} alt={`${social.name} icon`} width={20} height={20} />
                 </a>
               ))}
             </div>
@@ -166,7 +189,8 @@ export default function Footer() {
                 <li key={service.name}>
                   <Link
                     href={service.href}
-                    className="text-submenu text-slate-500 hover:text-[#2776ea] transition-all flex items-center group text-left"
+                    onClick={(e) => scrollTopIfSamePage(e, service.href)}
+                    className="text-submenu text-slate-500 hover:text-[#2776ea] transition-all flex items-center group text-left bg-transparent border-none p-0 cursor-pointer w-full"
                   >
 
                     {service.name}
@@ -184,8 +208,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((item) => (
                 <li key={item.name}>
-                  <button
-                    onClick={() => handleNavClick(item)}
+                  <Link
+                    href={item.href || `/#${item.id}`}
+                    onClick={(e) => scrollTopIfSamePage(e, item.href || `/#${item.id}`)}
                     className="text-submenu text-slate-500 hover:text-[#2776ea] transition-all flex items-center group bg-transparent border-none p-0 cursor-pointer text-left w-full"
                   >
                     <item.icon
@@ -195,7 +220,7 @@ export default function Footer() {
                     <span >
                       {item.name}
                     </span>
-                  </button>
+                  </Link>
                 </li>
               ))}
 
@@ -212,7 +237,8 @@ export default function Footer() {
                 <li key={policy.label}>
                   <Link
                     href={policy.href}
-                    className="text-submenu text-slate-500 hover:text-[#2776ea] transition-all flex items-center group"
+                    onClick={(e) => scrollTopIfSamePage(e, policy.href)}
+                    className="text-submenu text-slate-500 hover:text-[#2776ea] transition-all flex items-center group bg-transparent border-none p-0 cursor-pointer text-left w-full"
                   >
                     <policy.icon
                       size={14}
@@ -235,52 +261,51 @@ export default function Footer() {
             Our Centers
           </h4>
 
-         <div className="grid gap-8 grid-cols-1 md:grid-cols-3 mb-12">
-  {/* --- 1. DYNAMIC ADDRESSES --- */}
-  {branches.map((hub, idx) => (
-    <div
-      key={idx}
-      className="flex flex-col h-full group transition-all text-center md:text-left hover:bg-slate-50/50 p-4 rounded-xl border border-transparent hover:border-slate-100"
-    >
-      <p className="text-caption font-black uppercase tracking-widest text-slate-400 mb-2 group-hover:text-[#2776ea] transition-colors">
-        {hub.city} : {hub.type}
-      </p>
-      <a
-        href={hub.mapUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-xs text-slate-500 leading-relaxed hover:text-[#2776ea] transition-colors"
-      >
-        {hub.address}
-      </a>
-      <p className="mt-auto pt-4 text-sm text-[#2776ea] font-bold">
-        <a href={`tel:${hub.contact}`} className="hover:underline">
-          {hub.contact}
-        </a>
-      </p>
-    </div>
-  ))}
+          <div className="grid gap-8 grid-cols-1 md:grid-cols-3 mb-12">
+            {/* --- 1. DYNAMIC ADDRESSES --- */}
+            {branches.map((hub, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col h-full group transition-all text-center md:text-left hover:bg-slate-50/50 p-4 rounded-xl border border-transparent hover:border-slate-100"
+              >
+                <p className="text-caption font-black uppercase tracking-widest text-slate-400 mb-2 group-hover:text-[#2776ea] transition-colors">
+                  {hub.city} : {hub.type}
+                </p>
+                <a
+                  href={hub.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-slate-500 leading-relaxed hover:text-[#2776ea] transition-colors"
+                >
+                  {hub.address}
+                </a>
+                <p className="mt-auto pt-4 text-sm text-[#2776ea] font-bold">
+                  <a href={`tel:${hub.contact}`} className="hover:underline">
+                    {hub.contact}
+                  </a>
+                </p>
+              </div>
+            ))}
 
-  {/* --- 2. STATIC REGISTERED OFFICE --- */}
-  <div className="flex flex-col h-full group transition-all text-center md:text-left hover:bg-slate-50/50 p-4 rounded-xl border border-transparent hover:border-slate-100">
-    <p className="text-caption font-black uppercase tracking-widest text-slate-400 mb-2 group-hover:text-[#2776ea] transition-colors">
-      Chennai : Registered Office
-    </p>
-    <a
-      href="https://maps.app.goo.gl/QLzqNbRZsVd4RuF17"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-xs text-slate-500 leading-relaxed hover:text-[#2776ea] transition-colors"
-    >
-      New #33, Old #17, 2nd St, Mylapore, Chennai - 600004
-    </a>
-    <p className="mt-auto pt-4 text-sm text-[#2776ea] font-bold">
-      <a href="tel:+917200088500" className="hover:underline">
-        +91 72000 88500
-      </a>
-    </p>
-  </div>
-</div>
+            {/* --- 2. STATIC REGISTERED OFFICE --- */}
+            <div className="flex flex-col h-full group transition-all text-center md:text-left hover:bg-slate-50/50 p-4 rounded-xl border border-transparent hover:border-slate-100">
+              <p className="text-caption font-black uppercase tracking-widest text-slate-400 mb-2 group-hover:text-[#2776ea] transition-colors">
+                Chennai : Registered Office
+              </p>
+              <a
+                href="https://maps.app.goo.gl/QLzqNbRZsVd4RuF17"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-slate-500 leading-relaxed hover:text-[#2776ea] transition-colors"
+              >
+                New #33, Old #17, 2nd St, Mylapore, Chennai - 600004
+              </a>
+              <p className="mt-auto pt-4 text-sm text-[#2776ea] font-bold">
+                <a href="tel:+917200088500" className="hover:underline">
+                  +917200088500</a>
+              </p>
+            </div>
+          </div>
 
           {/* COPYRIGHT */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 text-center md:text-left border-t border-slate-100 pt-8">
@@ -307,11 +332,12 @@ export default function Footer() {
                 href="https://www.thingsatweb.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit ThingsAtWeb partner website"
                 className="transition-opacity"
               >
                 <Image
                   src="/assets/webonic2.png"
-                  alt="ThingsAtWeb"
+                  alt="Webronic Industries footer logo"
                   width={100}
                   height={28}
                   className="object-contain"

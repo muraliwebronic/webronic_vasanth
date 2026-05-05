@@ -28,85 +28,86 @@ type ContactCardProps = {
   actionText?: string;
 };
 
-const ContactCard = ({ label, value, icon: Icon, href, onCopy, copied, isPartner, actionText }: ContactCardProps) => (
-  <div className="group relative flex flex-col justify-end h-full font-sora pt-12">
+const ContactCard = ({ label, value, icon: Icon, href, onCopy, copied, isPartner, actionText }: ContactCardProps) => {
+  const CardWrapper: any = href ? "a" : (onCopy ? "button" : "div");
 
-    {/* 1. FLOATING ICON BOX */}
-    <div className="absolute top-0 left-0 right-0 z-20 flex justify-center pointer-events-none">
-      <div className={`relative w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] border border-slate-100 transition-transform duration-500 cubic-bezier(0.25, 0.46, 0.45, 0.94) group-hover:-translate-y-4 group-hover:scale-105 group-hover:rotate-3`}>
-        {isPartner ? (
-          <Globe size={32} className="text-slate-400 group-hover:text-[#2776ea] transition-colors duration-300" strokeWidth={1.5} />
-        ) : (
-          <Icon size={32} className="text-slate-400 group-hover:text-[#2776ea] transition-colors duration-300" strokeWidth={1.5} />
-        )}
-      </div>
-    </div>
-
-    {/* 2. PEDESTAL BASE */}
-    <div className="relative h-full w-full bg-white rounded-[2.5rem] border border-slate-100 p-6 pt-16 flex flex-col items-center shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:shadow-blue-900/5 group-hover:border-blue-100 overflow-hidden">
-
-      {/* Fake Floor Shadow */}
-      <div className="absolute top-16 left-1/2 -translate-x-1/2 w-16 h-3 bg-slate-900/5 blur-lg rounded-full transition-all duration-500 group-hover:w-12 group-hover:bg-blue-900/10 group-hover:blur-xl" />
-
-      {/* Content Section */}
-      <div className="relative z-10 text-center flex-1 flex flex-col w-full">
-        <p className="text-caption font-black uppercase tracking-[0.2em] text-slate-400 mb-3">
-          {label}
-        </p>
-
-        {/* If it's the partner card, we render the Logo image */}
-        {isPartner ? (
-          <div className="h-8 relative w-32 mx-auto opacity-70 transition-all duration-300 group-hover:opacity-100">
-            <Image
-              src="/assets/images/thingsatweb.png"
-              alt="ThingsAtWeb"
-              fill
-              className="object-contain"
-            />
-          </div>
-        ) : (
-          <>
-            {href ? (
-              <a href={href} target={actionText === "View Map" ? "_blank" : undefined} rel={actionText === "View Map" ? "noopener noreferrer" : undefined} className="text-menu font-bold text-slate-900 hover:text-[#2776ea] transition-colors leading-tight break-words line-clamp-3">
-                {value}
-              </a>
-            ) : (
-              <p className="text-sm font-bold text-slate-900 leading-relaxed">
-                {value}
-              </p>
-            )}
-          </>
-        )}
+  return (
+    <CardWrapper
+      href={href}
+      target={href && (isPartner || actionText === "View Map") ? "_blank" : undefined}
+      rel={href && (isPartner || actionText === "View Map") ? "noopener noreferrer" : undefined}
+      onClick={onCopy}
+      className={`group relative flex flex-col justify-end h-full font-sora pt-12 ${onCopy ? 'text-left w-full cursor-pointer focus:outline-none' : 'block cursor-pointer focus:outline-none'}`}
+    >
+      {/* 1. FLOATING ICON BOX */}
+      <div className="absolute top-0 left-0 right-0 z-20 flex justify-center pointer-events-none">
+        <div className={`relative w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] border border-slate-100 transition-transform duration-500 cubic-bezier(0.25, 0.46, 0.45, 0.94) group-hover:-translate-y-4 group-hover:scale-105 group-hover:rotate-3`}>
+          {isPartner ? (
+            <Globe size={32} className="text-slate-400 group-hover:text-[#2776ea] transition-colors duration-300" strokeWidth={1.5} />
+          ) : (
+            <Icon size={32} className="text-slate-400 group-hover:text-[#2776ea] transition-colors duration-300" strokeWidth={1.5} />
+          )}
+        </div>
       </div>
 
-      {/* Bottom Action Bar */}
-      <div className="mt-8 w-full pt-4 border-t border-slate-100 group-hover:border-slate-200/60 transition-colors flex items-center justify-between">
-        {onCopy ? (
-          <button
-            onClick={onCopy}
-            className="flex items-center justify-between w-full text-submenu font-bold text-slate-400 hover:text-[#2776ea] transition-colors uppercase tracking-wider"
-          >
-            <span>{copied ? "Copied!" : "Copy Address"}</span>
-            {copied ? <Check size={16} /> : <Copy size={16} />}
-          </button>
-        ) : (
-          <a
-            href={href}
-            target={isPartner || actionText === "View Map" ? "_blank" : undefined}
-            rel={isPartner || actionText === "View Map" ? "noopener noreferrer" : undefined}
-            className="flex items-center justify-between w-full text-submenu font-bold text-slate-400 hover:text-[#2776ea] transition-colors uppercase tracking-wider"
-          >
-            <span>{isPartner ? "Visit Partner" : actionText || `${label.split(" ")[0]} Now`}</span>
-            <ArrowUpRight size={16} />
-          </a>
-        )}
-      </div>
+      {/* 2. PEDESTAL BASE */}
+      <div className="relative h-full w-full bg-white rounded-[2.5rem] border border-slate-100 p-6 pt-16 flex flex-col items-center shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:shadow-blue-900/5 group-hover:border-blue-100 overflow-hidden">
 
-      {/* Subtle Hover Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-    </div>
-  </div>
-);
+        {/* Fake Floor Shadow */}
+        <div className="absolute top-16 left-1/2 -translate-x-1/2 w-16 h-3 bg-slate-900/5 blur-lg rounded-full transition-all duration-500 group-hover:w-12 group-hover:bg-blue-900/10 group-hover:blur-xl" />
+
+        {/* Content Section */}
+        <div className="relative z-10 text-center flex-1 flex flex-col w-full">
+          <p className="text-caption font-black uppercase tracking-[0.2em] text-slate-400 mb-3">
+            {label}
+          </p>
+
+          {/* If it's the partner card, we render the Logo image */}
+          {isPartner ? (
+            <div className="h-8 relative w-32 mx-auto opacity-70 transition-all duration-300 group-hover:opacity-100">
+              <Image
+                src="/assets/images/thingsatweb.png"
+                alt="ThingsAtWeb"
+                fill
+                className="object-contain"
+              />
+            </div>
+          ) : (
+            <>
+              {href ? (
+                <span className="text-menu font-bold text-slate-900 group-hover:text-[#2776ea] transition-colors leading-tight break-words line-clamp-3">
+                  {value}
+                </span>
+              ) : (
+                <p className="text-sm font-bold text-slate-900 leading-relaxed">
+                  {value}
+                </p>
+              )}
+            </>
+          )}
+        </div>
+
+        {/* Bottom Action Bar */}
+        <div className="mt-8 w-full pt-4 border-t border-slate-100 group-hover:border-slate-200/60 transition-colors flex items-center justify-between">
+          {onCopy ? (
+            <div className="flex items-center justify-between w-full text-submenu font-bold text-slate-400 group-hover:text-[#2776ea] transition-colors uppercase tracking-wider">
+              <span>{copied ? "Copied!" : "Copy Address"}</span>
+              {copied ? <Check size={16} /> : <Copy size={16} />}
+            </div>
+          ) : (
+            <div className="flex items-center justify-between w-full text-submenu font-bold text-slate-400 group-hover:text-[#2776ea] transition-colors uppercase tracking-wider">
+              <span>{isPartner ? "Visit Partner" : actionText || `${label.split(" ")[0]} Now`}</span>
+              <ArrowUpRight size={16} />
+            </div>
+          )}
+        </div>
+
+        {/* Subtle Hover Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      </div>
+    </CardWrapper>
+  );
+};
 
 // Define an explicit type for the array to avoid TypeScript inference errors
 type ContactDetail = {
@@ -126,7 +127,7 @@ export default function Contact() {
   const contactDetails: ContactDetail[] = [
     {
       label: "Phone Support",
-      value: "+91 72000 88500",
+      value: "+917200088500",
       icon: Phone,
       href: "tel:+917200088500",
     },
@@ -152,10 +153,10 @@ export default function Contact() {
 
   // --- SOCIAL ICONS ---
   const socialIcons = [
-    { src: "/assets/icons/facebook.png", href: "https://www.facebook.com/webronic/" },
-    { src: "/assets/icons/instagram.png", href: "https://www.instagram.com/webronic_/" },
-    { src: "/assets/icons/youtube.png", href: "https://www.youtube.com/@WEBRONIC/" },
-    { src: "/assets/icons/linkedin.png", href: "https://www.linkedin.com/company/webronic/" },
+    { name: "Facebook", src: "/assets/icons/facebook.png", href: "https://www.facebook.com/webronic/" },
+    { name: "Instagram", src: "/assets/icons/instagram.png", href: "https://www.instagram.com/webronic.official/" },
+    { name: "YouTube", src: "/assets/icons/youtube.png", href: "https://www.youtube.com/@WEBRONIC/" },
+    { name: "LinkedIn", src: "/assets/icons/linkedin.png", href: "https://www.linkedin.com/company/webronic/" },
   ];
 
   const handleCopy = (text: string, id: string) => {
@@ -206,11 +207,12 @@ export default function Contact() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Webronic on ${social.name}`}
                     className="h-12 w-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center hover:bg-[#2776ea] hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300 group"
                   >
                     <Image
                       src={social.src}
-                      alt="Social Icon"
+                      alt={`${social.name} icon`}
                       width={20}
                       height={20}
                       className="object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300 opacity-60 group-hover:opacity-100"

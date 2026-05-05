@@ -11,28 +11,28 @@ const jsonLd = {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://webronic.com"
+          "item": "https://www.webronic.com"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "About Us",
-          "item": "https://webronic.com/about"
+          "item": "https://www.webronic.com/about"
         }
       ]
     },
     {
       "@type": "AboutPage",
-      "@id": "https://webronic.com/about/#webpage",
-      "url": "https://webronic.com/about",
+      "@id": "https://www.webronic.com/about/#webpage",
+      "url": "https://www.webronic.com/about",
       "name": "About Webronic Industries | Global IT Services & Technology Innovation",
       "description": "Leading IT services company delivering AI/ML solutions, cloud services, and digital transformation.",
       "inLanguage": "en-US",
       "mainEntity": {
         "@type": "Organization",
-        "@id": "https://webronic.com/#organization",
+        "@id": "https://www.webronic.com/#organization",
         "name": "Webronic Industries",
-        "foundingDate": "2010",
+        "foundingDate": "2012",
         "description": "Global IT Services & Technology Innovation Partner",
         "numberOfEmployees": {
           "@type": "QuantitativeValue",
@@ -45,12 +45,12 @@ const jsonLd = {
           "https://twitter.com/webronic",
           "https://www.facebook.com/webronic/",
           "https://www.youtube.com/@WEBRONIC/",
-          "https://www.instagram.com/webronic_/"
+          "https://www.instagram.com/webronic.official/"
         ],
         "knowsAbout": ["AI Solutions", "Cloud Services", "Digital Transformation", "Software Development"]
       },
       "isPartOf": {
-        "@id": "https://webronic.com/#website"
+        "@id": "https://www.webronic.com/#website"
       }
     }
   ]
@@ -59,7 +59,7 @@ const jsonLd = {
 // --- Next.js 16 Metadata API ---
 export const metadata: Metadata = {
   title: "About Webronic Industries | Global IT Services & Technology Innovation",
-  description: "Leading IT services company delivering AI/ML solutions, cloud services, and digital transformation. 15+ years of excellence serving 200+ clients across 50+ countries.",
+  description: "Leading IT services company delivering AI/ML solutions, cloud services, and digital transformation. 13+ years of excellence serving 100+ clients across 3+ countries.",
   keywords: [
     "about webronic",
     "IT services company",
@@ -69,16 +69,16 @@ export const metadata: Metadata = {
     "digital transformation agency"
   ],
   alternates: {
-    canonical: "https://webronic.com/about",
+    canonical: "https://www.webronic.com/about",
   },
   openGraph: {
     title: "About Webronic Industries | Innovation & Excellence",
-    description: "15+ years of delivering AI/ML solutions and digital transformation to 200+ clients globally.",
-    url: "https://webronic.com/about",
+    description: "13+ years of delivering AI/ML solutions and digital transformation to 100+ clients globally.",
+    url: "https://www.webronic.com/about",
     siteName: "Webronic Industries",
     images: [
       {
-        url: "https://webronic.com/og-about.jpg",
+        url: "https://www.webronic.com/og-about.jpg",
         width: 1200,
         height: 630,
         alt: "Webronic Industries Team and Culture",
@@ -90,8 +90,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "About Webronic Industries",
-    description: "Global IT Services & Technology Innovation. Serving 200+ clients worldwide.",
-    images: ["https://webronic.com/og-about.jpg"],
+    description: "Global IT Services & Technology Innovation. Serving 100+ clients worldwide.",
+    images: ["https://www.webronic.com/og-about.jpg"],
     creator: "@webronic",
     site: "@webronic"
   },

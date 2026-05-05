@@ -30,6 +30,7 @@ export default function CareersHero() {
               centered={false}
               size="default"
               className="mb-10"
+              isH1={true}
             />
 
             {/* --- CAREER CONTACT CARDS (DIRECT & CLEAN) --- */}

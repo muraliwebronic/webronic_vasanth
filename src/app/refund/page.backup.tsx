@@ -461,9 +461,7 @@ export default function CancellationRefundPolicy() {
                     contact@webronic.com
                   </div>
                   <div className="flex items-center justify-center md:justify-start gap-4 text-sm font-bold text-slate-900">
-                    <Phone size={18} className="text-[#2776ea] shrink-0" /> +91
-                    72000 88500
-                  </div>
+                    <Phone size={18} className="text-[#2776ea] shrink-0" /> +917200088500</div>
                 </div>
               </div>
 

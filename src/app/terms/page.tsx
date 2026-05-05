@@ -406,9 +406,7 @@ export default function TermsAndConditions() {
                       <ArrowRight size={18} /> contact@webronic.com
                     </a>
                     <div className="flex items-center gap-4 text-slate-900 font-bold">
-                      <Phone size={18} className="text-[#76ea27]" /> +91 72000
-                      88500
-                    </div>
+                      <Phone size={18} className="text-[#76ea27]" /> +917200088500</div>
                   </div>
                 </div>
 

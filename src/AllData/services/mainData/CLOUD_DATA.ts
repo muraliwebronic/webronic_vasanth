@@ -701,7 +701,7 @@ export const CLOUD_DATA: ServicePageData = {
       subtitle: "Direct access to architects",
       methods: [
         { label: "Email Us", value: "contact@webronic.com", icon: "Mail", iconColor: "text-blue-600" },
-        { label: "Call Us", value: "+91 72000 88500", icon: "Phone", iconColor: "text-green-600" }
+        { label: "Call Us", value: "+917200088500", icon: "Phone", iconColor: "text-green-600" }
       ]
     }
   },

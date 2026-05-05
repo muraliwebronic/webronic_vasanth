@@ -145,8 +145,7 @@ export default function PrivacyPolicy() {
                     <div className="flex items-center gap-3">
                       <Phone size={16} className="text-[#2776ea] shrink-0" />
                       <span className="text-sm font-bold text-slate-700">
-                        +91 72000 88500
-                      </span>
+                        +917200088500</span>
                     </div>
                   </div>
                 </div>

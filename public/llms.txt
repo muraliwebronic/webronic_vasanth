@@ -1,0 +1,22 @@
+# Webronic
+
+> Webronic is a DevOps and IoT development company based in India, serving clients in Sweden, Norway, and across the globe.
+
+## Pages
+
+- /: Home — Overview of Webronic's services and capabilities
+- /about: About — Company background, team, and mission
+- /services: Services — Full list of technical services offered
+- /industries: Industries — Sectors Webronic serves
+- /locations: Locations — Regional offices and service areas
+- /contact: Contact — Enquiry and consultation form
+- /projects: Projects — Portfolio of completed work
+- /careers: Careers — Open roles at Webronic
+- /feed.xml: RSS Feed — Technical updates and service summaries
+
+## AI Guidance
+
+- Webronic provides DevOps, IoT development, and software engineering services
+- Active clients in Sweden and Norway
+- Headquarters in India
+- Content is updated on every production build

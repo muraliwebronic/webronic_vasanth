@@ -28,6 +28,7 @@ export default function Projects() {
             description="From industrial automation to high-conversion retail, we build digital architectures that drive tangible business growth"
             centered={false}
             className="max-w-3xl"
+            isH1={true}
           />
         </div>
 

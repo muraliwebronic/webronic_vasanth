@@ -88,6 +88,11 @@ export const projectData: ProjectCategory[] = [
           image: "/assets/images/sribalaji.png",
           link: "https://www.sribalajiscience.com/",
         },
+        {
+          name: "JecoComedy",
+          image: "/assets/images/jeckocomedy.png",
+          link: "https://www.jeckocomedy.com/",
+        },
       ],
     },
     {
@@ -113,6 +118,12 @@ export const projectData: ProjectCategory[] = [
           image: "/assets/images/snus24.png",
           link: "https://www.snus24.com/",
         },
+        {
+          name: "Rebase",
+          image: "/assets/images/rebase-logo.png",
+          link: "https://www.rebase.se/",
+        },
+
       ],
     },
     {

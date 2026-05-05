@@ -30,6 +30,7 @@ export default function ManufacturingHero() {
               centered={false}
               size="default"
               className="mb-8"
+              isH1={true}
             />
 
             {/* CTA Buttons */}

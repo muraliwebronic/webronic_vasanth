@@ -12,6 +12,12 @@ import ApplySection from './components/ApplySection'
 import Contact from '@/section/home/Contact'
 
 
+
+export const metadata = {
+  title: "Careers & Jobs | Webronic",
+  description: "Join the Webronic team. Explore career opportunities in IT, software development, and AI.",
+};
+
 export default function page() {
   return (
     <main>

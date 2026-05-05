@@ -11,9 +11,9 @@ import { INDUSTRIES, LOGOS, TESTIMONIALS } from "@/AllData/Home/ClientsData";
 
 // --- TESTIMONIAL CARD ---
 const TestimonialCard = ({ item }: { item: (typeof TESTIMONIALS)[0] }) => (
-  <div className="group relative flex flex-col justify-end w-full h-full font-sora select-none">
-    {/* Floating Avatar Box */}
-    <div className="absolute -top-10 left-0 right-0 z-20 flex justify-center pointer-events-none">
+  <div className="group relative flex flex-col w-full h-full font-sora select-none pt-10 md:pt-12">
+    {/* Floating Avatar Box — positioned relative to the card top */}
+    <div className="absolute top-0 left-0 right-0 z-20 flex justify-center pointer-events-none">
       <div className="relative w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl md:rounded-3xl flex items-center justify-center shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] border border-slate-100 transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-2">
         <div className="text-lg md:text-xl font-black text-[#2776ea] bg-slate-50 w-full h-full rounded-2xl md:rounded-3xl flex items-center justify-center">
           {item.author.charAt(0)}
@@ -21,19 +21,19 @@ const TestimonialCard = ({ item }: { item: (typeof TESTIMONIALS)[0] }) => (
       </div>
     </div>
 
-    {/* Pedestal Base */}
-    <div className="relative h-full bg-white rounded-[2rem] md:rounded-[2.5rem] border border-slate-100 p-6 pt-12 md:p-8 md:pt-16 flex flex-col items-center shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:shadow-blue-900/5 group-hover:border-blue-100 overflow-hidden text-center">
+    {/* Card Body */}
+    <div className="relative flex-1 bg-white rounded-[2rem] md:rounded-[2.5rem] border border-slate-100 p-6 pt-10 md:p-8 md:pt-14 flex flex-col items-center shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:shadow-blue-900/5 group-hover:border-blue-100 overflow-hidden text-center">
       {/* Fake Floor Shadow */}
       <div className="absolute top-16 left-1/2 -translate-x-1/2 w-12 h-3 bg-slate-900/5 blur-lg rounded-full transition-all duration-500 group-hover:w-16 group-hover:bg-blue-900/10 group-hover:blur-xl" />
 
-      {/* Content */}
-      <div className="relative z-10 mb-6 flex-1 flex items-center mt-4">
-        <p className="text-submenu text-slate-600 leading-relaxed italic ">
-          "{item.text}"
+      {/* Quote Content — flex-1 ensures equal vertical space distribution */}
+      <div className="relative z-10 flex-1 flex items-center px-2">
+        <p className="text-submenu text-slate-600 leading-relaxed italic">
+          &ldquo;{item.text}&rdquo;
         </p>
       </div>
 
-      {/* Author */}
+      {/* Author — mt-auto pins it to the bottom consistently */}
       <div className="relative z-10 mt-auto border-t border-slate-50 pt-4 w-full">
         <h4 className="text-menu font-bold text-slate-900 group-hover:text-[#2776ea] transition-colors">
           {item.author}
@@ -96,7 +96,7 @@ function TestimonialCarousel() {
           <motion.div
             key={i}
             // Mobile: 85vw width for peek effect. Desktop: Fixed 340px
-            className="min-w-[85vw] md:min-w-[340px] h-[360px] md:h-[420px]"
+            className="min-w-[85vw] md:min-w-[340px] lg:min-w-[380px] h-[360px] md:h-[420px] lg:h-[480px]"
           >
             <TestimonialCard item={t} />
           </motion.div>
@@ -256,9 +256,12 @@ export default function Clients() {
 }
 
 function LogoCard({ src }: { src: string }) {
+  // Derive a meaningful alt from the filename (e.g. "/assets/images/fpanalyzer.png" → "Fpanalyzer")
+  const fileName = src.split("/").pop()?.replace(/\.[^.]+$/, "").replace(/[-_]/g, " ") ?? "client";
+  const altText = `${fileName.charAt(0).toUpperCase() + fileName.slice(1)} client logo`;
   return (
     <div className="relative h-8 w-24 md:h-10 md:w-28 lg:h-14 lg:w-36 transition-all duration-300 hover:scale-105">
-      <Image src={src} alt="Client Logo" fill className="object-contain" />
+      <Image src={src} alt={altText} fill className="object-contain" />
     </div>
   );
 }

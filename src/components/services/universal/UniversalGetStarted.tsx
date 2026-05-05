@@ -2,7 +2,7 @@
 
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { DynamicIcon } from "@/components/common/DynamicIcon";
-import { ServicePageData } from "@/app/service/data/types";
+import { ServicePageData } from "@/app/services/data/types";
 import SectionHeader from "@/components/common/SectionHeader";
 import Link from "next/link";
 import Contact from "@/section/home/Contact";

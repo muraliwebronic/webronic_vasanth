@@ -213,7 +213,7 @@ export const STORETECH_DATA: ProductPageData = {
                 { label: "Website", value: "www.store-tech.se", icon: "Globe", iconColor: "text-blue-600" },
                 { label: "Email", value: "sales@store-tech.se", icon: "Mail", iconColor: "text-red-500" },
                 // { label: "Phone (Sweden)", value: "+46 XXX XXX XXX", icon: "Phone", iconColor: "text-green-600" },
-                { label: "Phone (India)", value: "+91 72000 88500", icon: "Phone", iconColor: "text-orange-500" }
+                { label: "Phone (India)", value: "+917200088500", icon: "Phone", iconColor: "text-orange-500" }
             ]
         }
     },

@@ -21,6 +21,7 @@ export default function Branches() {
             description="Visit our physical locations to experience how we merge industrial logic with creative engineering across Tamil Nadu"
             centered={false}
             className="max-w-3xl"
+            isH1={true}
           />
         </div>
 
